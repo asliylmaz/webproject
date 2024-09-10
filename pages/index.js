@@ -74,7 +74,7 @@ function Home() {
                 }}
             >
                <div class="row hero-banner">
-                  <h1 class="hero-banner__title hero-banner__stroked-title">Coming Soon</h1>
+                  <h1 class="hero-banner__title hero-banner__stroked-title">Under Construction</h1>
                 </div>
             </div>
 
