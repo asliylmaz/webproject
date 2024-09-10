@@ -1,0 +1,45 @@
+import React from 'react';
+import {dsnCN} from "../../hooks/helper";
+
+function InfoBox({className}) {
+    return (
+
+        <div className={dsnCN('box-info-contact', className)}>
+            <ul>
+                <li>
+                    <h1>Get in Touch </h1>
+                    <h5 className="title-block mt-15">Contact</h5>
+                    <p className="text-p ">0212 455 45  02</p>
+                    <p className="text-p ">info@.com</p>
+                    {/* <div className="over-hidden mt-5">
+                        <a className="link-hover" data-hover-text="info@example.com"
+                           href="#"> info@.com</a>
+                    </div> */}
+                    
+                </li>
+                <li>
+                    <h5 className="title-block mb-15">Address</h5>
+                    <p className="text-p">Esentepe No:1<br /> 34394 Şişli/İstanbul</p>
+                </li>
+                <li>
+                    <h5 className="title-block mb-15">Follow Us</h5>
+                    <div className="social-item over-hidden">
+                        <a className="link-hover" data-hover-text="Instagram" href="#"
+                           target="_blank" rel="nofollow">Instagram</a>
+                    </div>
+                    <div className="social-item over-hidden">
+                        <a className="link-hover" data-hover-text="Facebook" href="#"
+                           target="_blank" rel="nofollow">Facebook</a>
+                    </div>
+                    <div className="social-item over-hidden">
+                        <a className="link-hover" data-hover-text="X" href="#"
+                           target="_blank" rel="nofollow">X</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    );
+}
+
+export default InfoBox;
