@@ -1,60 +1,90 @@
-import React from "react";
-import Layout from "../layout/Layout";
-import SliderPortfolio from "../components/slider-portfolio/SliderPortfolio";
-import HeroSection from "../components/hero-section/HeroSection";
-import TitleSection from "../components/heading/TitleSection";
-import ServiceOne from "../components/services/grid/ServiceOne";
-import ParallaxImage from "../components/Image/ParallaxImage";
-import MoveBox from "../components/move-box/MoveBox";
-import Button from "../components/button/Button";
-import PortfolioSwiper from "../components/portfolio/PortfolioSwiper";
-import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
-import Testimonial from "../components/testimonial/Testimonial";
-import Accordion, { AccordionItem } from "../components/accordion/Accordion";
-import DsnGrid from "../layout/DsnGrid";
-import TitleCover from "../components/heading/TitleCover";
-import BlogSwiper from "../components/bolg/BlogSwiper";
-import Team from "../components/Team/Team";
-import BrandClient from "../components/brand-client/BrandClient";
-import ucboluikiLogo from "../public/img/ucboluiki.png";
-
-import NextPage from "../components/next/NextPage";
-import Footer from "../components/footer/Footer";
-import ModalContact from "../components/model-right/ModalContact";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 
-
 function Home() {
-    TitleSection.defaultProps = {
-        classDesc: "line-shape line-shape-before",
-        classDesInner: "line-bg-right",
-    };
+    // Countdown logic
+    const [timeLeft, setTimeLeft] = useState({});
+
+    useEffect(() => {
+        const calculateTimeLeft = () => {
+            const targetDate = new Date('2024-09-28T00:00:00');
+            const now = new Date();
+            const difference = targetDate - now;
+
+            let timeLeft = {};
+
+            if (difference > 0) {
+                timeLeft = {
+                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                    minutes: Math.floor((difference / 1000 / 60) % 60),
+                    seconds: Math.floor((difference / 1000) % 60),
+                };
+            }
+
+            return timeLeft;
+        };
+
+        setTimeLeft(calculateTimeLeft());
+
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
 
     return (
+        <div
+            className="align-items-center justify-content-center text-center"
+            style={{
+                position: 'relative',
+                width: '100vw',
+                height: '100vh',
+                overflow: 'hidden',
+                backgroundColor: '#fff',
+            }}
+        >
+            <Head>
+                <title>3bolu2 | Coming Soon</title>
+            </Head>
 
-        //<Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
-        //<Head>
-        // <title>Corporate | Eremia Creative Portfolio Multi-Purpose</title>
-        //</Head>
-        <div className="align-items-center justify-content-center text-center" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColo: '#fff' }}>
-            {/* Logo in the center and upper area */}
+            {/* Logo */}
             <img
                 src="/img/ucboluiki.png"
                 alt="Logo"
                 style={{
                     position: 'absolute',
-                    top: '20%',    // Logoyu üst kısma doğru taşımak için %20
-                    left: '47%',   // Yatayda ortalamak için %50
-                    width: '200px', // Logoyu büyütmek için genişlik ayarlandı
+                    top: '15%', // Move the logo towards the top
+                    left: '50%', // Center horizontally
+                    width: '200px', // Set the width of the logo
                     zIndex: '1000',
-                    transform: 'translate(-50%, -50%)', // Yatayda tam ortalamak için translate kullan
+                    transform: 'translate(-50%, -50%)', // Center the logo
                 }}
             />
 
+            {/* Coming Soon Text */}
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '40%', // Adjust position under the logo
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: '1000',
+                }}
+            >
+               <div class="row hero-banner">
+                  <h1 class="hero-banner__title hero-banner__stroked-title">Coming Soon</h1>
+                </div>
+            </div>
+
+            {/* Video Background */}
             <div
                 className="video-container"
                 style={{
-                    position: 'relative',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
                     width: '100vw',
                     height: '100vh',
                     overflow: 'hidden',
@@ -68,275 +98,41 @@ function Home() {
                     style={{
                         position: 'absolute',
                         top: '50%',
-                        left: '46%',
+                        left: '50%',
                         minWidth: '100%',
                         minHeight: '100%',
-                        width: '100%',
-                        height: '100%',
-                        zIndex: '0',  // Diğer içeriklerin altında kalmasını sağlıyor
+                        width: 'auto',
+                        height: 'auto',
+                        zIndex: '0', // Behind content
                         transform: 'translate(-50%, -50%)',
-                        objectFit: 'cover',  // Videonun kapsayıcıya sığmasını sağlıyor
-                        objectPosition: 'center',  // Videonun merkezine odaklanıyor
+                        objectFit: 'cover', // Ensure the video covers the whole screen
+                        objectPosition: 'center', // Focus the center of the video
                     }}
                 >
-                    <source src="/img/background3.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
+                    <source src="/img/bg2.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
                 </video>
-
-                {/* Merkeze yazı eklemek isterseniz buraya yerleştirin */}
             </div>
 
-            {/* <img src="/img/ucons.jpg" alt="Your Image Description" style={{ position: 'absolute', top: '50%', left: '50%', width: '100%', height: '100%', objectFit: 'cover', transform: 'translate(-50%, -50%)' }} />
-            <div className="align-items-center justify-content-center text-center" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
-                <img src="/img/underc.jpg" alt="Your Image Description" style={{ position: 'absolute', top: '50%', left: '50%', width: '100%', height: '100%', objectFit: 'cover', transform: 'translate(-50%, -50%)' }} />
-                <div className="overlay-content" style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)' }}>
-                    <h1 style={{ fontSize: '48px', color: '#FBB74A' }}>
-                        UNDER CONSTRUCTION
-                    </h1>
-                    <p style={{ color: '#FBB74A' }}>WE ARE COMING SOON</p>
+            {/* Countdown Timer at the Bottom */}
+            <div 
+                style={{
+                    position: 'absolute',
+                    bottom: '5%', // Center near the bottom
+                    left: '50%',
+                    transform: 'translate(-50%, 0)',
+                    color: '#fff',
+                    fontSize: '1.4rem',
+                    zIndex: '1000',
+                    textAlign: 'center',
+                }}
+            >
+                <div style={{ fontFamily: "'Courier New', monospace" }}>
+                    {timeLeft.days || 0}d {timeLeft.hours || 0}h {timeLeft.minutes || 0}m {timeLeft.seconds || 0}s
                 </div>
-            </div> */}
-
+            </div>
         </div>
-
-    )
-    // return (
-    //     <Layout modelRight={{children: <ModalContact/>, propsModal: {textBtn: "Contact"}}}>
-    //         <Head>
-    //             <title>Home | Eremia Creative Portfolio Multi-Purpose</title>
-    //         </Head>
-    //         <SliderPortfolio
-    //             webgel
-    //             fullWidth
-    //             className={"align-items-end pb-80"}
-    //             webgelOptions={{
-    //                 displacement: "/img/displacement/8.jpg",
-    //                 speedIn: 3.5,
-    //             }}
-    //             metaData={{hasSeparator: true}}
-    //         />
-    //         <HeroSection className="container section-margin container fill-right-container"
-    //                      data-dsn-title="How We Are"/>
-
-    //         {/*Start Service*/}
-    //         <div className="container section-margin" data-dsn-title="Our Services">
-    //             <TitleSection
-    //                 className="align-items-center text-center"
-    //                 description={"Our Services"}
-    //             >
-    //                 We are delivering beautiful <br/> digital products for you.
-    //             </TitleSection>
-    //             <ServiceOne/>
-    //         </div>
-    //         {/*End Service*/}
-
-    //         {/*Start Box Info Move Content*/}
-    //         <div className="p-relative section-margin">
-    //             <ParallaxImage src="/img/project/project3/2.jpg" overlay={2} alt={""}/>
-    //             <MoveBox tablet={false}>
-    //                 <TitleSection
-    //                     className={`align-items-start mb-30`}
-    //                     description={"Build perfect websites"}
-    //                     defaultSpace={false}
-    //                 >
-    //                     Unlimited power
-    //                 </TitleSection>
-
-    //                 <p className="mb-10">
-    //                     Most of our writings have centered on implementing strategies for
-    //                     business units, with their unique
-    //                 </p>
-    //                 <p className="mb-30">
-    //                     geeza arse it’s your round grub sloshed burke, my good sir chancer
-    //                     he legged it he lost his bottle pear shaped bugger all mate
-    //                 </p>
-
-    //                 <Button href={"work-classic-2-col"} className={"image-zoom"} data-dsn="parallax" transitionPage={{title:"Our Portfolio"}}>
-    //                     More Projects <span>⟶</span>
-    //                 </Button>
-
-    //                 <p className={`sm-p mt-15 theme-color`}>
-    //                     NOTE : Some details are very important.
-    //                 </p>
-    //             </MoveBox>
-    //         </div>
-    //         {/*End Box Info Move Content*/}
-
-
-    //         {/*Start Portfolio*/}
-    //         <div className="section-margin" data-dsn-title="Our Portfolio">
-    //             <TitleSection
-    //                 className={`container align-items-center text-center`}
-    //                 description={"Our Works"}
-    //             >
-    //                 Creative Portfolio <br/>
-    //                 Designs
-    //             </TitleSection>
-    //             <PortfolioSwiper
-    //                 grabCursor
-    //                 desktop={{spaceBetween: 50, slidesPerView: 1.5}}
-    //                 tablet={{spaceBetween: 0, slidesPerView: 1.3}}
-    //                 mobile={{slidesPerView: 1}}
-    //                 stylePortfolio="work-section"
-    //                 className="text-left v-dark-head title-inherit h4"
-    //                 centeredSlides
-    //                 loop
-    //                 blur
-    //                 parallax
-    //                 speed={1200}
-    //                 watchSlidesProgress
-    //                 loopedSlides={2}
-    //                 parallaxImage={{"data-swiper-parallax-scale": "0.85"}}
-    //                 parallaxContent={{"data-swiper-parallax-opacity": "0"}}
-    //             >
-    //                 <SwiperPagination
-    //                     className={`justify-content-between dsn-container mt-30`}
-    //                 />
-    //             </PortfolioSwiper>
-    //         </div>
-    //         {/*End Portfolio*/}
-
-    //         {/*Start testimonial Section*/}
-    //         <div className="section-margin" data-dsn-title="Testimonials">
-    //             <Testimonial className="container section-margin" title="Feedback from our clients."
-    //                          skin={["testimonials-half"]}
-    //                          backgroundColor={"background-section"}
-    //                          desktop={{slidesPerView: 2}}
-    //                          mobile={{slidesPerView: 1}}
-    //                          speed={1000} grabCursor loop loopedSlides={2}
-    //                          parallax parallaxImage={{"data-swiper-parallax-scale": 0.7}}
-    //                          parallaxContent={{"data-swiper-parallax-opacity": 0, "data-swiper-parallax": "30%"}}
-    //             >
-    //                 <SwiperPagination className={`justify-content-between dsn-container mt-30`}/>
-    //             </Testimonial>
-    //         </div>
-
-
-    //         {/*End testimonial Section*/}
-
-    //         {/*Start box vertical Section*/}
-    //         <section className="box-gallery-vertical container section-margin" data-dsn-title="Our Services">
-    //             <DsnGrid col={2} colTablet={1} colGap={0} rowGap={0} rowGapTablet={0} rowGapMobile={0}>
-    //                 <div className="p-relative mb-lg-section">
-    //                     <div className="box-im w-100 h-100 p-absolute">
-    //                         <ParallaxImage
-    //                             alt={""}
-    //                             src={"/img/plan-project.jpg"}
-    //                             overlay={3}
-    //                             height="100%"
-    //                             heightTable={"70vh"}
-    //                             heightMobile={"70vh"}
-    //                             sizes="(max-width: 768px) 100vw,(max-width: 1200px) 70vw,33vw"
-    //                         />
-    //                     </div>
-    //                 </div>
-    //                 <div className="p-relative pt-lg-section">
-    //                     <div className="box-info h-100 box-padding background-section ">
-    //                         <DsnGrid className="box-info-inner" col={1} colGap={0}>
-    //                             <TitleCover>Eremia</TitleCover>
-    //                             <TitleSection
-    //                                 className={"text-uppercase"}
-    //                                 description={"OUR PURPOSE"}
-    //                                 defaultSpace={false}
-    //                             >
-    //                                 We Plan Your Project
-    //                             </TitleSection>
-    //                             <Accordion>
-    //                                 <AccordionItem title="Extensive Employment" active number={1}>
-    //                                     <p>
-    //                                         Quisque placerat vitae lacus ut sceleris queusce luctus
-    //                                         odio ac nibh luctus, in porttitor.
-    //                                     </p>
-    //                                 </AccordionItem>
-    //                                 <AccordionItem title="Dedicated Staff" number={2}>
-    //                                     <p>
-    //                                         Quisque placerat vitae lacus ut sceleris queusce luctus
-    //                                         odio ac nibh luctus, in porttitor.
-    //                                     </p>
-    //                                 </AccordionItem>
-    //                                 <AccordionItem title="User Experience" number={3}>
-    //                                     <p>
-    //                                         Cepteur sint occaecat cupidatat proident, taken possession
-    //                                         of my entire soul, like these sweet mornings of spring
-    //                                         which I enjoy with my whole.
-    //                                     </p>
-    //                                 </AccordionItem>
-    //                             </Accordion>
-    //                         </DsnGrid>
-    //                     </div>
-    //                 </div>
-    //             </DsnGrid>
-    //         </section>
-    //         {/*End box vertical Section*/}
-
-    //         {/*Start Blog*/}
-    //         <div className="section-margin" data-dsn-title="Lasts post">
-    //             <TitleSection
-    //                 className={`container  align-items-center text-center`}
-    //                 description={"Lasts post"}
-    //             >
-    //                 Latest And Greatest <br/>
-    //                 Post
-    //             </TitleSection>
-    //             <BlogSwiper
-    //                 className="dsn-container"
-    //                 grabCursor
-    //                 desktop={{spaceBetween: 50, slidesPerView: 1.5}}
-    //                 tablet={{spaceBetween: 30, slidesPerView: 1.3}}
-    //                 mobile={{spaceBetween: 0, slidesPerView: 1}}
-    //                 centeredSlides
-    //                 loop
-    //                 blur
-    //                 parallax
-    //                 speed={1200}
-    //                 watchSlidesProgress
-    //                 loopedSlides={2}
-    //                 parallaxImage={{"data-swiper-parallax-scale": "0.85"}}
-    //                 parallaxContent={{"data-swiper-parallax-opacity": "0.5"}}
-    //             >
-    //                 <SwiperPagination
-    //                     className={`justify-content-between dsn-container mt-30`}
-    //                 />
-    //             </BlogSwiper>
-    //         </div>
-    //         {/*End Blog*/}
-
-    //         {/*========== team Section ========== */}
-    //         <section className="container section-margin " data-dsn-title="Our Team">
-    //             <TitleSection
-    //                 className={` align-items-center text-center`}
-    //                 description={"Our Team"}
-    //             >
-    //                 The Best Team Ever!
-    //             </TitleSection>
-
-    //             <Team col={3} colTablet={2}/>
-    //         </section>
-    //         {/*========== End team Section ========== */}
-
-    //         {/*========== End brand-client Section ==========*/}
-    //         <section className="container section-margin" data-dsn-title="our clients">
-    //             <TitleSection
-    //                 className={`align-items-center text-center`}
-    //                 description={"Our clients"}
-    //             >
-    //                 Your successful, our <br/>
-    //                 reputation
-    //             </TitleSection>
-
-    //             <BrandClient col={4} colTablet={3} colMobile={2} colGap={0} rowGap={0}/>
-    //         </section>
-    //         {/*========== End brand-client Section ==========*/}
-
-    //         {/*========== Next Page ==========*/}
-    //         <NextPage className="section-padding border-top background-section"/>
-    //         {/*========== End Next Page ==========*/}
-
-    //         {/*========== Footer ==========*/}
-    //         <Footer className="background-section"/>
-    //         {/*========== End Footer ==========*/}
-    //     </Layout>
-    // );
+    );
 }
 
 export default Home;
