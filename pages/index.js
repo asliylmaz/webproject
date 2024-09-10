@@ -37,18 +37,20 @@ function Home() {
         // <title>Corporate | Eremia Creative Portfolio Multi-Purpose</title>
         //</Head>
         <div className="align-items-center justify-content-center text-center" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColo: '#fff' }}>
-            {/* Logo in the top left corner */}
+            {/* Logo in the center and upper area */}
             <img
                 src="/img/ucboluiki.png"
                 alt="Logo"
                 style={{
                     position: 'absolute',
-                    top: '5px',
-                    left: '5px',
-                    width: '100px',
+                    top: '20%',    // Logoyu üst kısma doğru taşımak için %20
+                    left: '47%',   // Yatayda ortalamak için %50
+                    width: '200px', // Logoyu büyütmek için genişlik ayarlandı
                     zIndex: '1000',
+                    transform: 'translate(-50%, -50%)', // Yatayda tam ortalamak için translate kullan
                 }}
             />
+
             <div
                 className="video-container"
                 style={{
