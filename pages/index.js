@@ -75,6 +75,7 @@ function Home() {
             >
                <div class="row hero-banner">
                   <h1 class="hero-banner__title hero-banner__stroked-title">Under Construction</h1>
+                  <p class="hero-banner__subtitle">Coming Soon</p>
                 </div>
             </div>
 

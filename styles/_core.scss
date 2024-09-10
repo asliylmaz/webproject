@@ -6,12 +6,13 @@ html {
 }
 .hero-banner {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: auto; /* Yükseklik otomatik olsun, yazıya göre ayarlanacak */
+  height: auto;
   position: relative;
   z-index: -1;
-  padding-top: 50px; /* Üst kısımdan 50px boşluk ekleyelim */
+  padding-top: 50px;
 }
 
 .hero-banner__title {
@@ -21,14 +22,49 @@ html {
   padding: 0 20px;
   text-align: center;
   text-transform: uppercase;
-  margin-top: 30px; /* Başlığı aşağı kaydırmak için margin-top ekleyelim */
+  margin-top: 30px;
 }
 
 .hero-banner__stroked-title {
   color: transparent;
-  -webkit-text-stroke: 1px  #fff; /* Webkit için çerçeveli yazı */
-  text-stroke: 1px #fff; /* Diğer tarayıcılar için çerçeveli yazı */
+  -webkit-text-stroke: 1px #fff;
+  text-stroke: 1px #fff;
 }
+
+.hero-banner__subtitle {
+  color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+/* Mobil ekranlar için font boyutlarını küçültme */
+@media only screen and (max-width: 768px) {
+  .hero-banner__title {
+    font-size: 40px; /* Tablet ve küçük ekranlar için başlığı küçültelim */
+  }
+  
+  .hero-banner__subtitle {
+    font-size: 16px; /* Coming Soon yazısını küçültelim */
+    letter-spacing: 3px; /* Harf aralığını biraz daraltalım */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .hero-banner__title {
+    font-size: 30px; /* Daha küçük ekranlarda başlığı daha da küçültelim */
+  }
+
+  .hero-banner__subtitle {
+    font-size: 14px; /* Çok küçük ekranlarda "Coming Soon" yazısını küçültelim */
+    letter-spacing: 2px; /* Harf aralığını daha da daraltalım */
+  }
+}
+
+
+
 
 
 
