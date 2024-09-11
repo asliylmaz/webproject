@@ -133,7 +133,7 @@ function MyApp({Component, pageProps}) {
 
             <div id="__dsn_content" className={colorPage}>
                 {/*<LoadingPage/>*/}
-                {/*<EremiaMenu hamburger/>*/}
+                <EremiaMenu hamburger/>
                 <Component  {...pageProps} />
                 <OptionTheme lineTheme={[creativeLine, setCreativeLine]} pageColor={[colorPage, setColorPage]}/>
                 <RightScrollTop options={{duration: 1.5, ease: "power4.inOut"}}/>

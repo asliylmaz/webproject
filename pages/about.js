@@ -23,7 +23,7 @@ import {getServiceData} from "../data/service";
 import Image from "next/image";
 import ModalContact from "../components/model-right/ModalContact";
 import Head from "next/head";
-import Error404 from "./error404";
+//import Error404 from "./error404";
 
 function About() {
     TitleSection.defaultProps = {
@@ -31,11 +31,11 @@ function About() {
         classDesInner: "line-bg-right",
     };
 
-    const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
+    // const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
 
-    if (!isEnabled) {
-        return <Error404 />;
-      }
+    // if (!isEnabled) {
+    //     return <Error404 />;
+    //   }
       
   
     return (

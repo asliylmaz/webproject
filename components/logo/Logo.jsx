@@ -43,6 +43,6 @@ const Logo = ({width, height, alt}) => {
 }
 
 MainBrand.defaultProps = {width: '80px', height: 'auto'}
-Logo.defaultProps = {alt: "Eremia"}
+Logo.defaultProps = {alt: "3bolu2"}
 
 export default React.memo(Logo);

@@ -6,77 +6,87 @@ import BgDot from "../components/header/BgDot";
 import Facts from "../components/facts/Facts";
 import TitleCover from "../components/heading/TitleCover";
 import List from "../components/list/List";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
-import {ServiceGrid} from "../components/services/Service";
-import { IdeaIcon} from "../components/svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { ServiceGrid } from "../components/services/Service";
+import { IdeaIcon } from "../components/svg";
 import ButtonProject from "../components/button/ButtonProject";
-import {getServiceData} from "../data/service";
+import { getServiceData } from "../data/service";
 import Team from "../components/Team/Team";
 import React from "react";
-import {getTeamData} from "../data/team";
+import { getTeamData } from "../data/team";
 import Image from "next/image";
 import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
 import ModalContact from "../components/model-right/ModalContact";
 import Head from "next/head";
-import Error404 from "./error404";
+import ParallaxImage from "../components/Image/ParallaxImage";
+//import Error404 from "./error404";
 
 function Service() {
-
+    const services = getServiceData();
     TitleSection.defaultProps = {
         classDesInner: "line-bg-left",
     };
-    const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
+    // const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
 
-    if (!isEnabled) {
-        return <Error404 />;
-      }
+    // if (!isEnabled) {
+    //     return <Error404 />;
+    //   }
     return (
-        <Layout  modelRight={{children:<ModalContact />,propsModal:{textBtn:"Contact"}}}>
+        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
             <Head>
-                <title>Service  | Eremia Creative Portfolio Multi-Purpose</title>
+                <title>Service  | 3 Bolu 2</title>
             </Head>
             {/*========== Header Normal ========== */}
             <HeaderNormal backgroundColor="background-section" className="text-center">
-                <p className="subtitle p-relative line-shape   mb-30">
+                <p className="subtitle p-relative line-shape">
                     <span className="pl-10 pr-10 background-main">OUR SERVICES</span>
                 </p>
-                <h1 className="title">
+                {/* <h1 className="title">
                     We are delivering beautiful <br/> digital products for you.
-                </h1>
+                </h1> */}
             </HeaderNormal>
             {/*========== End Header Normal ==========*/}
 
-            {/*========== About Section  ==========*/}
-            <DsnGrid className="container section-margin" customGrid={{desktop: "70% 30%"}} rowGapTablet={50} data-dsn-title="What We Do">
-                <div className="box-left">
-                    <TitleSection defaultSpace={false} description="What We Do"/>
-                    <h4 className="mt-25">
-                        The good writers touch life often. The mediocre ones run a quick hand
-                        over her. The bad ones rape her and leave her for the flies.
-                    </h4>
-                </div>
-                <div className="box-right">
-                    <TitleSection defaultSpace={false} description="Our Services"/>
-                    <ul className="mt-25">
-                        <li className="mb-15">Brand Consulting</li>
-                        <li className="mb-15">Marketing Management</li>
-                        <li className="mb-15">Customer Insight</li>
-                    </ul>
+            {/*Start Parallax Img*/}
+            <ParallaxImage alt={""} src={"/img/about/5.jpg"}
+                parallaxFrom={{ scale: 1.3 }} parallax={{ scale: 1 }}
+                overlay={5} />
+            {/*End Parallax Img*/}
 
+            {/*========== About Section  ==========*/}
+            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="What We Do">
+                <div className="services-container">
+                <TitleSection defaultSpace={false} description="What We Do" />
+                <br></br>
+                
+                    {services.map((service, index) => (
+                        <div key={index} className="service-item">
+                            <h1 className="services neon-text">{service.title}</h1>
+                            <p className="services sub-neon-text">{service.description}</p>
+                            <br></br>
+                            <br></br>
+                        </div>
+                    ))}
                 </div>
             </DsnGrid>
             {/*========== End About Section  ==========*/}
 
+            {/*Start Parallax Img*/}
+            <ParallaxImage alt={""} src={"/img/about/5.jpg"}
+                parallaxFrom={{ scale: 1.3 }} parallax={{ scale: 1 }}
+                overlay={5} />
+            {/*End Parallax Img*/}
+
             {/*<!-- ========== facts-section ==========*/}
-            <div className="section-margin p-relative" >
-                <BgDot/>
-                <BgDot rightPosition/>
+            {/* <div className="section-margin p-relative" >
+                <BgDot />
+                <BgDot rightPosition />
                 <div className="container">
-                    <Facts className="text-center" col={4} colTablet={2}/>
+                    <Facts className="text-center" col={4} colTablet={2} />
                 </div>
-            </div>
+            </div> */}
             {/*<!-- ========== end facts-section ========== */}
 
 
@@ -85,7 +95,7 @@ function Service() {
                 <DsnGrid className="container" col={2} colTablet={1}>
                     <div className="p-relative box-left">
                         <div className="box-im h-100 ">
-                            <Image className="cover-bg-img " src="/img/rachel-claire.jpg" alt="" fill sizes="(max-width: 768px) 100vw,(max-width: 1200px) 75vw,100vw"/>
+                            <Image className="cover-bg-img " src="/img/rachel-claire.jpg" alt="" fill sizes="(max-width: 768px) 100vw,(max-width: 1200px) 75vw,100vw" />
                         </div>
                     </div>
 
@@ -95,23 +105,23 @@ function Service() {
                             Make better products make products better
                         </TitleSection>
                         <List className="border-top  pt-30 mb-30" col={2} iconSize={"15px"}>
-                            <List.item icon={<FontAwesomeIcon icon={faCheckCircle} className="theme-color"/>}
-                                       headingTag="span"> Proin gravida nibh vel </List.item>
-                            <List.item icon={<FontAwesomeIcon icon={faCheckCircle} className="theme-color"/>}
-                                       headingTag="span"> Proin gravida nibh vel </List.item>
-                            <List.item icon={<FontAwesomeIcon icon={faCheckCircle} className="theme-color"/>}
-                                       headingTag="span"> Auctor aliquet aenean quis </List.item>
-                            <List.item icon={<FontAwesomeIcon icon={faCheckCircle} className="theme-color"/>}
-                                       headingTag="span"> Auctor aliquet aenean quis </List.item>
+                            <List.item icon={<FontAwesomeIcon icon={faCheckCircle} className="theme-color" />}
+                                headingTag="span"> Proin gravida nibh vel </List.item>
+                            <List.item icon={<FontAwesomeIcon icon={faCheckCircle} className="theme-color" />}
+                                headingTag="span"> Proin gravida nibh vel </List.item>
+                            <List.item icon={<FontAwesomeIcon icon={faCheckCircle} className="theme-color" />}
+                                headingTag="span"> Auctor aliquet aenean quis </List.item>
+                            <List.item icon={<FontAwesomeIcon icon={faCheckCircle} className="theme-color" />}
+                                headingTag="span"> Auctor aliquet aenean quis </List.item>
                         </List>
                         <ServiceGrid className="icon-left p-0 border-top  pt-30 align-items-center"
 
-                                     iconOption={{className: "background-main p-15 align-self-center"}}
-                                     data={[{
-                                         icon: IdeaIcon,
-                                         title: "Best Practices from Industry Experts ",
-                                         description: "We’ve designed a culture that allows our stewards to assimilate with our clients and bring."
-                                     }]}/>
+                            iconOption={{ className: "background-main p-15 align-self-center" }}
+                            data={[{
+                                icon: IdeaIcon,
+                                title: "Best Practices from Industry Experts ",
+                                description: "We’ve designed a culture that allows our stewards to assimilate with our clients and bring."
+                            }]} />
 
                     </div>
                 </DsnGrid>
@@ -141,7 +151,7 @@ function Service() {
                     </div>
                     <div className="p-relative box-right order-md-1">
                         <div className="box-im h-100 ">
-                            <Image className="cover-bg-img " src="/img/help-project.jpg" alt="" fill sizes="(max-width: 768px) 100vw,(max-width: 1200px) 75vw"/>
+                            <Image className="cover-bg-img " src="/img/help-project.jpg" alt="" fill sizes="(max-width: 768px) 100vw,(max-width: 1200px) 75vw" />
                         </div>
                     </div>
 
@@ -159,42 +169,42 @@ function Service() {
                         BUSINESS CONSULTING
                     </TitleSection>
                     <TitleSection className="text-center mt-15" tag="p" dirDescription="after" classDesInner="max-w570"
-                                  description="Get Essentials today and start building next-generation websites,
+                        description="Get Essentials today and start building next-generation websites,
                               create awesome pages with unlimited possibilities."/>
 
 
                     <DsnGrid className="background-main" col={2} colTablet={1} rowGapTablet={0} rowGapMobile={0}>
                         <div className="p-relative box-padding box-left order-md-2">
                             <TitleCover>Diesel</TitleCover>
-                            <TitleSection className="mb-15" defaultSpace={false} description="Project Manager"/>
+                            <TitleSection className="mb-15" defaultSpace={false} description="Project Manager" />
                             <h4 className="mb-50">Get Dsn Grid today and start building
                                 next-generation websites in minutes!</h4>
                             <ServiceGrid className="icon-left p-0" rowGapTablet={30} rowGapMobile={30}
-                                         data={[
-                                             {
-                                                 icon: <Image  src="/img/team/1.jpg" alt="" width={70} height={70} />,
-                                                 title: "Build powerful websites with Essentials",
-                                                 description: `Start building next-level websites using Essentials WordPress theme. `
-                                             }, {
-                                                 icon: <Image src="/img/team/2.jpg" alt="" width={70} height={70}/>,
-                                                 title: "Build powerful websites with Essentials",
-                                                 description: `Start building next-level websites using Essentials WordPress theme. `
-                                             }, {
-                                                 icon: <Image src="/img/team/3.jpg" alt="" width={70} height={70}/>,
-                                                 title: "Build powerful websites with Essentials",
-                                                 description: `Start building next-level websites using Essentials WordPress theme. `
-                                             }
-                                         ]}
+                                data={[
+                                    {
+                                        icon: <Image src="/img/team/1.jpg" alt="" width={70} height={70} />,
+                                        title: "Build powerful websites with Essentials",
+                                        description: `Start building next-level websites using Essentials WordPress theme. `
+                                    }, {
+                                        icon: <Image src="/img/team/2.jpg" alt="" width={70} height={70} />,
+                                        title: "Build powerful websites with Essentials",
+                                        description: `Start building next-level websites using Essentials WordPress theme. `
+                                    }, {
+                                        icon: <Image src="/img/team/3.jpg" alt="" width={70} height={70} />,
+                                        title: "Build powerful websites with Essentials",
+                                        description: `Start building next-level websites using Essentials WordPress theme. `
+                                    }
+                                ]}
                             />
                         </div>
                         <div className="p-relative box-right order-md-1">
                             <div className="box-im h-100 ">
-                                <Image className="cover-bg-img " src="/img/corporate.jpg" alt="" fill  sizes="(max-width: 768px) 100vw,(max-width: 1200px) 75vw"/>
+                                <Image className="cover-bg-img " src="/img/corporate.jpg" alt="" fill sizes="(max-width: 768px) 100vw,(max-width: 1200px) 75vw" />
                             </div>
                         </div>
                     </DsnGrid>
                     <ServiceGrid className="mt-50 p-0 text-center" data={getServiceData().slice(0, 3)} col={3} colTablet={2}
-                                 colGap={50}/>
+                        colGap={50} />
                 </div>
 
 
@@ -207,16 +217,16 @@ function Service() {
                     The Best Team Ever!
                 </TitleSection>
 
-                <Team data={getTeamData().slice(0,3)} className={"team-classic"} col={3} colTablet={2}/>
+                <Team data={getTeamData().slice(0, 3)} className={"team-classic"} col={3} colTablet={2} />
             </section>
             {/*========== End team Section ========== */}
 
             {/*========== Next Page ==========*/}
-            <NextPage className="section-padding border-top background-section"/>
+            <NextPage className="section-padding border-top background-section" />
             {/*========== End Next Page ==========*/}
 
             {/*========== Footer ==========*/}
-            <Footer className="background-section"/>
+            <Footer className="background-section" />
             {/*========== End Footer ==========*/}
 
         </Layout>

@@ -148,7 +148,7 @@ const EremiaMenu = ({hamburger}) => {
     return (
         <Navbar hamburger={hamburger}>
             <Navbar.Brand href={"/"} transitionPage={{title: "Eremia"}}>
-                <Logo width="75px" height="auto"/>
+                <Logo width="200px" height="auto"/>
             </Navbar.Brand>
 
             <Navbar.Collapse cover="Menu">

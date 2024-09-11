@@ -59,6 +59,8 @@
     padding: 30px 20px;
   }
 
+    
+  
   .services-item {
     .services-item-inner {
       position: relative;
@@ -123,6 +125,7 @@
       display: inline-block;
     }
   }
+  
 
   &.service-list {
     --dsn-col-number: 1 !important;
@@ -156,6 +159,45 @@
 
 
 }
+.neon-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 66px; /* Increased text size */
+  color: #fff; /* White color for the text */
+  text-align: left; /* Align the text to the left */
+  margin-left: 20px; /* Small margin for left alignment */
+
+  /* Subtle weight */
+  font-weight: 300;
+  letter-spacing: 1px; /* Slight spacing */
+
+  /* Misty background effect */
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.6),   /* Soft, misty glow effect */
+    0 0 30px rgba(255, 255, 255, 0.4),   /* Larger mist effect */
+    0 0 50px rgba(255, 255, 255, 0.3);   /* Extended mist effect */
+}
+.smooth-text {
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  text-align: left;
+  margin-left: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  /* Yazının geçiş efektleri */
+}
+.sub-neon-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px; /* Increased text size */
+  color: #fff; /* White color for the text */
+  text-align: left; /* Align the text to the left */
+  margin-left: 20px; /* Small margin for left alignment */
+
+  /* Subtle weight */
+  font-weight: 300;
+  letter-spacing: 1px; /* Slight spacing */
+}
+
+
 
 .services-no-padding .with-line .services-item .services-item-inner {
   padding: 0;

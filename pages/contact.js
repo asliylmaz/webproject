@@ -11,18 +11,18 @@ import NextPage2 from "../components/next/NextPage2";
 import Footer from "../components/footer/Footer";
 import Head from "next/head";
 import Copyright from "../components/footer/Copyright"
-import Error404 from "./error404";
+//import Error404 from "./error404";
 
 function About() {
     TitleSection.defaultProps = {
         classDesc: "line-shape line-shape-before",
         classDesInner: "line-bg-right",
     };
-    const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
+    // const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
 
-    if (!isEnabled) {
-        return <Error404 />;
-      }
+    // if (!isEnabled) {
+    //     return <Error404 />;
+    //   }
     return (
         <Layout>
             <Head>
