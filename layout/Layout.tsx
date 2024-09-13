@@ -72,7 +72,7 @@ function Layout({className, children, tag: Tag = "div", activeScrollbar, options
                 {activeScrollbar ? <MainScrollBar options={optionsScrollbar}><div id="main-content" className="p-relative">{children}</div></MainScrollBar> : <div id="main-content" className="p-relative">{children}</div>}
             </div>
 
-            <div className="line-border-style w-100 h-100"/>
+            
             {/*<SocialOne/>*/}
             <div className="dsn-paginate-right-page" ref={paginateRight}/>
             {modelRight && <ModalRight {...modelRight.propsModal}>{modelRight.children}</ModalRight>}

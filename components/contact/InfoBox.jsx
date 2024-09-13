@@ -9,8 +9,8 @@ function InfoBox({className}) {
                 <li>
                     <h1>Get in Touch </h1>
                     <h5 className="title-block mt-15">Contact</h5>
-                    <p className="text-p ">0212 455 45  02</p>
-                    <p className="text-p ">info@.com</p>
+                    <p className="text-p ">+90 212 273 30 02​</p>
+                    <p className="text-p ">info@3bölü2.com</p>
                     {/* <div className="over-hidden mt-5">
                         <a className="link-hover" data-hover-text="info@example.com"
                            href="#"> info@.com</a>
@@ -19,7 +19,7 @@ function InfoBox({className}) {
                 </li>
                 <li>
                     <h5 className="title-block mb-15">Address</h5>
-                    <p className="text-p">Esentepe No:1<br /> 34394 Şişli/İstanbul</p>
+                    <p className="text-p">Esentepe, Mithat Ulu Ünlü Sk No:16A<br /> 34394 Şişli/İstanbul</p>
                 </li>
                 <li>
                     <h5 className="title-block mb-15">Follow Us</h5>

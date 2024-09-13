@@ -17,6 +17,8 @@ const menuContent = [
             {name: "Personal 2", href: "/personal-2"},
         ]
     },
+    {name: "Directors", href: "/directors"},
+    
     {
         name: "Portfolio",
         dropdownMenu: [

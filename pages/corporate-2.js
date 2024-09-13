@@ -13,9 +13,40 @@ import BrandClient from "../components/brand-client/BrandClient";
 import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
 import ModalContact from "../components/model-right/ModalContact";
+import Gallery from '../components/gallery/Gallery';
+import ImageSection from "../components/Image/ImageSection";
+import styles from '../styles/directors.module.scss';
+import filters from '../data/filters';
+import Link from 'next/link';
 import Head from "next/head";
-import Error404 from "./error404";
-
+//import Error404 from "./error404";
+const images = [
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    '/img/unconstruction.png',
+    // Buraya daha fazla fotoğraf URL'si ekleyebilirsiniz
+];
 
 const dataSlider = [{
     id: 1,
@@ -69,11 +100,11 @@ function Corporate() {
         classDesc: "line-shape line-shape-after",
         classDesInner: "line-bg-left"
     }*/}
-    const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
+    // const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
 
-    if (!isEnabled) {
-        return <Error404 />;
-      }
+    // if (!isEnabled) {
+    //     return <Error404 />;
+    // }
 
     return (
 
@@ -81,22 +112,67 @@ function Corporate() {
         //<Head>
         // <title>Corporate | Eremia Creative Portfolio Multi-Purpose</title>
         //</Head>
-        <div className="align-items-center justify-content-center text-center" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
 
-            <img src="/img/ucons.jpg" alt="Your Image Description" style={{ position: 'absolute', top: '50%', left: '50%', width: '100%', height: '100%', objectFit: 'cover', transform: 'translate(-50%, -50%)' }} />
-            <div className="align-items-center justify-content-center text-center" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
-                <img src="/img/underco.jpg" alt="Your Image Description" style={{ position: 'absolute', top: '50%', left: '50%', width: '100%', height: '100%', objectFit: 'cover', transform: 'translate(-50%, -50%)' }} />
-                <div className="overlay-content" style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)' }}>
-                <h1 style={{ fontSize: '48px' }}>
-                        UNDER CONSTRUCTION
-                </h1>
-                <p>WE ARE COMING SOON</p>
+
+        // <div style={{ minHeight: '100vh', overflow: 'auto' }}>
+        //     <div className="image-container-a">
+        //         <div
+        //             className="services-container-a"
+        //             style={{
+        //                 backgroundImage: "url('/img/bg-2.jpg')", // Arkaplan görseli
+        //             }}
+        //         />
+        //     </div>
+        //     <Gallery images={images} />
+
+        //     {/*========== Next Page ==========*/}
+        //     <NextPage className="section-padding border-top background-section" />
+        //     {/*========== End Next Page ==========*/}
+
+        //     {/*========== Footer ==========*/}
+        //     <Footer className="background-section" />
+        //     {/*========== End Footer ==========*/}
+        // </div>
+
+        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
+            <Head>
+                <title>About Us | 3Bölü2</title>
+            </Head>
+
+            
+                {/* Arka plan görseli ve yönetmen isimleri */}
+                <div className="image-container-a">
+                    <div
+                        className="services-container-a"
+                        style={{
+                            backgroundImage: "url('/img/bg-2.jpg')",
+                        }}
+                    >
+                    </div>
                 </div>
-            </div>
+                <div className={styles.container}>
+                    {filters.map((filter, index) => (
+                        <span key={index}>
+                            <Link href={filter.link} className={styles.neonText}>
+                                {filter.name}
+                            </Link>
+                        </span>
+                    ))}
+                </div>
+                <h1 className="font-size-left">Feature Works</h1>
+                <Gallery images={images} />
 
-        </div>
+                {/*========== Next Page ==========*/}
+                 <NextPage className="section-padding border-top background-section" />
+                {/*========== End Next Page ==========*/}
 
-    )
+                {/*========== Footer ==========*/}
+                <Footer className="background-section" />
+                {/*========== End Footer ==========*/}
+            
+        </Layout>
+
+    );
 
     {/*<SliderPortfolio webgel
                              fullWidth
@@ -179,13 +255,7 @@ function Corporate() {
                 <BrandClient col={4} colTablet={2} colGap={0} rowGap={0}/>
             </section>*/}
 
-    {/*========== Next Page ==========
-            <NextPage className="section-padding border-top background-section"/>
-            {/*========== End Next Page ==========*/}
 
-    {/*========== Footer ==========
-            <Footer className="background-section"/>
-            {/*========== End Footer ==========*/}
 
 
 

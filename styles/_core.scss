@@ -90,8 +90,16 @@ body, .main-root {
 .main-root {
   position: relative;
 }
-
-
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto;
+}
+#__next {
+  height: auto;
+  min-height: 100vh;
+}
 //-- Style --//
 
 .line-under, .line-under-left {

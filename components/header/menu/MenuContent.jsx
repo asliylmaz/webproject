@@ -14,20 +14,20 @@ function MenuContent({className}) {
                 <div className="nav-content">
                     <h5 className="sm-title-block mb-10">Studio</h5>
                     <p>
-                        26-30 New Damietta <br/> El-Mahalla El-Kubra, SK1 66LM
+                    Esentepe, Mithat Ulu Ünlü Sk No:16A ​ <br/> 34394 Şişli/İstanbul
                     </p>
 
                 </div>
                 <div className="nav-content mt-30">
                     <h5 className="sm-title-block mb-10">Contact</h5>
                     <p className="links over-hidden mb-1">
-                        <a className="link-hover" href="tel:+00 (2)012 3321" data-hover-text="+00 (2)012 3321">
-                            +00 (2)012 3321
+                        <a className="link-hover" href="tel:+00 (2)012 3321" data-hover-text="+90 212 273 30 02​">
+                        +90 212 273 30 02​
                         </a>
                     </p>
                     <p className="links over-hidden">
                         <a className="link-hover" href="mailto:info@dsngrid.com"
-                           data-hover-text="info@dsngrid.com">info@dsngrid.com</a>
+                           data-hover-text="info@dsngrid.com">info@3bölü2.com</a>
                     </p>
                 </div>
             </div>

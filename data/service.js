@@ -1,33 +1,51 @@
 const servicesDetails = [
     {
        
-        title: "Production",
-        description: "We’re your one-stop shop for all things production – from TV ads to digital campaigns, captivating content, and stunning photography. We’ve got you covered for all your production needs under one roof!",
+        title: "Storytelling",
+        description: "We create films that resonate, leaving a lasting impression. Whether it’s a short or feature, our stories blend creativity with emotion to stand out and captivate.",
     },
     {
-        title: "Crew",
-        description: "Our handpicked English-speaking squad ensures seamless collaboration with global producers, directors, and crew. We bring you a top-notch, international-grade crew, tailored precisely to meet your production requirements.",
+        title: "Advertising",
+        description: "Our campaigns do more than sell—they connect. From TV ads to digital content, we deliver engaging, memorable commercials that inspire.",
     },
     {
-        title: "Rentals",
-        description: "Step into the vibrant world of local rental companies, where a wide range of cutting-edge cameras, lights, and grip gear are at your fingertips, ready to turn your creative visions into reality.",
+        title: "VFX & Animation",
+        description: "Imagination knows no bounds here. We craft stunning visuals and animations that bring ideas to life, using the latest technology to enhance every project.",
     },
     {
        
-        title: "Mobile App Design",
-        description: "Web design encompasses many different skills and disciplines in the production of all web.",
+        title: "Music Videos",
+        description: "We collaborate with artists to craft music videos that amplify the music, merging sound and visuals into powerful, artistic expressions.",
     },
     {
       
-        title: "Web Development",
-        description: "Web design encompasses many different skills and disciplines in the production of all web.",
+        title: "Documentaries",
+        description: "Telling real stories with depth and honesty. Our documentaries explore the human experience, revealing truths that deserve to be told.",
     },
     {
     
-        title: "Program management",
-        description: "Web design encompasses many different skills and disciplines in the production of all web.",
+        title: "Brand Films",
+        description: "We create brand films that go beyond conventional ads. With fresh ideas, we capture the heart of your brand and help it stand out visually.",
     },
 ]
+const servicesDetails2 = [
+    {
+       
+        title: "Global & Local Backdrops",
+        description: "From the bustling streets of Istanbul to the scenic coastlines of the Mediterranean, Turkiye offers a vibrant mix of locations perfect for any project. With its modern architecture, historic landmarks, and diverse natural landscapes, Turkiye provides a unique canvas for both urban and rural settings. At 3Bölü2, we leverage this rich variety to bring your vision to life. Beyond our borders, we also work internationally, capturing the distinct atmosphere of every location to ensure each project feels authentic and inspired by its surroundings.",
+    },
 
+]
+ const servicesDetails3 = [
+     {
+       
+         title: "Crafted with Precision",
+         description: "At 3Bölü2, we combine creativity with state-of-the-art technology. Our process starts with understanding your vision and ends with delivering a product that exceeds your expectations. Using the latest in camera equipment, sound design, and post-production techniques, we ensure that every detail is polished to perfection.",
+     },
+
+
+ ]
 
 export const getServiceData = () => servicesDetails;
+export const getServiceData2 = () => servicesDetails2;
+export const getServiceData3 = () => servicesDetails3;

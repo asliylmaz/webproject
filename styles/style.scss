@@ -60,7 +60,7 @@
 
 :root .v-dark, :root .v-dark-head {
   --bg-color: #000;
-  --assistant-color: #101010;
+  --assistant-color: #000;
   --theme-color: #14bfb5;
   --font-color: #bbb;
   --heading-color: #fff;
@@ -149,8 +149,111 @@
   --overlay-blend-mode: unset;
 
 }
+.image-container-a {
+  // position: relative;
+  height: 100vh; /* İstenilen yüksekliği buraya ayarlayabilirsiniz */
+  width: 100%;
+  //margin-bottom: 30px; /* Resim ile sonraki içerik arasında boşluk bırakmak için */
+}
+.image-container-s{
+  height: 70vh; /* İstenilen yüksekliği buraya ayarlayabilirsiniz */
+  width: 100%;
+   /* Resim ile sonraki içerik arasında boşluk bırakmak için */
+  
+}
+// .services-container{
+//   margin-bottom: 25px;
+// }
+.services-container-a {
+  position: absolute; /* Resmi kapsayıcısının içinde yerleştirir */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 1; /* Diğer içeriklerin üstünde kalmaması için */
+  background-size: cover; /* Görüntünün tüm ekranı kaplamasını sağlar */
+  background-position: center; /* Görüntünün ortalanmasını sağlar */
+  background-repeat: no-repeat; /* Görüntünün tekrarlanmasını engeller */
+  object-fit: none; /* Resmi genişlik ve yüksekliği düzgün şekilde ölçekler */
+  margin: 0;
+  padding: 0;
+}
+.services-container-s {
+  position: absolute; /* Resmi kapsayıcısının içinde yerleştirir */
+  top: 4%;
+  left: 0;
+  height: 70vh;
+  width: 100vw;
+  z-index: -1; /* Diğer içeriklerin üstünde kalmaması için */
+  background-size: cover; /* Görüntünün tüm ekranı kaplamasını sağlar */
+  background-position: center; /* Görüntünün ortalanmasını sağlar */
+  background-repeat: no-repeat; /* Görüntünün tekrarlanmasını engeller */
+  object-fit: cover; /* Resmi genişlik ve yüksekliği düzgün şekilde ölçekler */
+  margin: 0;
+  padding: 0;
+}
+.services-container-s-2 {
+  position: absolute; /* Resmi kapsayıcısının içinde yerleştirir */
+  top: 48%;
+  left: 0;
+  height: 70vh;
+  width: 100vw;
+  z-index: -1; /* Diğer içeriklerin üstünde kalmaması için */
+  background-size: cover; /* Görüntünün tüm ekranı kaplamasını sağlar */
+  background-position: center; /* Görüntünün ortalanmasını sağlar */
+  background-repeat: no-repeat; /* Görüntünün tekrarlanmasını engeller */
+  object-fit: cover; /* Resmi genişlik ve yüksekliği düzgün şekilde ölçekler */
+  margin: 0;
+  padding: 0;
+}
 
+  .about-title-a {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Arial', sans-serif;
+    font-size: 55px;
+    color: #bbb;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 1px;
+    z-index: 1;
+    transition: opacity 1s ease-in-out;
+  }
 
+.about-title-i {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Arial', sans-serif;
+  font-size: 55px;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  margin-top: 6vh;
+  letter-spacing: 1px;
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 50px rgba(255, 255, 255, 0.3);
+  z-index: 1;
+  opacity: 0; /* Başlangıçta görünmez */
+  transition: opacity 1s ease-in-out;
+}
+
+.about-title-i.show {
+  opacity: 1; /* Sınıf eklendiğinde görünür */
+}
+
+.font-size-left{
+  font-size: 9ch;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 5%;
+  font-weight: 100;
+}
 // Content
 @import "global/global";
 

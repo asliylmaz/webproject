@@ -12,6 +12,8 @@ import { ServiceGrid } from "../components/services/Service";
 import { IdeaIcon } from "../components/svg";
 import ButtonProject from "../components/button/ButtonProject";
 import { getServiceData } from "../data/service";
+import { getServiceData2 } from "../data/service";
+import { getServiceData3 } from "../data/service";
 import Team from "../components/Team/Team";
 import React from "react";
 import { getTeamData } from "../data/team";
@@ -21,10 +23,14 @@ import Footer from "../components/footer/Footer";
 import ModalContact from "../components/model-right/ModalContact";
 import Head from "next/head";
 import ParallaxImage from "../components/Image/ParallaxImage";
+import ImageSection from "../components/Image/ImageSection";
 //import Error404 from "./error404";
 
 function Service() {
     const services = getServiceData();
+    const services2 = getServiceData2();
+    const services3 = getServiceData3();
+
     TitleSection.defaultProps = {
         classDesInner: "line-bg-left",
     };
@@ -36,7 +42,7 @@ function Service() {
     return (
         <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
             <Head>
-                <title>Service  | 3 Bolu 2</title>
+                <title>Service  | 3Bölü2</title>
             </Head>
             {/*========== Header Normal ========== */}
             <HeaderNormal backgroundColor="background-section" className="text-center">
@@ -50,18 +56,50 @@ function Service() {
             {/*========== End Header Normal ==========*/}
 
             {/*Start Parallax Img*/}
-            <ParallaxImage alt={""} src={"/img/about/5.jpg"}
+            {/* <ParallaxImage 
                 parallaxFrom={{ scale: 1.3 }} parallax={{ scale: 1 }}
-                overlay={5} />
+                overlay={5} /> */}
             {/*End Parallax Img*/}
+
+            <div className="image-container-s">
+                <div
+                    className="services-container-s"
+                    style={{
+                        backgroundImage: "url('/img/about/5.jpg')",
+                    }}
+                    
+                />              
+            </div>
 
             {/*========== About Section  ==========*/}
             <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="What We Do">
                 <div className="services-container">
-                <TitleSection defaultSpace={false} description="What We Do" />
-                <br></br>
-                
+                    <TitleSection defaultSpace={false} description="What We Do" />
+                    <br></br>
+                    <br></br>
                     {services.map((service, index) => (
+                        <div key={index} className="service-item">
+                            <h1 className="services neon-text">{service.title}</h1>
+                            <p className="services sub-neon-text">{service.description}</p>
+                            <br></br>
+                            <br></br>
+                        </div>
+                    ))}
+                    <br></br>
+                    <br></br>
+                </div>
+            </DsnGrid>
+            {/*========== End About Section  ==========*/}
+
+            <ImageSection imageUrl="/img/about/5.jpg" altText="About Image 2" />
+
+            {/*========== About Section 2 ==========*/}
+            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="Where We Do">
+                <div className="services-container">
+                    <TitleSection defaultSpace={false} description="Where We Do" />
+                    <br></br>
+                    <br></br>
+                    {services2.map((service, index) => (
                         <div key={index} className="service-item">
                             <h1 className="services neon-text">{service.title}</h1>
                             <p className="services sub-neon-text">{service.description}</p>
@@ -71,13 +109,22 @@ function Service() {
                     ))}
                 </div>
             </DsnGrid>
-            {/*========== End About Section  ==========*/}
-
-            {/*Start Parallax Img*/}
-            <ParallaxImage alt={""} src={"/img/about/5.jpg"}
-                parallaxFrom={{ scale: 1.3 }} parallax={{ scale: 1 }}
-                overlay={5} />
-            {/*End Parallax Img*/}
+            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="How We Do">
+                <div className="services-container">
+                    <TitleSection defaultSpace={false} description="How We Do" />
+                    <br></br>
+                    <br></br>
+                    {services3.map((service, index) => (
+                        <div key={index} className="service-item">
+                            <h1 className="services neon-text">{service.title}</h1>
+                            <p className="services sub-neon-text">{service.description}</p>
+                            <br></br>
+                            <br></br>
+                        </div>
+                    ))}
+                </div>
+            </DsnGrid>
+            {/*========== End About Section 2 ==========*/}
 
             {/*<!-- ========== facts-section ==========*/}
             {/* <div className="section-margin p-relative" >
@@ -91,7 +138,7 @@ function Service() {
 
 
             {/*<!-- ========== About section ========== */}
-            <div className="p-relative background-section section-padding" data-dsn-title="products better">
+            {/* <div className="p-relative background-section section-padding" data-dsn-title="products better">
                 <DsnGrid className="container" col={2} colTablet={1}>
                     <div className="p-relative box-left">
                         <div className="box-im h-100 ">
@@ -125,12 +172,12 @@ function Service() {
 
                     </div>
                 </DsnGrid>
-            </div>
+            </div> */}
             {/*<!-- ========== End About section ========== */}
 
 
             {/*<!-- ========== About section ========== */}
-            <div className="p-relative section-margin" data-dsn-title="BUSINESS CONSULTING">
+            {/* <div className="p-relative section-margin" data-dsn-title="BUSINESS CONSULTING">
                 <DsnGrid className="container" col={2} colTablet={1}>
                     <div className="p-relative box-left order-md-2">
                         <TitleCover>Diesel</TitleCover>
@@ -157,12 +204,12 @@ function Service() {
 
 
                 </DsnGrid>
-            </div>
+            </div> */}
             {/*<!-- ========== End About section ========== */}
 
 
             {/*<!-- ========== About section ========== */}
-            <div className="p-relative background-section section-padding" data-dsn-title="Project Manager">
+            {/* <div className="p-relative background-section section-padding" data-dsn-title="Project Manager">
 
                 <div className="container">
                     <TitleSection className="text-center" description="Most have theme" defaultSpace={false}>
@@ -208,17 +255,17 @@ function Service() {
                 </div>
 
 
-            </div>
+            </div> */}
             {/*<!-- ========== End About section ========== */}
 
             {/*========== team Section ========== */}
-            <section className="container section-margin " data-dsn-title="Best Team Ever">
+            {/* <section className="container section-margin " data-dsn-title="Best Team Ever">
                 <TitleSection description={"Our Team"}>
                     The Best Team Ever!
                 </TitleSection>
 
                 <Team data={getTeamData().slice(0, 3)} className={"team-classic"} col={3} colTablet={2} />
-            </section>
+            </section> */}
             {/*========== End team Section ========== */}
 
             {/*========== Next Page ==========*/}
