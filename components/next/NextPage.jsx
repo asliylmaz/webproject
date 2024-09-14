@@ -13,8 +13,8 @@ function NextPage({className, ...restProps}) {
         <section className={dsnCN("next-page p-relative d-flex align-items-center", className)}
                  {...restProps}
         >
-            <BgDot/>
-            <BgDot rightPosition/>
+            {/* <BgDot/>
+            <BgDot rightPosition/> */}
             <div className="container w-100">
                 <div className="c-wrapper d-flex justify-content-between">
                     <div className="d-flex flex-column">

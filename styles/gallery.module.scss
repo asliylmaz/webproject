@@ -1,18 +1,21 @@
+/* Ana galeri düzeni */
 .gallery-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); // 2 sütunlu düzen
+  grid-template-columns: repeat(2, 1fr); // Varsayılan olarak 2 sütunlu düzen
   overflow: visible;
   height: auto;
-  background-size: cover;
+  object-fit: none;
 }
 
+/* Galeri öğeleri */
 .gallery-item {
-  overflow: hidden; // Resmin taşmasını engelle
+  overflow: hidden;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 60vh;
 }
 
+/* Resimlerin stil ayarları */
 .gallery-item img {
   width: 100%;
   height: 100%;
@@ -20,11 +23,12 @@
   transition: transform 0.3s ease-in-out;
 }
 
-/* Mouse ile üzerine gelindiğinde 1 saniye bekledikten sonra büyüt */
+/* Hover durumunda geçiş efektleri */
 .gallery-item:hover img {
-  transition: transform 0.3s ease-in-out 1s; /* 1 saniye gecikme ile büyütme */
-  transform: scale(1.05); /* Daha az büyüme */
+  transition: transform 0.3s ease-in-out 1s;
+  transform: scale(1.05);
 }
+
 .gallery-item:hover::before {
   content: '';
   position: absolute;
@@ -36,12 +40,44 @@
   transition: opacity 0.3s ease-in-out;
   opacity: 1;
 }
+
 .gallery-item::before {
-  opacity: 0; /* Normal durumda görünmez */
-  pointer-events: none; /* Fare etkileşimini engelle */
+  opacity: 0;
+  pointer-events: none;
 }
-/* Her üçüncü resmi tam genişlikte yap */
+
+/* Her beşinci resmi tam genişlikte yap */
 .full-width {
   grid-column: span 2;
   height: 90vh !important;
+}
+
+/* Mobilde tüm resimler tek sütun halinde olacak */
+@media (max-width: 768px) {
+  .gallery-container {
+    grid-template-columns: 1fr; /* Mobilde tek sütun düzeni */
+  }
+  .full-width {
+    //grid-template-columns: 1fr;
+    height: 40vh !important;
+  }
+  
+
+  /* Mobilde yüksekliği sabitleyelim */
+  .gallery-item {
+    height: 40vh;
+  }
+
+  /* Mobilde hover efektini ve animasyonu kaldırabiliriz */
+  .gallery-item img {
+    transition: none;
+  }
+
+  .gallery-item:hover img {
+    transform: none;
+  }
+
+  .gallery-item::before {
+    display: none;
+  }
 }

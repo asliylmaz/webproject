@@ -95,6 +95,7 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: auto;
+  width: 100%;
 }
 #__next {
   height: auto;
@@ -287,17 +288,22 @@ html, body {
   position: relative;
   width: 100%;
 
+
   &:not(.dsn-main-scrollbar) {
     @include body-line {
-      padding-left: $body-style-space;
-      padding-right: $body-style-space;
+      // padding-left: $body-style-space;
+      // padding-right: $body-style-space;
+      padding-left: none;
+      padding-right: none;
     }
   }
 
   &.dsn-main-scrollbar #dsn-scrollbar #main-content{
     @include body-line {
-      padding-left: $body-style-space;
-      padding-right: $body-style-space;
+      // padding-left: $body-style-space;
+      // padding-right: $body-style-space;
+      padding-left: none;
+      padding-right: none;
     }
   }
 

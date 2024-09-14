@@ -41,7 +41,7 @@ function About() {
 
 
     return (
-        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
+        <Layout >
             <Head>
                 <title>About Us | 3Bölü2</title>
             </Head>
@@ -52,13 +52,19 @@ function About() {
                     style={{
                         backgroundImage: "url('/img/bg-2.jpg')",
                     }}
-                    
+
                 />
-                <h1 className="about-title-a">About Us</h1>
-                 <ImageWithTitles />
+
+                <ImageWithTitles />
             </div>
 
+            {/*========== Next Page ==========*/}
+            <NextPage className="section-padding border-top background-section" />
+            {/*========== End Next Page ==========*/}
 
+            {/*========== Footer ==========*/}
+            <Footer className="background-section" />
+            {/*========== End Footer ==========*/}
             {/* End Image kısmı */}
 
             {/*========== Header Normal ========== */}
@@ -208,13 +214,7 @@ function About() {
             {/* <NextPage className={`background-section section-padding`} /> */}
             {/*========== End Next Page Section ==========*/}
 
-            {/*========== Next Page ==========*/}
-            <NextPage className="section-padding border-top background-section" />
-            {/*========== End Next Page ==========*/}
 
-            {/*========== Footer ==========*/}
-            <Footer className="background-section" />
-            {/*========== End Footer ==========*/}
 
         </Layout>
     );

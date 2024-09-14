@@ -19,10 +19,11 @@
     padding: 10%;
     //background-color: #000;
 }
+
 /* Neon effect only on hover */
 .neonText {
     font-family: 'Arial', sans-serif;
-    font-size: 55px;
+    font-size: 60px;
     color: #bbb;
     text-align: left;
     margin-left: -10px;
@@ -31,7 +32,54 @@
     transition: text-shadow 0.3s ease, color 0.3s ease;
     /* Add smooth transition */
 }
+.containerD {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 25px; /* Yönetmen isimleri arasında boşluk bırakır */
+    padding: 10%;
+    //background-color: #000;
+}
+.neonTextD {
+    font-family: 'Arial', sans-serif;
+    font-size: 55px;
+    color: #bbb;
+    text-align: left;
+    margin-left: -10px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    /* Add smooth transition */
+}
+@media only screen and (max-width: 768px) {
+    .neonText{  
+    font-size: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #bbb;
+    text-align: left;
+    margin-left: -10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    }
+    .slash{
+        font-size: 20px !important; 
+    }
+ 
+.neonTextD {
+    
+    font-size: 15px;
 
+}
+}
+.neonTextD:hover {
+    /* Neon effect on hover */
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(255, 255, 255, 0.3);
+}
 .neonText:hover {
     /* Neon effect on hover */
     color:#fff;
@@ -42,5 +90,6 @@
 }
 .slash {
     margin-left: 10px;
-    font-size: inherit; /* Makes sure the slash is the same size as the text */
+    font-size: xx-large; /* Makes sure the slash is the same size as the text */
+    color:#fff;
   }

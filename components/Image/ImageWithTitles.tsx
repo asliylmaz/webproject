@@ -29,6 +29,7 @@ const ImageWithTitles: React.FC = () => {
 
   return (
     <div>
+      <h1 className="about-title-a">About Us</h1>
       <h1 className={`about-title-i ${isVisible ? 'show' : ''}`}>
         {titles[currentTitleIndex]}
       </h1>

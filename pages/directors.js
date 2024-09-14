@@ -14,13 +14,13 @@ const Directors = () => {
         </Head>
         
             {/* Arkaplan görseli ve yönetmen isimleri */}
-            <div className="image-container-a">
-                <div
-                    className="services-container-a"
+            <div className="image-container-d">
+                {/* <div
+                    className="services-container-d"
                     style={{
                         backgroundImage: "url('/img/bg-2.jpg')", // Arkaplan görseli
                     }}
-                />
+                /> */}
                
                 
                 {/* Yönetmen listesi */}

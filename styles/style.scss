@@ -155,22 +155,25 @@
   width: 100%;
   //margin-bottom: 30px; /* Resim ile sonraki içerik arasında boşluk bırakmak için */
 }
-.image-container-s{
-  height: 70vh; /* İstenilen yüksekliği buraya ayarlayabilirsiniz */
-  width: 100%;
-   /* Resim ile sonraki içerik arasında boşluk bırakmak için */
-  
+
+.imageHeight{
+  height: 60vh !important;
 }
-// .services-container{
-//   margin-bottom: 25px;
-// }
+.section-margin{
+  margin-bottom: 30px!important;
+}
+@media only screen and (max-width: 768px) {
+  .section-margin{
+    margin-bottom: -5px!important;
+  }
+}
 .services-container-a {
   position: absolute; /* Resmi kapsayıcısının içinde yerleştirir */
   top: 0;
   left: 0;
   height: 100vh;
   width: 100%;
-  z-index: 1; /* Diğer içeriklerin üstünde kalmaması için */
+  z-index: -1; /* Diğer içeriklerin üstünde kalmaması için */
   background-size: cover; /* Görüntünün tüm ekranı kaplamasını sağlar */
   background-position: center; /* Görüntünün ortalanmasını sağlar */
   background-repeat: no-repeat; /* Görüntünün tekrarlanmasını engeller */
@@ -178,20 +181,77 @@
   margin: 0;
   padding: 0;
 }
-.services-container-s {
+.gallery-container-a {
   position: absolute; /* Resmi kapsayıcısının içinde yerleştirir */
-  top: 4%;
+  top: 0;
   left: 0;
-  height: 70vh;
-  width: 100vw;
+  height: 100vh;
+  width: 100%;
   z-index: -1; /* Diğer içeriklerin üstünde kalmaması için */
   background-size: cover; /* Görüntünün tüm ekranı kaplamasını sağlar */
   background-position: center; /* Görüntünün ortalanmasını sağlar */
   background-repeat: no-repeat; /* Görüntünün tekrarlanmasını engeller */
-  object-fit: cover; /* Resmi genişlik ve yüksekliği düzgün şekilde ölçekler */
+  object-fit: none; /* Resmi genişlik ve yüksekliği düzgün şekilde ölçekler */
   margin: 0;
   padding: 0;
 }
+.services-container-d {
+  position: absolute; /* Resmi kapsayıcısının içinde yerleştirir */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: -1; /* Diğer içeriklerin üstünde kalmaması için */
+  background-size: cover; /* Görüntünün tüm ekranı kaplamasını sağlar */
+  background-position: center; /* Görüntünün ortalanmasını sağlar */
+  background-repeat: no-repeat; /* Görüntünün tekrarlanmasını engeller */
+  object-fit: none; /* Resmi genişlik ve yüksekliği düzgün şekilde ölçekler */
+  margin: 0;
+  padding: 0;
+}
+.image-container-s {
+  height: 70vh;
+  width: 100%;
+}
+.image-container-d {
+  height: 100vh;
+  width: 100%;
+}
+.services-container-s {
+  position: absolute; /* Resmi kapsayıcı içinde yerleştirir */
+  left: 0;
+  z-index: -1;
+  object-fit: none;
+  background-size: cover;
+  height: 70vh;
+  width: 100%;
+  overflow: hidden; /* Kapsayıcı alanın dışına çıkan video bölümlerini gizler */
+}
+/* Mobil cihazlar için medya sorgusu */
+@media only screen and (max-width: 768px) {
+  .image-container-s, .services-container-s {
+    height: 30vh;
+  }
+  .image-container-a, .services-container-a {
+    height: 100vh;
+  }
+  .image-container-d {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Videonun tam ekranı düzgün şekilde kaplamasını sağlar */
+  transform: translate(-50%, -50%); /* Videoyu ortalar */
+  z-index: -1; /* İçeriklerin altında kalması için z-index negatifte */
+}
+
 .services-container-s-2 {
   position: absolute; /* Resmi kapsayıcısının içinde yerleştirir */
   top: 48%;
@@ -207,32 +267,31 @@
   padding: 0;
 }
 
-  .about-title-a {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Arial', sans-serif;
-    font-size: 55px;
-    color: #bbb;
-    text-align: center;
-    font-weight: 300;
-    letter-spacing: 1px;
-    z-index: 1;
-    transition: opacity 1s ease-in-out;
-  }
+.about-title-a {
+  position: absolute;
+  top: 20%; /* Sabit bir yukarı mesafe */
+  left: 50%;
+  transform: translateX(-50%); /* Sadece yatayda ortalıyoruz */
+  font-family: 'Arial', sans-serif;
+  font-size: 60px;
+  color: #bbb;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 1px;
+  z-index: 1;
+  transition: opacity 1s ease-in-out;
+}
 
 .about-title-i {
   position: absolute;
-  top: 35%;
+  top: 28%; /* Sabit mesafe */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%); /* Sadece yatayda ortalıyoruz */
   font-family: 'Arial', sans-serif;
-  font-size: 55px;
+  font-size: 60px;
   color: #fff;
   text-align: center;
   font-weight: 300;
-  margin-top: 6vh;
   letter-spacing: 1px;
   text-shadow: 
     0 0 15px rgba(255, 255, 255, 0.6),
@@ -243,16 +302,33 @@
   transition: opacity 1s ease-in-out;
 }
 
+/* Mobil cihazlar için medya sorgusu */
+@media only screen and (max-width: 768px) {
+  .about-title-a, .about-title-i {
+      font-size: 45px; /* Daha küçük font boyutu */
+      top: 20%; /* Mobil cihazlarda daha uygun yukarıdan mesafe */
+  }
+
+  .about-title-i {
+      top: 30%; /* İkinci başlık için uygun mesafe */
+  }
+  .font-size-left{
+    font-size: 4ch !important;
+  }
+}
+
+
 .about-title-i.show {
   opacity: 1; /* Sınıf eklendiğinde görünür */
 }
 
 .font-size-left{
-  font-size: 9ch;
+  font-size: 8ch;
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
   margin-left: 5%;
   font-weight: 100;
+  letter-spacing: -1px;
 }
 // Content
 @import "global/global";

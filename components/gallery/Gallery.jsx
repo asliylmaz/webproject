@@ -9,20 +9,23 @@ const Gallery = ({ images }) => {
   const galleryRef = useRef(null);
 
   useEffect(() => {
+    // Eğer ekran genişliği 768px'den küçükse animasyonları devre dışı bırak
+    if (window.innerWidth < 768) return;
+
     const items = galleryRef.current.querySelectorAll(`.${styles['gallery-item']}`);
-    let i=0;
+    let i = 0;
     items.forEach((item, index) => {
       const isFullWidth = index % 5 === 0; // 0, 5, 10 gibi indexler tam genişlikte olacak
       let directionX = 0;
       let directionY = 0;
       if (isFullWidth) {
-        i=i+1;
+        i = i + 1;
         directionY = index % 5 === 0 ? 100 : -100; // Tam genişlikte olanlar yukarıdan/aşağıdan gelir
       } else if (i % 2 === 0) {
         directionX = index % 2 === 0 ? -100 : 100; // Çift sütun düzenindekiler sağdan/sola gelir
       }
-      else{
-        directionX = index % 2 ==! 0 ? -100 : 100;
+      else {
+        directionX = index % 2 == !0 ? -100 : 100;
       }
 
       gsap.fromTo(

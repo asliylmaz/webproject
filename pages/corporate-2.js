@@ -136,40 +136,53 @@ function Corporate() {
 
         <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
             <Head>
-                <title>About Us | 3Bölü2</title>
+                <title>3Bölü2</title>
             </Head>
 
-            
-                {/* Arka plan görseli ve yönetmen isimleri */}
-                <div className="image-container-a">
-                    <div
-                        className="services-container-a"
-                        style={{
-                            backgroundImage: "url('/img/bg-2.jpg')",
-                        }}
+            <div className="image-container-a">
+                <div className="services-container-a">
+                    <video
+                        className="background-video"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                     >
-                    </div>
+                        <source src="/img/bg2.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-                <div className={styles.container}>
-                    {filters.map((filter, index) => (
-                        <span key={index}>
-                            <Link href={filter.link} className={styles.neonText}>
-                                {filter.name}
-                            </Link>
-                        </span>
-                    ))}
+            </div>
+            {/* Arka plan görseli ve yönetmen isimleri
+            <div className="image-container-a">
+                <div
+                    className="services-container-a"
+                    style={{
+                        backgroundImage: "url('/img/bg-2.jpg')",
+                    }}
+                >
                 </div>
-                <h1 className="font-size-left">Feature Works</h1>
-                <Gallery images={images} />
+            </div> */}
+            <div className={styles.containerD}>
+                {filters.map((filter, index) => (
+                    <span key={index}>
+                        <Link href={filter.link} className={styles.neonTextD}>
+                            {filter.name}
+                        </Link>
+                    </span>
+                ))}
+            </div>
+            <h1 className="font-size-left">Featured Works</h1>
+            <Gallery images={images} />
 
-                {/*========== Next Page ==========*/}
-                 <NextPage className="section-padding border-top background-section" />
-                {/*========== End Next Page ==========*/}
+            {/*========== Next Page ==========*/}
+            <NextPage className="section-padding border-top background-section" />
+            {/*========== End Next Page ==========*/}
 
-                {/*========== Footer ==========*/}
-                <Footer className="background-section" />
-                {/*========== End Footer ==========*/}
-            
+            {/*========== Footer ==========*/}
+            <Footer className="background-section" />
+            {/*========== End Footer ==========*/}
+
         </Layout>
 
     );

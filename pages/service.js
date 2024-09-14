@@ -62,14 +62,20 @@ function Service() {
             {/*End Parallax Img*/}
 
             <div className="image-container-s">
-                <div
-                    className="services-container-s"
-                    style={{
-                        backgroundImage: "url('/img/about/5.jpg')",
-                    }}
-                    
-                />              
+                <div className="services-container-s">
+                    <video
+                        className="background-video"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                    >
+                        <source src="/img/bg2.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
+
 
             {/*========== About Section  ==========*/}
             <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="What We Do">
@@ -91,7 +97,20 @@ function Service() {
             </DsnGrid>
             {/*========== End About Section  ==========*/}
 
-            <ImageSection imageUrl="/img/about/5.jpg" altText="About Image 2" />
+            <div className="image-container-s">
+                <div className="services-container-s">
+                    <video
+                        className="background-video"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                    >
+                        <source src="/img/bg2.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
 
             {/*========== About Section 2 ==========*/}
             <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="Where We Do">
