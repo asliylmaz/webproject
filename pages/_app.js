@@ -17,6 +17,8 @@ import dsnEffect, {moveSection, fade, textAnimation} from "../animation/dsnEffec
 import {Provider} from 'react-redux'
 import {store} from "../features/store";
 import EremiaMenu from "../components/header/menu/EremiaMenu";
+import PageLogo from "../components/header/pageLogo/pageLogo";
+
 import OptionTheme from "../components/option-theme/OptionTheme";
 import RightScrollTop from "../components/option-theme/RightScrollTop";
 import {checkMobile, parallaxIt} from "../hooks/helper";
