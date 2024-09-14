@@ -19,6 +19,8 @@ import styles from '../styles/directors.module.scss';
 import filters from '../data/filters';
 import Link from 'next/link';
 import Head from "next/head";
+import PageLogo from "../components/header/pageLogo/pageLogo";
+
 //import Error404 from "./error404";
 const images = [
     '/img/unconstruction.png',
@@ -138,6 +140,7 @@ function Corporate() {
             <Head>
                 <title>3Bölü2</title>
             </Head>
+            {/* <PageLogo /> */}
 
             <div className="image-container-a">
                 <div className="services-container-a">

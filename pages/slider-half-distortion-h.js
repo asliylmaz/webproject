@@ -7,12 +7,7 @@ import Head from "next/head";
 import Error404 from "./error404";
 
 function Home() {
-    const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
-
-    if (!isEnabled) {
-        return <Error404 />;
-      }
-
+   
 
     return (
         <Layout modelRight={{children: <ModalContact/>, propsModal: {textBtn: "Contact"}}}>

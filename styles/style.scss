@@ -330,6 +330,7 @@
   font-weight: 100;
   letter-spacing: -1px;
 }
+
 // Content
 @import "global/global";
 
@@ -345,4 +346,41 @@
   width: calc(100vw - var(--dsn-width-scroll, 0px));
   left: 50%;
   margin-left: -50vw;
+}
+
+.pagelogo-container {
+  background-color: rgba(0, 0, 0, 0.212);
+  position: fixed;
+  margin: 0% 7%;
+  top: 100px;
+  width: 100%;
+  height: 100px; /* Başlığın normal yüksekliği */
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 20px;
+  z-index: 900;
+  transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.pagelogo-container.scrolled {
+  background-color: rgba(255, 255, 255, 0.9); /* Kaydırıldığında arka plan */
+  padding: 5px 20px; /* Kaydırılınca padding küçülsün */
+  height: 50px; /* Kaydırılınca yükseklik küçülsün */
+}
+
+.pagelogo-logo {
+  transition: max-width 0.3s ease, margin-top 0.3s ease; /* Geçiş animasyonu */
+  z-index: 10;
+}
+
+.pagelogo-logo.large {
+  max-width: 450px; /* Büyük boyut (orijinal) */
+  margin-top: 20px;
+}
+
+.pagelogo-logo.small {
+  max-width: 100px; /* Kaydırıldığında küçük boyut */
+  margin-top: 0px;
 }

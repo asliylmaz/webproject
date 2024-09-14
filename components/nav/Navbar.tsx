@@ -6,6 +6,7 @@ import {LinkProps} from "next/dist/client/link";
 import Dropdown from './dropdown';
 import {gsap} from "gsap";
 import DsnLink, {LinkDsnProps} from "../../hooks/DsnLink";
+import React from 'react';
 
 function Navbar({children, textOpen, textMenu, textClose, hamburger}) {
     const nav = useRef(null);
@@ -81,8 +82,6 @@ function Navbar({children, textOpen, textMenu, textClose, hamburger}) {
                 setReserved={setReserved}
                 removeOpenMenu={removeOpenMenu}
             />}
-
-
         </header>
 
     );

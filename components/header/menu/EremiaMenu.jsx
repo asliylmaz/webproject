@@ -5,18 +5,8 @@ import Logo from "../../logo/Logo";
 
 
 const menuContent = [
-    {
-        name: "Home",
-        dropdownMenu: [
-            {name: "Main Demo", href: "/"},
-            {name: "One Page 2", href: "/demo-2"},
-            {name: "One Page 3", href: "/demo-3"},
-            {name: "Corporate", href: "/corporate"},
-            {name: "Corporate 2", href: "/corporate-2"},
-            {name: "Personal", href: "/personal"},
-            {name: "Personal 2", href: "/personal-2"},
-        ]
-    },
+    {name: "Home", href: "/home"},
+
     {name: "Directors", href: "/directors"},
     
     {
