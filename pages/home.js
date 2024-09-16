@@ -109,37 +109,10 @@ function Corporate() {
 
     return (
 
-        //<Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
-        //<Head>
-        // <title>Corporate | Eremia Creative Portfolio Multi-Purpose</title>
-        //</Head>
-
-
-        // <div style={{ minHeight: '100vh', overflow: 'auto' }}>
-        //     <div className="image-container-a">
-        //         <div
-        //             className="services-container-a"
-        //             style={{
-        //                 backgroundImage: "url('/img/bg-2.jpg')", // Arkaplan görseli
-        //             }}
-        //         />
-        //     </div>
-        //     <Gallery images={images} />
-
-        //     {/*========== Next Page ==========*/}
-        //     <NextPage className="section-padding border-top background-section" />
-        //     {/*========== End Next Page ==========*/}
-
-        //     {/*========== Footer ==========*/}
-        //     <Footer className="background-section" />
-        //     {/*========== End Footer ==========*/}
-        // </div>
-
         <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
             <Head>
                 <title>3Bölü2</title>
             </Head>
-            {/* <PageLogo /> */}
 
             <div className="image-container-a">
                 <div className="services-container-a">
@@ -155,22 +128,13 @@ function Corporate() {
                     </video>
                 </div>
             </div>
-            {/* Arka plan görseli ve yönetmen isimleri
-            <div className="image-container-a">
-                <div
-                    className="services-container-a"
-                    style={{
-                        backgroundImage: "url('/img/bg-2.jpg')",
-                    }}
-                >
-                </div>
-            </div> */}
+           
             <div className={styles.containerD}>
                 {filters.map((filter, index) => (
                     <span key={index}>
-                        <Link href={filter.link} className={styles.neonTextD}>
+                        <p  className={styles.neonTextD}>
                             {filter.name}
-                        </Link>
+                        </p>
                     </span>
                 ))}
             </div>
@@ -188,94 +152,6 @@ function Corporate() {
         </Layout>
 
     );
-
-    {/*<SliderPortfolio webgel
-                             fullWidth
-                             alignControlNav={"center"}
-                             className="align-items-center justify-content-center text-center"
-                             data={dataSlider}
-                             webgelOptions={{displacement: "/img/displacement/8.jpg", speedIn: 3.5}}
-                             metaData={{hasSeparator: false}}
-            />*/}
-
-    {/*<!-- ========== About Section ========== 
-            <HeroSection2 className={"section-padding v-light full-width"} data-dsn-title="About Us"/>
-            {/*<!-- ========== End about section ========== */}
-
-    {/*Start Service
-            <div className="container section-margin" data-dsn-title="our Services">
-                <TitleSection description={"WHY CHOOSE US?"}>
-                    We are delivering beautiful <br/> digital products for you.
-                </TitleSection>
-                <ServiceSwiperOne/>
-            </div>
-            {/*End Service*/}
-
-    {/*Start Portfolio
-            <PortfolioSwiper grabCursor
-                             desktop={{spaceBetween: 0, slidesPerView: 3}}
-                             tablet={{spaceBetween: 0, slidesPerView: 2 , centeredSlides: false}}
-                             mobile={{spaceBetween: 0, slidesPerView: 1 , centeredSlides: false}}
-                             stylePortfolio="work-section work-no-scale"
-                             className="text-center v-dark-head"
-                             centeredSlides loop
-                             parallax
-                             speed={800}
-                             watchSlidesProgress
-                             loopedSlides={2}
-                             data-dsn-title="our Work"
-            />
-
-            {/*End Portfolio*/}
-    {/*<!-- ========== facts-section ==========
-            <div className="section-padding p-relative background-section">
-                <BgDot/>
-                <BgDot rightPosition/>
-                <div className="container">
-                    <Facts className="text-center" col={4} colTablet={2}/>
-                </div>
-            </div>
-            {/*<!-- ========== end facts-section ========== */}
-
-    {/*Start Blog
-            <div className="container section-margin" data-dsn-title="our Blog">
-                <TitleSection
-                    description={"Lasts post"}>
-                    Latest And Greatest <br/> Post
-                </TitleSection>
-                <BlogSwiper className={"our-blog-classic"}
-                            hideMetaData={["description"]}
-                            grabCursor
-                            desktop={{spaceBetween: 30, slidesPerView: 3}}
-                            tablet={{spaceBetween: 30, slidesPerView: 2,centeredSlides:false}}
-                            mobile={{spaceBetween: 0, slidesPerView: 1,centeredSlides:false}}
-                            centeredSlides loop
-                            parallax
-                            speed={1200}
-                            watchSlidesProgress
-                            loopedSlides={2}
-                >
-                    <SwiperPagination className={`justify-content-between dsn-container mt-30`}/>
-                </BlogSwiper>
-            </div>
-            {/*End Blog*/}
-
-    {/*========== End brand-client Section ==========
-            <section className="container section-margin" data-dsn-title="our clients">
-                <TitleSection className={`align-items-center text-center`}
-                              description={"Our clients"}>
-                    Successful, Our Reputation
-                </TitleSection>
-
-                <BrandClient col={4} colTablet={2} colGap={0} rowGap={0}/>
-            </section>*/}
-
-
-
-
-
-
-
 }
 
 export default Corporate;
