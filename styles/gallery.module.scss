@@ -1,10 +1,12 @@
 /* Ana galeri düzeni */
 .gallery-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); // Varsayılan olarak 2 sütunlu düzen
-  overflow: visible;
-  height: auto;
-  object-fit: none;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important; /* Her satırda iki video */
+  gap: 1px; /* Galeri öğeleri arasında boşluk */
+  overflow: visible !important;
+  height: auto !important;
+  margin-left: 106px;
+  margin-right: 2px;
 }
 
 /* Galeri öğeleri */
@@ -12,72 +14,32 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 60vh;
+  height: 60vh; /* Sabit bir yükseklik belirledik */
+  display: flex;
+  justify-content: center; /* İframe'leri ortalamak için */
+  align-items: center;     /* İframe'leri ortalamak için */
 }
 
-/* Resimlerin stil ayarları */
-.gallery-item img {
+/* Iframe'in tam alanı kapsaması için gerekli stil */
+.gallery-item iframe {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease-in-out;
+  object-fit: cover; /* Videoları alanına tam olarak sığdırır, orantısızlıkları kırpar */
+  border: none;
+  transition: transform 0.2s ease-in-out;
 }
 
-/* Hover durumunda geçiş efektleri */
-.gallery-item:hover img {
-  transition: transform 0.3s ease-in-out 1s;
-  transform: scale(1.05);
-}
 
-.gallery-item:hover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1); /* Hafif bir üst katman */
-  transition: opacity 0.3s ease-in-out;
-  opacity: 1;
-}
-
-.gallery-item::before {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Her beşinci resmi tam genişlikte yap */
-.full-width {
-  grid-column: span 2;
-  height: 90vh !important;
-}
-
-/* Mobilde tüm resimler tek sütun halinde olacak */
+/* Mobilde tüm videolar alt alta */
 @media (max-width: 768px) {
   .gallery-container {
-    grid-template-columns: 1fr; /* Mobilde tek sütun düzeni */
+    grid-template-columns: repeat(1, 1fr) ; 
+    margin-left: 10px;
+    margin-right: 10px;
   }
-  .full-width {
-    //grid-template-columns: 1fr;
-    height: 40vh !important;
-  }
-  
 
-  /* Mobilde yüksekliği sabitleyelim */
   .gallery-item {
-    height: 40vh;
+    height: 40vh; /* Mobilde daha düşük yükseklik */
   }
 
-  /* Mobilde hover efektini ve animasyonu kaldırabiliriz */
-  .gallery-item img {
-    transition: none;
-  }
-
-  .gallery-item:hover img {
-    transform: none;
-  }
-
-  .gallery-item::before {
-    display: none;
-  }
 }

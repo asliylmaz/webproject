@@ -96,7 +96,6 @@ const dataSlider = [{
 
 function Corporate() {
 
-
     {/*TitleSection.defaultProps = {
         className: "align-items-center text-center",
         classDesc: "line-shape line-shape-after",
@@ -151,7 +150,7 @@ function Corporate() {
                         muted
                         playsInline
                     >
-                        <source src="/img/bg2.mp4" type="video/mp4" />
+                        <source src="/img/homeBanner.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -176,7 +175,7 @@ function Corporate() {
                 ))}
             </div>
             <h1 className="font-size-left">Featured Works</h1>
-            <Gallery images={images} />
+            <Gallery />
 
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section" />
