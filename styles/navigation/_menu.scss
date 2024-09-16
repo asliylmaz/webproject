@@ -1,13 +1,22 @@
 
 .site-header {
+  // position: fixed;
+  // top: -26px;
+  // width: 50%;
+  // //padding-top: 22px;
+  // padding-bottom: 22px;
+  // transition-property: background-color, padding-top, padding-bottom, transform;
+  // transition-duration: 0.5s;
+  // z-index: 97;
   position: fixed;
-  top: 0;
-  width: 100%;
-  padding-top: 22px;
+  top: -19px;
+  width: 100%; /* Ensure full width */
   padding-bottom: 22px;
-  transition-property: background-color, padding-top, padding-bottom, transform;
-  transition-duration: 0.5s;
+  transition: 0.5s;
   z-index: 97;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   > .p-relative.dsn-container {
     padding: 0;
@@ -42,6 +51,22 @@
     margin-left: 9%;
     position: relative;
     z-index: 1;
+    margin-left: 4.5%;
+    text-align: left; /* Logo on the left by default */
+  }
+  @media only screen and (max-width: 768px) {
+    .main-logo {
+      margin-left: -120px; /* Reset margin on mobile */
+      text-align: center; /* Center logo on mobile */
+      flex: 1; /* Make logo take available space */
+      
+    }
+
+    #navbar_toggle {
+      position: absolute;
+      right: 10px; /* Menu button to the right */
+      //top: 2px; /* Adjust top spacing */
+    }
   }
 
   ul.primary-nav {
@@ -123,7 +148,9 @@
     &:not(.dsn-hamburger){
       padding-right: calc(#{$body-style-space} + 22px);
     }
-
+    .site-header{
+      width: 100% !important;
+    }
 
     .main-logo {
       width: $body-style-space;

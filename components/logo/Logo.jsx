@@ -6,11 +6,12 @@ import Image from "next/image";
 
 const MainBrand = styled.div`
    img{
-    width : ${props => props.width};
-    max-width: 100%;
+    // width : ${props => props.width};
+    width : 500px;
+    max-width: 500px;
     height: ${props => props.height};
    }
-   .v-light & , & {
+       .v-light & , & {
         .logo-dark{
            display : block ;     
         }
@@ -27,22 +28,28 @@ const MainBrand = styled.div`
             display : block;    
         }
    }
-   
+   /* Media query for mobile devices */
+   @media (max-width: 768px) {
+      img {
+         width: 200px;  /* Mobile width for logo */
+         max-width: 200px;
+      }
+   }
 `;
 
-const Logo = ({width, height, alt}) => {
+const Logo = ({ width, height, alt }) => {
 
 
 
     return (
         <MainBrand className="main-brand" width={width} height={height}>
-            <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={320} height={84}/>
-            <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84}/>
+            <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={320} height={84} />
+            <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84} />
         </MainBrand>
     );
 }
 
-MainBrand.defaultProps = {width: '80px', height: 'auto'}
-Logo.defaultProps = {alt: "3bolu2"}
+MainBrand.defaultProps = { width: '80px', height: 'auto' }
+Logo.defaultProps = { alt: "3bolu2" }
 
 export default React.memo(Logo);

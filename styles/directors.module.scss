@@ -51,6 +51,17 @@
     transition: text-shadow 0.3s ease, color 0.3s ease;
     /* Add smooth transition */
 }
+.filter {
+    font-family: 'Arial', sans-serif;
+    font-size: 15px;
+    color: #bbb;
+    text-align: left;
+    margin-left: -10px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    /* Add smooth transition */
+}
 @media only screen and (max-width: 768px) {
     .neonText{  
     font-size: 20px;
@@ -73,6 +84,14 @@
 }
 }
 .neonTextD:hover {
+    /* Neon effect on hover */
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(255, 255, 255, 0.3);
+}
+.filter:hover {
     /* Neon effect on hover */
     color:#fff;
     text-shadow:

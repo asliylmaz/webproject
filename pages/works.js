@@ -13,30 +13,30 @@ import Link from 'next/link';
 import Head from "next/head";
 
 const images = [
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
+    '/img/underco.jpg',
     // Buraya daha fazla fotoğraf URL'si ekleyebilirsiniz
 ];
 
@@ -57,7 +57,7 @@ function Corporate() {
             <div className={styles.container}>
                 {filters.map((filter, index) => (
                     <span key={index}>
-                        <Link href={filter.link} className={styles.Filter}>
+                        <Link href={filter.link} className={styles.filter}>
                             {filter.name}
                         </Link>
                     </span>

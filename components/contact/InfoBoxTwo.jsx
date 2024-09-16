@@ -9,23 +9,11 @@ function InfoBoxTwo({className}) {
                 <li>
                 <h5 className="title-block">Our Producers</h5>
                 <br></br>
-                <p className="text-p ">Lorem Ipsum</p>
-                <p className="text-p ">info@pixelpostpro.com</p>
+                <p className="text-p ">Zeynep Kesken​</p>
+                <p className="text-p ">zeynep@3bölü2.com​</p>
                 <br></br>
-                <p className="text-p ">Lorem Ipsum</p>
-                <p className="text-p ">info@pixelpostpro.com</p>
-                <br></br>
-                <p className="text-p ">Lorem Ipsum</p>
-                <p className="text-p ">info@pixelpostpro.com</p>
-                <br></br>
-                <p className="text-p ">Lorem Ipsum</p>
-                <p className="text-p ">info@pixelpostpro.com</p>
-                <br></br>
-                <p className="text-p ">Lorem Ipsum</p>
-                <p className="text-p ">info@pixelpostpro.com</p>
-                <br></br>
-                <p className="text-p ">Lorem Ipsum</p>
-                <p className="text-p ">info@pixelpostpro.com</p>
+                <p className="text-p ">Süleyman Derebaşı​</p>
+                <p className="text-p ">suleyman@3bölü2.com​</p>
                 </li>
                
             </ul>
