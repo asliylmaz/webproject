@@ -4,23 +4,30 @@ const filters = [
 
     {
         name: "#Beauty", 
-        link: "/directors/serter-tirmik"
+        link: "/directors/serter-tirmik",
+        slug:"beauty"
     },
     {
         name: "#Food Beverage", 
-        link: "/directors/deniz-tarsus"
+        link: "/directors/deniz-tarsus",
+        slug:"food"
+
     },
     {
         name: "#Technology", 
-        link: "/directors/bora-ozan"
+        link: "/directors/bora-ozan",
+        slug:"technology"
+
     },
     {
         name: "#Fashion", 
-        link: "/directors/irem-kilical"
+        link: "/directors/irem-kilical",
+        slug:"fashion"
+
     },
     {
         name: "#Narrative", 
-        link: "/directors/deniz-ozgun"
+        link: "/directors/deniz-ozgun",
     },
     {
         name: "#Homecare", 
