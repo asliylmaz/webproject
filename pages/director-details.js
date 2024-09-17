@@ -79,7 +79,7 @@ function DirectorDetails() {
 
             // Tam ekran moduna geçiş
             player.requestFullscreen().catch(error => {
-                console.error("Tam ekran hatası:", error);
+                console.error("dull screen errorı:", error);
             });
         }
     }, [selectedVideo]);
