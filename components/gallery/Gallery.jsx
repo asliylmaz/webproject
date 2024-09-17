@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/gallery.module.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -8,14 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
   const galleryRef = useRef(null);
-  const [videos, setVideos] = React.useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     // Vimeo API'den videoları alıyoruz
     axios({
       method: 'get',
       url: 'https://api.vimeo.com/me/videos',
-      //url: url,
       headers: {
         Authorization: `Bearer 5078123016df2258c9b1ad437081e971`, // Access token'ı buraya ekleyin
       },
@@ -37,61 +36,64 @@ const Gallery = () => {
     if (window.innerWidth < 768) return;
 
     const items = galleryRef.current.querySelectorAll(`.${styles['gallery-item']}`);
-    let i = 0;
-    items.forEach((item, index) => {
-      const isFullWidth = index % 5 === 0;
-      let directionX = 0;
-      let directionY = 0;
-      if (isFullWidth) {
-        i = i + 1;
-        directionY = index % 5 === 0 ? 100 : -100;
-      } else if (i % 2 === 0) {
-        directionX = index % 2 === 0 ? -100 : 100;
-      } else {
-        directionX = index % 2 === 1 ? -100 : 100;
+    
+    gsap.fromTo(
+      items,
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.1,  // Animasyonlar arasında gecikme
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: galleryRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+          markers: false,
+        },
       }
-
-      gsap.fromTo(
-        item,
-        { opacity: 0, x: directionX, y: directionY },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top bottom',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    });
+    );
   }, [videos]);
 
   return (
     <div ref={galleryRef} className={styles['gallery-container']}>
       {videos.length > 0 ? (
         videos.map((video, index) => (
-          <div
-            key={index}
-            className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
-          >
-            <iframe key={index}
-               className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
-              src={`${video.embed.html.match(/src="([^"]+)"/)[1]}`}
-              width="640"
-              height="360"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title={`Video ${index + 1}`}
-            ></iframe>
-          </div>
+          <LazyVideoItem key={index} video={video} index={index} />
         ))
       ) : (
         <p>Videos not found.</p>
+      )}
+    </div>
+  );
+};
+
+const LazyVideoItem = ({ video, index }) => {
+  const [showVideo, setShowVideo] = useState(false);
+
+  return (
+    <div
+      className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
+      onClick={() => setShowVideo(true)}
+    >
+      {!showVideo ? (
+        <img
+          src={video.pictures.sizes[3].link}
+          alt={`Thumbnail for ${video.name}`}
+          className={styles['video-thumbnail']}
+        />
+      ) : (
+        <iframe
+          src={`${video.embed.html.match(/src="([^"]+)"/)[1]}`}
+          width="640"
+          height="360"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title={`Video ${index + 1}`}
+        ></iframe>
       )}
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import Navbar, {Nav} from "../../nav/Navbar";
 import MenuContent from "./MenuContent";
 import Logo from "../../logo/Logo";
+import PageLogo from "../pageLogo/pageLogo";
 
 
 const menuContent = [
@@ -140,7 +141,7 @@ const EremiaMenu = ({hamburger}) => {
     return (
         <Navbar hamburger={hamburger}>
             <Navbar.Brand href={"/"} transitionPage={{title: "Eremia"}}>
-                <Logo width="200px" height="auto"/>
+                <PageLogo width="200px" height="auto"/>
             </Navbar.Brand>
 
             <Navbar.Collapse cover="Menu">

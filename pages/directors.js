@@ -14,7 +14,7 @@ const Directors = () => {
         </Head>
         
             {/* Arkaplan görseli ve yönetmen isimleri */}
-            <div className="image-container-d">
+            
                 {/* <div
                     className="services-container-d"
                     style={{
@@ -34,7 +34,7 @@ const Directors = () => {
                         </span>
                     ))}
                 </div>
-            </div>
+            
 
             {/* NextPage Bileşeni */}
             <NextPage className="section-padding border-top background-section" />

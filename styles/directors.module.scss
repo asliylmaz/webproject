@@ -17,6 +17,7 @@
     justify-content: center;
     gap: 30px; /* Yönetmen isimleri arasında boşluk bırakır */
     padding: 10%;
+    margin-top: 5%;
     //background-color: #000;
 }
 
@@ -75,6 +76,9 @@
     }
     .slash{
         font-size: 20px !important; 
+    }
+    .container {
+        margin-top: 20% !important;
     }
  
 .neonTextD {

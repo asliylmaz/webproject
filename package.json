@@ -21,7 +21,7 @@
     "axios": "^1.7.7",
     "flickr-justified-gallery": "^2.1.2",
     "google-map-react": "^2.2.0",
-    "gsap": "^3.11.4",
+    "gsap": "^3.12.5",
     "isotope-layout": "^3.0.6",
     "next": "^13.2.1",
     "react": "^18.2.0",

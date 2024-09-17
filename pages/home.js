@@ -165,7 +165,7 @@ function Corporate() {
                 >
                 </div>
             </div> */}
-            <div className={styles.containerD}>
+            {/* <div className={styles.containerD}>
                 {filters.map((filter, index) => (
                     <span key={index}>
                         <Link href={filter.link} className={styles.neonTextD}>
@@ -173,7 +173,7 @@ function Corporate() {
                         </Link>
                     </span>
                 ))}
-            </div>
+            </div> */}
             <h1 className="font-size-left">Featured Works</h1>
             <Gallery />
 
