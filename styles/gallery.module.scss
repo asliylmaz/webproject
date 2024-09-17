@@ -9,13 +9,12 @@
   margin-right: 20px;
 }
 
-
 /* Galeri öğeleri */
 .gallery-item {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 60vh; /* Sabit bir yükseklik belirledik */
+  height: 45vh; /* Sabit bir yükseklik belirledik */
   display: flex;
   justify-content: center; /* İframe'leri ortalamak için */
   align-items: center;     /* İframe'leri ortalamak için */
@@ -33,15 +32,19 @@
 /* Mobilde tüm videolar alt alta */
 @media (max-width: 768px) {
   .gallery-container {
-    grid-template-columns: repeat(1, 1fr); 
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
     margin-left: 10px;
     margin-right: 10px;
+    gap: 1px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;;
   }
 
   .gallery-item {
-    height: 40vh; /* Mobilde daha düşük yükseklik */
+    height: auto; /* Mobilde daha düşük yükseklik */
   }
 }
+
+
 /* Videoların olmadığı durumda arka plan videosu */
 .no-videos {
   position: fixed !important; /* Sayfanın tamamını kapsaması için */
@@ -66,3 +69,56 @@
   object-fit: cover !important; /* Videoyu tam ekrana yay */
   z-index: -1 !important; /* Video arka planda olacak */
 }
+/* Modal düzeni */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Yarı saydam arka plan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal içeriği */
+.modal-content {
+  position: relative;
+  background: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 80vw;
+  max-height: 80vh;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Kapatma butonu */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.close-button:hover {
+  background-color: darkred;
+}
+
+/* Iframe düzeni */
+.modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
