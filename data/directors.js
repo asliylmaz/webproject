@@ -2,43 +2,116 @@
 const directors = [
 
     {
-        name: "Serter Tırmık", 
-        link: "/directors/serter-tirmik"
+        name: "Selim Demirdelen", 
+        vimeo:"https://vimeo.com/selimdemirdelen",
+        link: "/director-details"
     },
     {
-        name: "Deniz Tarsus", 
-        link: "/directors/deniz-tarsus"
+        name: "Özer Feyzioğlu", 
+        vimeo:"https://vimeo.com/ozerfeyzioglu",
+        link: "/director-details"
     },
     {
-        name: "Bora Ozan", 
-        link: "/directors/bora-ozan"
+        name: "Hazım Başaran", 
+        vimeo:"https://vimeo.com/hazimbasaran",
+        link: "/director-details"
     },
     {
-        name: "İrem Kılıçal", 
-        link: "/directors/irem-kilical"
+        name: "Cemal Alpan", 
+        vimeo:"https://vimeo.com/calpan",
+        link: "/director-details"
     },
     {
-        name: "Deniz Özgün", 
-        link: "/directors/deniz-ozgun"
+        name: "Caner Çetiner", 
+        vimeo:"https://vimeo.com/canercetiner",
+        link: "/director-details"
     },
     {
-        name: "Ali Ardıç", 
-        link: "/directors/ali-ardic"
+        name: "Baki Yavuz", 
+        vimeo:null,
+        link: "https://www.yavuz.tv"
     },
     {
-        name: "Burak Günaydın", 
-        link: "/directors/burak-gunaydin"
+        name: "Şenol Korkmaz", 
+        vimeo:"https://vimeo.com/senolkorkmaz",
+        link: "/director-details"
     },
     {
-        name: "Sercan Demircioğlu", 
-        link: "/directors/sercan-demircioglu"
+        name: "Çağlar Malli",
+        vimeo:null,
+        link: "https://www.caglarmalli.com"
     },
     {
-        name: "Ali Atay", link: "/directors/ali-atay"
+        name: "Dağhan Celayir", 
+        vimeo:"https://vimeo.com/user8452284",
+        link: "/director-details"
     },
     {
-        name: "Olgu Baran", link: "/directors/olgu-baran"
+        name: "Burcu Matur", 
+        vimeo:null,
+        link: "http://www.burcumatur.com"
     },
+    {
+        name: "Mehmet Çelebi", 
+        vimeo:"https://vimeo.com/mehmetcelebi",
+        link: "/director-details"
+    },
+    {
+        name: "Aksel Özcan", 
+        vimeo:"https://vimeo.com/akselozcan",
+        link: "/director-details"
+    },
+    {
+        name: "Özkul Dikici", 
+        vimeo:"https://vimeo.com/user57760759",
+        link: "/director-details"
+    },
+    {
+        name: "Hüseyin Aydın", 
+        vimeo:"https://vimeo.com/huseyinaydin",
+        link: "/director-details"
+    },
+    {
+        name: "Barış Kaya", 
+        vimeo:"https://vimeo.com/user16062557",
+        link: "/director-details"
+    },
+    {
+        name: "İlkay Uygur", 
+        vimeo:"https://vimeo.com/illkay",
+        link: "/director-details"
+    },
+    {
+        name: "Derya Gsell", 
+        vimeo:"https://vimeo.com/deryagsell",
+        link: "/director-details"
+    },
+    {
+        name: "Tan Berk Kurtcebe", 
+        vimeo:"https://vimeo.com/tankuartcebe",
+        link: "/director-details"
+    },
+    {
+        name: "Burak kolcu", 
+        vimeo:"https://vimeo.com/burakkolcu",
+        link: "/director-details"
+    },
+    {
+        name: "Fırat Mançuhan", 
+        vimeo:"https://vimeo.com/mancuhan",
+        link: "/director-details"
+    },
+    {
+        name: "Kübra Ayaz", 
+        vimeo:"https://vimeo.com/kubraayaz/",
+        link: "/director-details"
+    },
+    {
+        name: "Luca Pigs", 
+        vimeo:"https://vimeo.com/lucapigs",
+        link: "/director-details"
+    },
+ 
 
 
 ];

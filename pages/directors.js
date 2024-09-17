@@ -6,28 +6,25 @@ import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
 import Layout from "../layout/Layout";
 import Head from "next/head";
+
 const Directors = () => {
     return (
         <Layout>
-        <Head>
-            <title>Directors | 3Bölü2</title>
-        </Head>
+            <Head>
+                <title>Directors | 3Bölü2</title>
+            </Head>
         
             {/* Arkaplan görseli ve yönetmen isimleri */}
             <div className="image-container-d">
-                {/* <div
-                    className="services-container-d"
-                    style={{
-                        backgroundImage: "url('/img/bg-2.jpg')", // Arkaplan görseli
-                    }}
-                /> */}
-               
-                
                 {/* Yönetmen listesi */}
                 <div className={styles.container}>
                     {directors.map((director, index) => (
                         <span key={index}>
-                            <Link href={director.link} className={styles.neonText}>
+                            {/* Yönetmen bilgilerini query parametre olarak gönderiyoruz */}
+                            <Link href={{
+                                pathname: '/director-details',
+                                query: { name: director.name, vimeo: director.vimeo }
+                            }} className={styles.neonText}>
                                 {director.name}
                             </Link>
                             {index < directors.length - 1 && <span className={styles.slash}> / </span>}
@@ -41,7 +38,7 @@ const Directors = () => {
 
             {/* Footer Bileşeni */}
             <Footer className="background-section" />
-            </Layout>
+        </Layout>
     );
 }
 

@@ -6,8 +6,9 @@
   overflow: visible !important;
   height: auto !important;
   margin-left: 106px;
-  margin-right: 2px;
+  margin-right: 20px;
 }
+
 
 /* Galeri öğeleri */
 .gallery-item {
@@ -29,11 +30,10 @@
   transition: transform 0.2s ease-in-out;
 }
 
-
 /* Mobilde tüm videolar alt alta */
 @media (max-width: 768px) {
   .gallery-container {
-    grid-template-columns: repeat(1, 1fr) ; 
+    grid-template-columns: repeat(1, 1fr); 
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -41,5 +41,28 @@
   .gallery-item {
     height: 40vh; /* Mobilde daha düşük yükseklik */
   }
+}
+/* Videoların olmadığı durumda arka plan videosu */
+.no-videos {
+  position: fixed !important; /* Sayfanın tamamını kapsaması için */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Tüm genişliği kapla */
+  height: 100vh !important; /* Tüm yüksekliği kapla */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  color: white !important;
+  z-index: 1 !important; /* Mesajın videonun üzerinde olması için */
+}
 
+.background-video {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Videoyu tam ekrana yay */
+  z-index: -1 !important; /* Video arka planda olacak */
 }
