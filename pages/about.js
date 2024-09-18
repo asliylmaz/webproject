@@ -11,6 +11,9 @@ import Layout from "../layout/Layout";
 import BoxGallery, {
     BoxGalleryItem,
 } from "../components/box-gallery/BoxGallery";
+import {dsnCN} from "../hooks/helper";
+import MoveTrigger from "../animation/MoveTrigger";
+import FadeUpTrigger from "../animation/FadeUpTrigger";
 import Team from "../components/Team/Team";
 import Testimonial from "../components/testimonial/Testimonial";
 import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
@@ -26,8 +29,22 @@ import Head from "next/head";
 import Footer from "../components/footer/Footer";
 import ImageWithTitles from "../components/Image/ImageWithTitles";
 //import Error404 from "./error404";
-
-function About() {
+const HeroContent = {
+    //title: "Hello we, are <br/> Dsn Grid",
+    subtitle: `We’re a creative agency with an expertise in producing captivating films and commercials.`,
+    description: `3Bölü2 is a film and commercial production company that prioritizes creativity and originality, delivering extraordinary projects. From TV commercials and digital ads to short films, animation projects, brand promotions, music videos, and documentaries, we aim to create moments that make the audience think, feel, and admire.  <span class="mb-10 d-block" ></span>
+    Utilizing the best technology at every stage, from visual effects to sound design, we strive to bring our projects into the future.`,
+    // authorTitle: "SALVADOR DALI",
+    //authorJob: "Digital Artisit",
+    experienceNumber: "25",
+    experienceDescription: `YEARS OF \n EXPERIENCE`,
+    heroImage: '/img/about-intro.jpg',
+    awards: [
+        { number: 22, description: `DIRECTORS` },
+        { number: 19, description: `SUTISFIED <br/> CUSTOMERS` },
+    ]
+};
+function About({className, ...restProps}) {
     TitleSection.defaultProps = {
         classDesc: "line-shape line-shape-before",
         classDesInner: "line-bg-right",
@@ -57,7 +74,7 @@ function About() {
 
                 <ImageWithTitles />
             </div> */}
-            <div className="image-container-a">
+            {/* <div className="image-container-a">
                 <div className="services-container-a">
                     <video
                         className="background-video"
@@ -71,7 +88,94 @@ function About() {
                     </video>
                 </div>
                 <ImageWithTitles />
-            </div>
+            </div> */}
+
+            {/*========== Header Normal ========== */}
+            <HeaderNormal className="">
+
+                <h1 className="title text-uppercase">
+                    <br />
+                </h1>
+            </HeaderNormal>
+            {/*========== End Header Normal ==========*/}
+            {/*Start Parallax Img*/}
+            <ParallaxImage alt={""} src={"/img/displacement/7.jpg"}
+                parallaxFrom={{ scale: 1.3 }} parallax={{ scale: 1 }}
+                overlay={5} />
+                <ImageWithTitles />
+            {/*End Parallax Img*/}
+
+            <section className={dsnCN(`about-section p-relative`, className)} {...restProps}>
+            <DsnGrid col={2} colTablet={1} colGap={50} rowGap={40}>
+                <div className="box-info pt-40 pb-60">
+
+                    <FadeUpTrigger>
+                        {(ref) => <>
+                            <h6 className="title-block border-bottom pb-30 mb-30" ref={ref}>{HeroContent.subtitle}</h6>
+                            <p className="mb-30" ref={ref} style={{maxWidth: 570}} dangerouslySetInnerHTML={{__html: HeroContent.description}}/>
+                            {/* <h5 className="sm-title-block line-shape line-shape-after mb-10" ref={ref}>{HeroContent.authorTitle}</h5> */}
+                            {/* <span className="sub-heading line-bg-left" ref={ref}>{HeroContent.authorJob}</span> */}
+                            <DsnGrid className="box-awards pt-30" col={2} colTablet={2} colGap={15} rowGap={15}>
+                                {HeroContent.awards.map(
+                                    (item, index) =>
+                                        <div className="box-awards_item has-border " key={index}
+                                             ref={ref}>
+                                            <div className={`box-awards_inner background-section`}>
+                                                <span className="has-animate-number title">{item.number}</span>
+                                                <h5 className="sm-title-block"
+                                                    dangerouslySetInnerHTML={{__html: item.description}}/>
+                                            </div>
+
+                                        </div>
+                                )}
+
+
+                            </DsnGrid>
+                        </>}
+                    </FadeUpTrigger>
+
+
+                </div>
+
+                <div className="background-mask p-relative over-hidden">
+                    <div className="p-absolute p-20 h-100 w-100">
+                        <div className="line line-top"/>
+                        <div className="line line-bottom"/>
+                        <div className="line line-left"/>
+                        <div className="line line-right"/>
+
+                        <div className="img-box h-100">
+                            <ParallaxImage src={HeroContent.heroImage} alt={"about"} height="100%" overlay={4}
+                                           sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"/>
+                        </div>
+
+
+                        <div
+                            className="box-awards-item p-absolute big-number v-dark-head left-0 bottom-0 ml-40 mb-40 z-index-1 border-style">
+                            <h5 className="number p-20">
+                                    <span className="has-animate-number title"
+                                          style={{fontSize: "110px", lineHeight: "120px"}}>
+                                        {HeroContent.experienceNumber}
+                                    </span>
+                                {HeroContent.experienceDescription && <span className="sm-title-block d-block" dangerouslySetInnerHTML={{__html : HeroContent.experienceDescription}} />}
+
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </DsnGrid>
+        </section>
+
+            {/*========== team Section ========== */}
+            <section className="container section-margin " data-dsn-title="Team">
+                {/* <TitleSection description={"Our Team"}>
+                    The Best Team Ever!
+                </TitleSection> */}
+
+                <Team data={getTeamData().slice(0, 2)} col={2} colTablet={2} />
+            </section>
+            {/*========== End team Section ========== */}
+
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section" />
             {/*========== End Next Page ==========*/}
@@ -92,11 +196,7 @@ function About() {
             </HeaderNormal> */}
             {/*========== End Header Normal ==========*/}
 
-            {/*Start Parallax Img*/}
-            {/* <ParallaxImage alt={""} src={"/img/about/5.jpg"}
-                parallaxFrom={{ scale: 1.3 }} parallax={{ scale: 1 }}
-                overlay={5} /> */}
-            {/*End Parallax Img*/}
+
 
             {/*<!-- ========== About Section ========== */}
             {/* <div className="container section-margin" data-dsn-title="About">
@@ -173,15 +273,7 @@ function About() {
                 </div>
             </section> */}
 
-            {/*========== team Section ========== */}
-            {/* <section className="container section-margin " data-dsn-title="Team">
-                <TitleSection description={"Our Team"}>
-                    The Best Team Ever!
-                </TitleSection>
 
-                <Team data={getTeamData().slice(0, 4)} col={2} colTablet={2} />
-            </section> */}
-            {/*========== End team Section ========== */}
 
             {/*Start testimonial Section*/}
             {/* <div className="container section-margin" data-dsn-title="testimonials">

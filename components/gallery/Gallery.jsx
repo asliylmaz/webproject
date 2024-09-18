@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from '../../styles/gallery.module.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -8,9 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
   const galleryRef = useRef(null);
-  const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null); // Seçilen video için state
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 }); // Modal pozisyonu için state
+  const [videos, setVideos] = React.useState([]);
 
   useEffect(() => {
     // Vimeo API'den videoları alıyoruz
@@ -18,10 +16,11 @@ const Gallery = () => {
       method: 'get',
       url: 'https://api.vimeo.com/me/videos',
       headers: {
-        Authorization: `Bearer 5078123016df2258c9b1ad437081e971`, // Access token'ı buraya ekleyin
+        Authorization: 'Bearer 5078123016df2258c9b1ad437081e971', // Access token'ı buraya ekleyin
       },
     })
       .then((response) => {
+        // API'den gelen videoları setVideos ile state'e kaydediyoruz
         if (response.data && response.data.data && Array.isArray(response.data.data)) {
           setVideos(response.data.data); // Dizi olarak video verilerini ayarla
         } else {
@@ -37,119 +36,109 @@ const Gallery = () => {
     if (window.innerWidth < 768) return;
 
     const items = galleryRef.current.querySelectorAll(`.${styles['gallery-item']}`);
-
     items.forEach((item, index) => {
-      const direction = index % 2 === 0 ? 'left' : 'right';
-      const fromX = direction === 'left' ? '-100%' : '100%';
+      // Her resim için sağdan veya soldan gelecek şekilde directionX belirliyoruz
+      const directionX = index % 2 === 0 ? -100 : 100; // Çift index'ler soldan, tek index'ler sağdan gelecek
 
       gsap.fromTo(
         item,
-        { opacity: 0, x: fromX },
+        { opacity: 0, x: directionX }, // Sadece x ekseninde hareket
         {
           opacity: 1,
-          x: '0%',
-          duration: 0.8,
+          x: 0,
+          duration: 1,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: item,
             start: 'top bottom',
-            end: 'bottom top',
-            scrub: false,
-            onEnter: () => {
-              gsap.to(item, { opacity: 1, x: '0%', duration: 0.8 });
-            },
-            onLeaveBack: () => {
-              gsap.to(item, { opacity: 0, x: fromX, duration: 0.8 });
-            },
+            toggleActions: 'play none none reverse',
           },
         }
       );
     });
   }, [videos]);
 
-  // Modal'ı kapatma fonksiyonu
-  const closeModal = () => {
-    setSelectedVideo(null); // Seçilen videoyu sıfırlıyoruz, modal kapanır
-  };
+  const handleImageClick = (videoUrl) => {
+    // Arka planı bulanıklaştırmak için body'ye blur class'ı ekle
+    document.body.classList.add('blurred-background');
 
-  const handleVideoClick = (video, event) => {
-    const modalWidth = window.innerWidth * 0.8; // Ekranın %80'ini kaplayacak genişlik
-    const modalHeight = window.innerHeight * 0.8; // Genişliğe göre %80 yüksekliği
-  
-    const windowWidth = window.innerWidth;
-  
-    // Tıklanan öğenin pozisyonunu alıyoruz
-    const elementRect = event.target.getBoundingClientRect();
-    
-    // Tıklanan öğenin konumuna göre modal pozisyonunu ayarla
-    const top = elementRect.top;
-    const left = (windowWidth - modalWidth) / 2; // Yatayda tam ortala
-    
-    setModalPosition({ top, left });
-    setSelectedVideo(video);
-  };
-  
-  
+    // Resme tıklanınca video tam ekran oynat
+    const iframeContainer = document.createElement('div');
+    iframeContainer.style.position = 'fixed';
+    iframeContainer.style.top = '0';
+    iframeContainer.style.left = '0';
+    iframeContainer.style.width = '100vw';
+    iframeContainer.style.height = '100vh';
+    iframeContainer.style.zIndex = '9999';
+    iframeContainer.style.display = 'flex';
+    iframeContainer.style.justifyContent = 'center';
+    iframeContainer.style.alignItems = 'center';
+    iframeContainer.style.background = 'rgba(0, 0, 0, 0.9)'; // Arka planı hafif karartmak için
 
+    const iframe = document.createElement('iframe');
+    iframe.src = `${videoUrl}?autoplay=1&fullscreen=1`;
+    iframe.style.width = '80vw';
+    iframe.style.height = '80vh';
+    iframe.frameBorder = '0';
+    iframe.allow = 'autoplay; fullscreen';
+    iframe.allowFullscreen = true;
+
+    // Kapatma butonu oluştur
+    const closeButton = document.createElement('img');
+    closeButton.src = '/img/close.png'; // close.png dosyasının yolunu buraya ekleyin
+    closeButton.alt = 'Close';
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '15px';  // Üstten 10px boşluk bırak
+    closeButton.style.right = '20px'; // Soldan 10px boşluk bırak
+    closeButton.style.width = '40px';
+    closeButton.style.height = '40px';
+    closeButton.style.zIndex = '10000';
+    closeButton.style.cursor = 'pointer';
+
+    // iframe ve butonu div içine ekle
+    iframeContainer.appendChild(iframe);
+    iframeContainer.appendChild(closeButton);
+    document.body.appendChild(iframeContainer);
+
+    // Kapatma butonuna tıklanınca iframe ve butonu kaldır
+    closeButton.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+      document.body.removeChild(iframeContainer);
+      document.body.classList.remove('blurred-background'); // Bulanıklığı kaldır
+    });
+  };
 
   return (
     <div ref={galleryRef} className={styles['gallery-container']}>
       {videos.length > 0 ? (
-        videos.map((video, index) => (
-          <LazyVideoItem
-            key={index}
-            video={video}
-            index={index}
-            onClick={(event) => handleVideoClick(video, event)} // Videoya tıklandığında modal pozisyonu ayarlanır
-          />
-        ))
+        videos.map((video, index) => {
+          const videoUrl = video.embed.html.match(/src="([^"]+)"/);
+          return (
+            <div
+              key={index}
+              className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
+              onClick={() => videoUrl && handleImageClick(videoUrl[1])}
+            >
+              <img
+                src={video.pictures.sizes[3].link} // Orta boyutlu bir thumbnail seçiyoruz
+                alt={`Video thumbnail ${index + 1}`}
+                className={styles['video-thumbnail']}
+                style={{
+                  transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
+                }}              
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')} // Yaklaştır
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')} // Eski boyuta dön
+              />
+            </div>
+          );
+        })
       ) : (
-        <p>Videos not found.</p>
-      )}
-
-      {selectedVideo && (
-        <div
-          className={styles['video-modal']}
-          style={{ top: `${modalPosition.top}px`, left: `${modalPosition.left}px` }} // Modal pozisyonunu dinamik olarak ayarla
-        >
-          <div className={styles['modal-content']}>
-            <iframe
-              src={`${selectedVideo.embed.html.match(/src="([^"]+)"/)[1]}`}
-              width="640"
-              height="360"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title="Selected Video"
-            ></iframe>
-            <button className={styles['close-button']} onClick={closeModal}>
-              &times;
-            </button>
-          </div>
-        </div>
+        <p>...</p>
       )}
     </div>
   );
-};
-
-
-const LazyVideoItem = ({ video, index, onClick }) => {
-  const [showVideo, setShowVideo] = useState(false);
-
-  return (
-    <div
-      className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
-      onClick={onClick} // Tıklanıldığında modal açılması için onClick event'i ekleniyor
-    >
-      <img
-        src={video.pictures.sizes[3].link}
-        alt={`Thumbnail for ${video.name}`}
-        className={styles['video-thumbnail']}
-      />
-    </div>
-    
-  );
-  
 };
 
 export default Gallery;
