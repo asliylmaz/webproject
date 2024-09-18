@@ -43,8 +43,9 @@ const Logo = ({ width, height, alt }) => {
 
     return (
         <MainBrand className="main-brand" width={width} height={height}>
-            <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={320} height={84} />
-            <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84} />
+           
+        <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={320} height={84} />
+        <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84} /> 
         </MainBrand>
     );
 }

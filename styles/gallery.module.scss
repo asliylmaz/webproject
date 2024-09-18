@@ -1,10 +1,10 @@
 /* Ana galeri düzeni */
 .gallery-container {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; /* Her satırda iki video */
+  display: grid ;
+  grid-template-columns: repeat(2, 1fr); /* Her satırda iki video */
   gap: 1px; /* Galeri öğeleri arasında boşluk */
-  overflow: visible !important;
-  height: auto !important;
+  overflow: visible;
+  height: auto;
   margin-left: 106px;
   margin-right: 20px;
 }
@@ -14,11 +14,13 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 45vh; /* Sabit bir yükseklik belirledik */
+  height: 50vh; /* Sabit bir yükseklik belirledik */
   display: flex;
   justify-content: center; /* İframe'leri ortalamak için */
   align-items: center;     /* İframe'leri ortalamak için */
+  cursor: pointer; /* Fare işaretçisi el işaretine dönüşsün */
 }
+
 
 /* Iframe'in tam alanı kapsaması için gerekli stil */
 .gallery-item iframe {
@@ -29,6 +31,10 @@
   transition: transform 0.2s ease-in-out;
 }
 
+.gallery-item:hover iframe {
+  transform: scale(1.1); /* İframe içindeki video üzerine gelince daha fazla büyüsün */
+}
+
 /* Mobilde tüm videolar alt alta */
 @media (max-width: 768px) {
   .gallery-container {
@@ -36,14 +42,13 @@
     margin-left: 10px;
     margin-right: 10px;
     gap: 1px; /* Galeri öğeleri arasında boşluk */
-    padding: 0;;
+    padding: 0;
   }
 
   .gallery-item {
     height: auto; /* Mobilde daha düşük yükseklik */
   }
 }
-
 
 /* Videoların olmadığı durumda arka plan videosu */
 .no-videos {
@@ -69,6 +74,7 @@
   object-fit: cover !important; /* Videoyu tam ekrana yay */
   z-index: -1 !important; /* Video arka planda olacak */
 }
+
 /* Modal düzeni */
 .video-modal {
   position: fixed;
@@ -119,6 +125,5 @@
 .modal-content iframe {
   width: 100%;
   height: 100%;
-  border: none;
+  border: none;
 }
-

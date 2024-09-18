@@ -15,7 +15,6 @@ const Gallery = () => {
     axios({
       method: 'get',
       url: 'https://api.vimeo.com/me/videos',
-      //url: url,
       headers: {
         Authorization: `Bearer 5078123016df2258c9b1ad437081e971`, // Access token'ı buraya ekleyin
       },
@@ -37,27 +36,16 @@ const Gallery = () => {
     if (window.innerWidth < 768) return;
 
     const items = galleryRef.current.querySelectorAll(`.${styles['gallery-item']}`);
-    let i = 0;
     items.forEach((item, index) => {
-      const isFullWidth = index % 5 === 0;
-      let directionX = 0;
-      let directionY = 0;
-      if (isFullWidth) {
-        i = i + 1;
-        directionY = index % 5 === 0 ? 100 : -100;
-      } else if (i % 2 === 0) {
-        directionX = index % 2 === 0 ? -100 : 100;
-      } else {
-        directionX = index % 2 === 1 ? -100 : 100;
-      }
+      // Her resim için sağdan veya soldan gelecek şekilde directionX belirliyoruz
+      const directionX = index % 2 === 0 ? -100 : 100; // Çift index'ler soldan, tek index'ler sağdan gelecek
 
       gsap.fromTo(
         item,
-        { opacity: 0, x: directionX, y: directionY },
+        { opacity: 0, x: directionX }, // Sadece x ekseninde hareket
         {
           opacity: 1,
           x: 0,
-          y: 0,
           duration: 1,
           ease: 'power2.out',
           scrollTrigger: {
@@ -70,6 +58,58 @@ const Gallery = () => {
     });
   }, [videos]);
 
+  const handleImageClick = (videoUrl) => {
+    // Arka planı bulanıklaştırmak için body'ye blur class'ı ekle
+    document.body.classList.add('blurred-background');
+
+    // Resme tıklanınca video tam ekran oynat
+    const iframeContainer = document.createElement('div');
+    iframeContainer.style.position = 'fixed';
+    iframeContainer.style.top = '0';
+    iframeContainer.style.left = '0';
+    iframeContainer.style.width = '100vw';
+    iframeContainer.style.height = '100vh';
+    iframeContainer.style.zIndex = '9999';
+    iframeContainer.style.display = 'flex';
+    iframeContainer.style.justifyContent = 'center';
+    iframeContainer.style.alignItems = 'center';
+    iframeContainer.style.background = 'rgba(0, 0, 0, 0.9)'; // Arka planı hafif karartmak için
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `${videoUrl}?autoplay=1&fullscreen=1`;
+    iframe.style.width = '80vw';
+    iframe.style.height = '80vh';
+    iframe.frameBorder = '0';
+    iframe.allow = 'autoplay; fullscreen';
+    iframe.allowFullscreen = true;
+
+    // Kapatma butonu oluştur
+    const closeButton = document.createElement('img');
+    closeButton.src = '/img/close.png'; // close.png dosyasının yolunu buraya ekleyin
+    closeButton.alt = 'Close';
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '15px';  // Üstten 10px boşluk bırak
+    closeButton.style.right = '20px'; // Soldan 10px boşluk bırak
+    closeButton.style.width = '40px';
+    closeButton.style.height = '40px';
+    closeButton.style.zIndex = '10000';
+    closeButton.style.cursor = 'pointer';
+
+    // iframe ve butonu div içine ekle
+    iframeContainer.appendChild(iframe);
+    iframeContainer.appendChild(closeButton);
+    document.body.appendChild(iframeContainer);
+
+    // Kapatma butonuna tıklanınca iframe ve butonu kaldır
+    closeButton.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+      document.body.removeChild(iframeContainer);
+      document.body.classList.remove('blurred-background'); // Bulanıklığı kaldır
+    });
+  };
+
   return (
     <div ref={galleryRef} className={styles['gallery-container']}>
       {videos.length > 0 ? (
@@ -77,24 +117,24 @@ const Gallery = () => {
           <div
             key={index}
             className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
+            onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
           >
-            <iframe key={index}
-               className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
-              src={`${video.embed.html.match(/src="([^"]+)"/)[1]}`}
-              width="640"
-              height="360"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title={`Video ${index + 1}`}
-            ></iframe>
+            <img
+              src={video.pictures.sizes[3].link} // Orta boyutlu bir thumbnail seçiyoruz
+              alt={`Video thumbnail ${index + 1}`}
+              className={styles['video-thumbnail']}
+              style={{
+                transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
+              }}              
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')} // Yaklaştır
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')} // Eski boyuta dön
+            />
           </div>
         ))
       ) : (
-        <p>Videos not found.</p>
+        <p>...</p>
       )}
     </div>
   );
 };
-
 export default Gallery;

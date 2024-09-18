@@ -311,6 +311,7 @@ html, body {
 }
 
 .full-width .dsn-container {
+  z-index: -1;
   @include body-line {
     padding-left: calc(#{$body-style-space} + 50px);
     padding-right: calc(#{$body-style-space} + 50px);
