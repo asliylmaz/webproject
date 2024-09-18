@@ -6,7 +6,7 @@ import PageLogo from "../pageLogo/pageLogo";
 
 
 const menuContent = [
-    {name: "Home", href: "/home"},
+    {name: "Home", href: "/"},
     {name: "Directors", href: "/directors"},
     {name: "Works", href: "/works"},
     {name: "Service", href: "/service"},
@@ -32,7 +32,7 @@ const EremiaMenu = ({hamburger}) => {
     return (
         <Navbar hamburger={hamburger}>
             <Navbar.Brand href={"/"} transitionPage={{title: "Eremia"}}>
-                <PageLogo width="200px" height="auto"/>
+                <Logo width="200px" height="auto"/>
             </Navbar.Brand>
 
             <Navbar.Collapse cover="Menu">

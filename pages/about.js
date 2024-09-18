@@ -46,7 +46,7 @@ function About() {
                 <title>About Us | 3Bölü2</title>
             </Head>
 
-            <div className="image-container-a">
+            {/* <div className="image-container-a">
                 <div
                     className="services-container-a"
                     style={{
@@ -56,8 +56,22 @@ function About() {
                 />
 
                 <ImageWithTitles />
+            </div> */}
+            <div className="image-container-a">
+                <div className="services-container-a">
+                    <video
+                        className="background-video"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                    >
+                        <source src="/img/homeBanner.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <ImageWithTitles />
             </div>
-
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section" />
             {/*========== End Next Page ==========*/}

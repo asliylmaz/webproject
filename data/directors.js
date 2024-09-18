@@ -48,6 +48,12 @@ const directors = [
         link: "https://www.caglarmalli.com"
     },
     {
+        name: "Luca Pigs", 
+        vimeo:"https://vimeo.com/lucapigs",
+        url:"lucapigs",
+        link: "/director-details"
+    },
+    {
         name: "Dağhan Celayir", 
         vimeo:"https://vimeo.com/user8452284",
         url:"daghancelayir",
@@ -124,12 +130,7 @@ const directors = [
         url:"kubraayaz",
         link: "/director-details"
     },
-    {
-        name: "Luca Pigs", 
-        vimeo:"https://vimeo.com/lucapigs",
-        url:"lucapigs",
-        link: "/director-details"
-    },
+
  
 
 
