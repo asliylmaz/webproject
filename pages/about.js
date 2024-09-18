@@ -36,7 +36,7 @@ const HeroContent = {
     Utilizing the best technology at every stage, from visual effects to sound design, we strive to bring our projects into the future.`,
     // authorTitle: "SALVADOR DALI",
     //authorJob: "Digital Artisit",
-    experienceNumber: "25",
+    experienceNumber: "5",
     experienceDescription: `YEARS OF \n EXPERIENCE`,
     heroImage: '/img/about-intro.jpg',
     awards: [
@@ -165,7 +165,7 @@ function About({className, ...restProps}) {
                 </div>
             </DsnGrid>
         </section>
-
+    
             {/*========== team Section ========== */}
             <section className="container section-margin " data-dsn-title="Team">
                 {/* <TitleSection description={"Our Team"}>
