@@ -24,11 +24,11 @@ const Gallery = () => {
         if (response.data && response.data.data && Array.isArray(response.data.data)) {
           setVideos(response.data.data); // Dizi olarak video verilerini ayarla
         } else {
-          console.error("Beklenen formatta video listesi bulunamadı.");
+          console.error("Video list not found in expected format.");
         }
       })
       .catch((error) => {
-        console.error("API çağrısında bir hata oluştu:", error);
+        console.error("An error occurred in the API call:", error);
       });
   }, []);
 
@@ -113,32 +113,28 @@ const Gallery = () => {
   return (
     <div ref={galleryRef} className={styles['gallery-container']}>
       {videos.length > 0 ? (
-        videos.map((video, index) => {
-          const videoUrl = video.embed.html.match(/src="([^"]+)"/);
-          return (
-            <div
-              key={index}
-              className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
-              onClick={() => videoUrl && handleImageClick(videoUrl[1])}
-            >
-              <img
-                src={video.pictures.sizes[3].link} // Orta boyutlu bir thumbnail seçiyoruz
-                alt={`Video thumbnail ${index + 1}`}
-                className={styles['video-thumbnail']}
-                style={{
-                  transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
-                }}              
-                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')} // Yaklaştır
-                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')} // Eski boyuta dön
-              />
-            </div>
-          );
-        })
+        videos.map((video, index) => (
+          <div
+            key={index}
+            className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
+            onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
+          >
+            <img
+              src={video.pictures.sizes[3].link} // Orta boyutlu bir thumbnail seçiyoruz
+              alt={`Video thumbnail ${index + 1}`}
+              className={styles['video-thumbnail']}
+              style={{
+                transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
+              }}              
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')} // Yaklaştır
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')} // Eski boyuta dön
+            />
+          </div>
+        ))
       ) : (
         <p>...</p>
       )}
     </div>
   );
 };
-
 export default Gallery;

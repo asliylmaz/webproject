@@ -6,7 +6,7 @@ import PageLogo from "../pageLogo/pageLogo";
 
 
 const menuContent = [
-    {name: "Home", href: "/"},
+    {name: "Home", href: "/index"},
     {name: "Directors", href: "/directors"},
     {name: "Works", href: "/works"},
     {name: "Service", href: "/service"},
