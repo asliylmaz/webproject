@@ -24,11 +24,11 @@ const Gallery = () => {
         if (response.data && response.data.data && Array.isArray(response.data.data)) {
           setVideos(response.data.data); // Dizi olarak video verilerini ayarla
         } else {
-          console.error("Beklenen formatta video listesi bulunamadı.");
+          console.error("Video list not found in expected format.");
         }
       })
       .catch((error) => {
-        console.error("API çağrısında bir hata oluştu:", error);
+        console.error("An error occurred in the API call:", error);
       });
   }, []);
 

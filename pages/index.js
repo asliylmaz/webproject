@@ -127,23 +127,6 @@ function Corporate() {
             </HeaderFull>
 
 
-
-
-            
-            {/* <div className="image-container-a">
-                <div className="services-container-a">
-                    <video
-                        className="background-video"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                    >
-                        <source src="/img/bg2.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>  */}
            
             <div className={styles.containerD}>
                 {filters.map((filter, index) => (
