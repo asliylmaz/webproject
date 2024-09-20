@@ -34,20 +34,20 @@ const Gallery = () => {
 
   useEffect(() => {
     if (window.innerWidth < 768) return;
-
+  
     const items = galleryRef.current.querySelectorAll(`.${styles['gallery-item']}`);
     items.forEach((item, index) => {
-      // Her resim için sağdan veya soldan gelecek şekilde directionX belirliyoruz
-      const directionX = index % 2 === 0 ? -100 : 100; // Çift index'ler soldan, tek index'ler sağdan gelecek
-
+      // Daha uzun bir mesafe için directionX değerini artırıyoruz
+      const directionX = index % 2 === 0 ? -300 : 300; // Çift index'ler soldan, tek index'ler sağdan gelecek
+  
       gsap.fromTo(
         item,
-        { opacity: 0, x: directionX }, // Sadece x ekseninde hareket
+        { opacity: 0, x: directionX }, // Daha uzun mesafede x ekseninde hareket
         {
           opacity: 1,
           x: 0,
-          duration: 1,
-          ease: 'power2.out',
+          duration: 0.5, // Daha hızlı geçiş için süreyi kısalttık
+          ease: 'power3.out', // Daha hızlı bir easing kullanıyoruz
           scrollTrigger: {
             trigger: item,
             start: 'top bottom',
@@ -57,6 +57,7 @@ const Gallery = () => {
       );
     });
   }, [videos]);
+  
 
   const handleImageClick = (videoUrl) => {
     // Arka planı bulanıklaştırmak için body'ye blur class'ı ekle
@@ -126,15 +127,33 @@ const Gallery = () => {
               style={{
                 transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
               }}              
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')} // Yaklaştır
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')} // Eski boyuta dön
+              onMouseEnter={(e) => {
+                const target = e.currentTarget;
+                // target'ın varlığını kontrol et
+                if (target) {
+                  target.hoverTimeout = setTimeout(() => {
+                    if (target) {
+                      target.style.transform = 'scale(1.1)';
+                    }
+                  }, 500); // 1 saniye bekleme süresi
+                }
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget;
+                // target'ın varlığını kontrol et
+                if (target) {
+                  clearTimeout(target.hoverTimeout);
+                  target.style.transform = 'scale(1)'; // Eski boyuta dön
+                }
+              }}
             />
           </div>
         ))
       ) : (
-        <p>...</p>
+        <p></p>
       )}
     </div>
   );
+  
 };
 export default Gallery;

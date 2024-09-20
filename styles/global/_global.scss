@@ -102,7 +102,7 @@ a.link-hover {
   position: relative;
   text-transform: uppercase;
   transition: all 0.25s ease-in-out;
-  margin-left: 10px;
+  //margin-left: 10px;
 
   &:before {
     content: attr(data-hover-text);

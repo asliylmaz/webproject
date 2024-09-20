@@ -7,8 +7,8 @@ import Image from "next/image";
 const MainBrand = styled.div`
    img{
     // width : ${props => props.width};
-    width : 500px;
-    max-width: 500px;
+    width : 200px;
+    max-width: 200px;
     height: ${props => props.height};
    }
        .v-light & , & {
@@ -47,6 +47,7 @@ const Logo = ({ width, height, alt }) => {
         <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={320} height={84} />
         <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84} /> 
         </MainBrand>
+        
     );
 }
 

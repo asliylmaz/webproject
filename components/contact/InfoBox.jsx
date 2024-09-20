@@ -7,7 +7,7 @@ function InfoBox({ className }) {
         <div className={dsnCN('box-info-contact', className)}>
             <ul>
                 <li>
-                    <h1>Get in Touch </h1>
+                    <h1 className="neon-text">Get in Touch </h1>
                 </li>
                 <li>
                     <h5 className="title-block mt-15">Contact</h5>
@@ -24,7 +24,7 @@ function InfoBox({ className }) {
                     <p className="text-p">Esentepe, Mithat Ulu Ünlü Sk No:16A<br /> 34394 Şişli/İstanbul</p>
                 </li>
                 <li>
-                    <h5 className="title-block mb-15">Follow Us</h5>
+                    <h5 className="title-block mb-15"> Follow Us</h5>
                     <div className="social-item over-hidden">
                         <a className="link-hover" data-hover-text="Instagram" href="#"
                             target="_blank" rel="nofollow">Instagram</a>

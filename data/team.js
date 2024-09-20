@@ -3,7 +3,7 @@ const data = [
         id: 1,
         name: "Zeynep Kesken",
         position: 'Co-Founder',
-        src: '/img/team/4.png',
+        //src: '/img/team/4.png',
         social: [
             {title: "FB", url: "#0"},
             {title: "TW", url: "#0"},
@@ -13,7 +13,7 @@ const data = [
         id: 2,
         name: "Süleyman Derebaşı",
         position: 'Co-Founder',
-        src: '/img/team/5.png',
+        //src: '/img/team/5.png',
         social: [
             {title: "FB", url: "#0"},
             {title: "TW", url: "#0"},

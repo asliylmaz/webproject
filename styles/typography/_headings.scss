@@ -86,10 +86,11 @@ h6, .h6 {
 }
 
 .section-title {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Arial', sans-serif;
   position: relative;
   font-size: 40px;
-  letter-spacing: 2px;
+  font-weight: 400;
+  letter-spacing: 0px;
 
 
   @include media_768 {
@@ -99,8 +100,10 @@ h6, .h6 {
 }
 
 .title-block {
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-size: 20px;
+  font-weight: 100;
+  font-family: 'Arial', sans-serif;
 }
 
 .sm-p {

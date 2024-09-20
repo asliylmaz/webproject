@@ -26,15 +26,22 @@ const directors = [
         link: "/director-details"
     },
     {
-        name: "Caner Çetiner", 
-        vimeo:"https://vimeo.com/canercetiner",
-        url:"canercetiner",
+        name: "Kübra Ayaz", 
+        vimeo:"https://vimeo.com/kubraayaz/",
+        url:"kubraayaz",
         link: "/director-details"
     },
     {
         name: "Baki Yavuz", 
-        vimeo:null,
-        link: "https://www.yavuz.tv"
+        vimeo:"https://vimeo.com/yavuz",
+        url:"yavuz",
+        link: "/director-details"
+    },
+    {
+        name: "Luca Pigs", 
+        vimeo:"https://vimeo.com/lucapigs",
+        url:"lucapigs",
+        link: "/director-details"
     },
     {
         name: "Şenol Korkmaz", 
@@ -44,13 +51,8 @@ const directors = [
     },
     {
         name: "Çağlar Malli",
-        vimeo:null,
-        link: "https://www.caglarmalli.com"
-    },
-    {
-        name: "Luca Pigs", 
-        vimeo:"https://vimeo.com/lucapigs",
-        url:"lucapigs",
+        vimeo:"https://vimeo.com/caglarmalli",
+        url:"caglarmalli",
         link: "/director-details"
     },
     {
@@ -61,8 +63,9 @@ const directors = [
     },
     {
         name: "Burcu Matur", 
-        vimeo:null,
-        link: "http://www.burcumatur.com"
+        vimeo:"https://vimeo.com/burcumatur",
+        url:"burcumatur",
+        link: "/director-details"
     },
     {
         name: "Mehmet Çelebi", 
@@ -95,6 +98,12 @@ const directors = [
         link: "/director-details"
     },
     {
+        name: "Caner Çetiner", 
+        vimeo:"https://vimeo.com/canercetiner",
+        url:"canercetiner",
+        link: "/director-details"
+    },
+    {
         name: "İlkay Uygur", 
         vimeo:"https://vimeo.com/illkay",
         url:"illkay",
@@ -113,7 +122,7 @@ const directors = [
         link: "/director-details"
     },
     {
-        name: "Burak kolcu", 
+        name: "Burak Kolcu", 
         vimeo:"https://vimeo.com/burakkolcu",
         url:"burakkolcu",
         link: "/director-details"
@@ -124,12 +133,7 @@ const directors = [
         url:"mancuhan",
         link: "/director-details"
     },
-    {
-        name: "Kübra Ayaz", 
-        vimeo:"https://vimeo.com/kubraayaz/",
-        url:"kubraayaz",
-        link: "/director-details"
-    },
+
 
  
 

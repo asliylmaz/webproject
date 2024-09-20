@@ -11,6 +11,7 @@ import styles from '../styles/directors.module.scss';
 import filters from '../data/filters';
 import Link from 'next/link';
 import Head from "next/head";
+import HeaderFull from "../components/header/HeaderFull";
 
 const images = [
     '/img/underco.jpg',
@@ -40,7 +41,10 @@ const images = [
     // Buraya daha fazla fotoğraf URL'si ekleyebilirsiniz
 ];
 
-
+const headerContent = {
+    
+    video: "/img/bg7.mp4",
+};
 
 function Corporate() {
     TitleSection.defaultProps = {
@@ -54,7 +58,7 @@ function Corporate() {
                 <title>Works | 3Bölü2</title>
             </Head>
 
-            <div className={styles.container}>
+            {/* <div className={styles.container}>
                 {filters.map((filter, index) => (
                     <span key={index}>
                         <Link href={filter.link} className={styles.filter}>
@@ -62,9 +66,16 @@ function Corporate() {
                         </Link>
                     </span>
                 ))}
-            </div>
+            </div> */}
+            <HeaderFull
+                className="dsn-container"
+                fullWidth
+                heroContent={headerContent}
+                overlay={6}
+            >
 
-            <Gallery images={images} />
+            </HeaderFull>
+            <Gallery className="mt-15" images={images} />
 
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section" />

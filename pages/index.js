@@ -98,7 +98,8 @@ function Corporate() {
     };
     return (
 
-        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
+        <Layout>
+            {/* <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}></Layout> */}
             <Head>
                 <title>3Bölü2</title>
             </Head>
@@ -128,7 +129,7 @@ function Corporate() {
 
 
            
-            <div className={styles.containerD}>
+            {/* <div className={styles.containerD}>
                 {filters.map((filter, index) => (
                     <span key={index}>
                         <p  className={styles.neonTextD}>
@@ -136,7 +137,7 @@ function Corporate() {
                         </p>
                     </span>
                 ))}
-            </div>
+            </div> */}
             <h1 className="font-size-left">Featured Works</h1>
             <Gallery />
 

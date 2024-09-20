@@ -10,7 +10,7 @@ function TeamItem({className , data}) {
                 <div className="team-item-wrapper background-section">
                     <div className="item-content d-flex a-item-center">
                         <div className="box-img p-relative">
-                            <Image className={"cover-bg-img"} src={data?.src} alt={data.name} width={260} height={278} sizes="(max-width: 768px) 100vw,(max-width: 1200px) 400px,100vw"/>
+                            {/* <Image className={"cover-bg-img"} src={data?.src} alt={data.name} width={260} height={278} sizes="(max-width: 768px) 100vw,(max-width: 1200px) 400px,100vw"/> */}
                         </div>
                         <div className="box-text">
                             <h4 className="sm-title-block mb-5">{data.name}</h4>

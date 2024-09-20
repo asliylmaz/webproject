@@ -26,7 +26,7 @@ function About() {
     return (
         <Layout>
             <Head>
-                <title>Contact Us | Creative Portfolio Multi-Purpose</title>
+                <title>Contact Us | 3Bölü2</title>
             </Head>
             {/*========== Header Normal ========== 
             <HeaderNormal className="text-center">
@@ -55,12 +55,12 @@ function About() {
             </div>
 
             {/*Start Map*/}
-            <Map
+            {/* <Map
                 mapKey="AIzaSyDMyAS2jdzj-vdgBIFaIStYOWJtSlghndg"
                 zoom={10}
                 height="80vh"
                 defaultCenter={{ lat: 30.0489206, lng: 31.258553 }}
-            />
+            /> */}
             {/*========== Start Next Page Section ==========
             <NextPage2 className={`background-section section-padding`} />*/}
             {/*========== End Next Page Section ==========*/}

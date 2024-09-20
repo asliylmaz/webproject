@@ -15,7 +15,7 @@ import { getServiceData } from "../data/service";
 import { getServiceData2 } from "../data/service";
 import { getServiceData3 } from "../data/service";
 import Team from "../components/Team/Team";
-import React from "react";
+import React, { useEffect, useRef } from 'react';
 import { getTeamData } from "../data/team";
 import Image from "next/image";
 import NextPage from "../components/next/NextPage";
@@ -24,13 +24,26 @@ import ModalContact from "../components/model-right/ModalContact";
 import Head from "next/head";
 import ParallaxImage from "../components/Image/ParallaxImage";
 import ImageSection from "../components/Image/ImageSection";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 //import Error404 from "./error404";
-
+gsap.registerPlugin(ScrollTrigger);
 function Service() {
     const services = getServiceData();
     const services2 = getServiceData2();
     const services3 = getServiceData3();
-
+    const servicedata = {
+        titleCover: `3BÖLÜ2`,
+    };
+    const whatWeDoRef1 = useRef(null); // "What We Do" bölümü için ref
+    TitleSection.defaultProps = {
+        classDesInner: "line-bg-left",
+    };
+    const whatWeDoRef2 = useRef(null); // "What We Do" bölümü için ref
+    TitleSection.defaultProps = {
+        classDesInner: "line-bg-left",
+    };
+    const whatWeDoRef3 = useRef(null); // "What We Do" bölümü için ref
     TitleSection.defaultProps = {
         classDesInner: "line-bg-left",
     };
@@ -39,6 +52,66 @@ function Service() {
     // if (!isEnabled) {
     //     return <Error404 />;
     //   }
+    useEffect(() => {
+        const items1 = whatWeDoRef1.current.querySelectorAll('.service-item');
+    const items2 = whatWeDoRef2.current.querySelectorAll('.service-item');
+    const items3 = whatWeDoRef3.current.querySelectorAll('.service-item');
+
+    // Animasyonları ayarlayın
+    items1.forEach((item, index) => {
+        gsap.fromTo(
+            item,
+            { opacity: 0, x: -200 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top bottom',
+                    toggleActions: 'play none none reverse',
+                },
+            }
+        );
+    });
+
+    items2.forEach((item, index) => {
+        gsap.fromTo(
+            item,
+            { opacity: 0, x: -200 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top bottom',
+                    toggleActions: 'play none none reverse',
+                },
+            }
+        );
+    });
+
+    items3.forEach((item, index) => {
+        gsap.fromTo(
+            item,
+            { opacity: 0, x: -200 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top bottom',
+                    toggleActions: 'play none none reverse',
+                },
+            }
+        );
+    });
+}, []);
     return (
         <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
             <Head>
@@ -70,7 +143,7 @@ function Service() {
                         muted
                         playsInline
                     >
-                        <source src="/img/bg2.mp4" type="video/mp4" />
+                        <source src="/img/bg6.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -78,23 +151,23 @@ function Service() {
 
 
             {/*========== About Section  ==========*/}
-            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="What We Do">
-                <div className="services-container">
+            <DsnGrid className="container section-margin" customGrid={{ desktop: '70% 30%' }} rowGapTablet={50} data-dsn-title="What We Do" ref={whatWeDoRef1}>
+                <div>
+                    <TitleCover>{servicedata.titleCover}</TitleCover>
                     <TitleSection defaultSpace={false} description="What We Do" />
-                    <br></br>
-                    <br></br>
                     {services.map((service, index) => (
                         <div key={index} className="service-item">
+                            <br></br>
+                            <br></br>
                             <h1 className="services neon-text">{service.title}</h1>
                             <p className="services sub-neon-text">{service.description}</p>
-                            <br></br>
-                            <br></br>
                         </div>
                     ))}
                     <br></br>
                     <br></br>
                 </div>
             </DsnGrid>
+
             {/*========== End About Section  ==========*/}
 
             <div className="image-container-s">
@@ -106,15 +179,16 @@ function Service() {
                         muted
                         playsInline
                     >
-                        <source src="/img/bg2.mp4" type="video/mp4" />
+                        <source src="/img/bg6.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
 
             {/*========== About Section 2 ==========*/}
-            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="Where We Do">
+            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="Where We Do"  ref={whatWeDoRef2}>
                 <div className="services-container">
+                    <TitleCover>{servicedata.titleCover}</TitleCover>
                     <TitleSection defaultSpace={false} description="Where We Do" />
                     <br></br>
                     <br></br>
@@ -128,8 +202,9 @@ function Service() {
                     ))}
                 </div>
             </DsnGrid>
-            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="How We Do">
+            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="How We Do"  ref={whatWeDoRef3}>
                 <div className="services-container">
+                    <TitleCover>{servicedata.titleCover}</TitleCover>
                     <TitleSection defaultSpace={false} description="How We Do" />
                     <br></br>
                     <br></br>
@@ -250,15 +325,15 @@ function Service() {
                                     {
                                         icon: <Image src="/img/team/1.jpg" alt="" width={70} height={70} />,
                                         title: "Build powerful websites with Essentials",
-                                        description: `Start building next-level websites using Essentials WordPress theme. `
+                                        description: Start building next-level websites using Essentials WordPress theme. 
                                     }, {
                                         icon: <Image src="/img/team/2.jpg" alt="" width={70} height={70} />,
                                         title: "Build powerful websites with Essentials",
-                                        description: `Start building next-level websites using Essentials WordPress theme. `
+                                        description: Start building next-level websites using Essentials WordPress theme. 
                                     }, {
                                         icon: <Image src="/img/team/3.jpg" alt="" width={70} height={70} />,
                                         title: "Build powerful websites with Essentials",
-                                        description: `Start building next-level websites using Essentials WordPress theme. `
+                                        description: Start building next-level websites using Essentials WordPress theme. 
                                     }
                                 ]}
                             />

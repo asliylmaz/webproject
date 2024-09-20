@@ -49,7 +49,7 @@
 :root, :root .v-light {
   --bg-color: #f9f9f9;
   --assistant-color: #e6e6e6;
-  --theme-color: #14bfb5;
+  --theme-color: #bbb;
   --font-color: #0009;
   --heading-color: #000;
   --border-color: #bebebe;
@@ -61,7 +61,7 @@
 :root .v-dark, :root .v-dark-head {
   --bg-color: #000;
   --assistant-color: #000;
-  --theme-color: #14bfb5;
+  --theme-color: #bbb;
   --font-color: #bbb;
   --heading-color: #fff;
   --border-color: rgba(255, 255, 255, 0.07);
@@ -75,7 +75,7 @@
   .v-dark-head-mobile {
     --bg-color: #000;
     --assistant-color: #101010;
-    --theme-color: #14bfb5;
+    --theme-color: #bbb;
     --font-color: #bbb;
     --heading-color: #fff;
     --border-color: rgba(255, 255, 255, 0.07);
@@ -326,10 +326,11 @@
   font-size: 8ch;
   color: #fff;
   text-align: left;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-left: 8%;
+  font-family: 'Arial', sans-serif;
+  margin-left: 7%;
   margin-top: 10%;
   font-weight: 100;
+  margin-bottom: -5%;
   letter-spacing: -1px;
   text-shadow: 
     0 0 15px rgba(255, 255, 255, 0.6),   /* Soft, misty glow effect */
@@ -389,4 +390,14 @@
 .pagelogo-logo.small {
   max-width: 100px; /* Kaydırıldığında küçük boyut */
   margin-top: 0px;
+}
+.neon-textG {
+  font-family: 'Arial', sans-serif;
+  color: #fff; /* White color for the text */
+    
+  /* Misty background effect */
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.6),   /* Soft, misty glow effect */
+    0 0 30px rgba(255, 255, 255, 0.4),   /* Larger mist effect */
+    0 0 50px rgba(255, 255, 255, 0.3);   /* Extended mist effect */
 }
