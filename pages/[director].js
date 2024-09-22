@@ -10,11 +10,10 @@ import styles from '../styles/gallery.module.scss';
 import Player from '@vimeo/player';
 import { gsap } from 'gsap';
 import directors from '../data/directors'; // Yönetmen verilerini import ediyoruz
-import HeaderFull
-    from "../components/header/HeaderFull";
+import DirectorHeader
+    from "../components/header/DirectorHeader";
 const headerContent = {
-
-    video: "/img/bg7.mp4",
+    video: "/img/directorbg.mp4",
 };
 // Vimeo kullanıcı ID'sini çekmek için fonksiyon
 function getUserIdFromVimeoURL(vimeoURL) {
@@ -75,17 +74,10 @@ function DirectorDetails({ director }) {
         }
     }, [director]);
 
-    const handleVideoClick = (video) => {
-        setSelectedVideo(video);
-        setShowModal(true); // Modal'ı açıyoruz
-    };
-
-
     const closeModal = () => {
         setSelectedVideo(null);
         setShowModal(false);
     };
-
     useEffect(() => {
         if (selectedVideo && modalRef.current) {
             const iframe = modalRef.current.querySelector('iframe');
@@ -97,6 +89,7 @@ function DirectorDetails({ director }) {
             // });
         }
     }, [selectedVideo]);
+    //video geçiş efekti
     useEffect(() => {
         if (window.innerWidth < 768) return;
 
@@ -179,14 +172,13 @@ function DirectorDetails({ director }) {
             <Head>
                 <title>3Bölü2 | {director.name}</title>
             </Head>
-            <HeaderFull
-                className="dsn-container"
-                fullWidth
-                heroContent={headerContent}
-                overlay={6}
-            >
-
-            </HeaderFull>
+            <DirectorHeader 
+            className="dsn-container" 
+            fullWidth 
+            heroContent={headerContent} 
+            overlay={6}
+            director={director}>
+            </DirectorHeader>
             {/* Video galerisi */}
             {/* <div ref={directorsRef} className={styles['gallery-container']}>
                 {videos.length > 0 ? (
@@ -225,6 +217,28 @@ function DirectorDetails({ director }) {
                                 src={video.pictures.sizes[3].link}
                                 alt={`Video ${index + 1}`}
                                 className={styles['video-thumbnail']}
+                                style={{
+                                    transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
+                                  }}              
+                                  onMouseEnter={(e) => {
+                                    const target = e.currentTarget;
+                                    // target'ın varlığını kontrol et
+                                    if (target) {
+                                      target.hoverTimeout = setTimeout(() => {
+                                        if (target) {
+                                          target.style.transform = 'scale(1.1)';
+                                        }
+                                      }, 100); // 1 saniye bekleme süresi
+                                    }
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    const target = e.currentTarget;
+                                    // target'ın varlığını kontrol et
+                                    if (target) {
+                                      clearTimeout(target.hoverTimeout);
+                                      target.style.transform = 'scale(1.0)'; // Eski boyuta dön
+                                    }
+                                  }}
                             />
                         </div>
                     ))
