@@ -45,12 +45,15 @@
     grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
     margin-left: 10px;
     margin-right: 10px;
-    gap: 1px; /* Galeri öğeleri arasında boşluk */
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
     padding: 0;
   }
 
   .gallery-item {
-    height: auto; /* Mobilde daha düşük yükseklik */
+    height: 20vh !important; /* Mobilde daha düşük yükseklik */
+  }
+  .video-thumbnail {
+    height: 25vh;
   }
 }
 

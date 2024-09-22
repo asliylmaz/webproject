@@ -126,7 +126,12 @@ h6, .h6 {
   color: $body-color;
   font-size: 16px;
   letter-spacing: 2px;
+  
+  @include media_768 {
+    margin-top: 10%;
+  }
 }
+
 
 .metas {
   padding: 0 5px;

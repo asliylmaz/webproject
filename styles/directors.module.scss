@@ -17,7 +17,7 @@
     justify-content: center;
     gap: 30px; /* Yönetmen isimleri arasında boşluk bırakır */
     padding: 10%;
-    margin-top: 5%;
+    //margin-top: -5%;
     // padding-right: 0px;
     // padding-left: 0px;
     //background-color: #000;
@@ -45,12 +45,12 @@
 }
 .neonTextD {
     font-family: 'Arial', sans-serif;
-    font-size: 50px;
+    font-size: 60px;
     color: #bbb;
     text-align: left;
-    margin-left: -10px;
+    margin-left: 9px;
     font-weight: 300;
-    letter-spacing: -1px;
+    letter-spacing: 1px;
     transition: text-shadow 0.3s ease, color 0.3s ease;
     /* Add smooth transition */
 }
@@ -77,17 +77,26 @@
     transition: text-shadow 0.3s ease, color 0.3s ease;
     }
     .slash{
-        font-size: 20px !important; 
+       display: none;
     }
     .container {
-        margin-top: 20% !important;
+        margin-top: 25% !important;
+        height: auto; // Otomatik yükseklik
+        padding: 5%;
     }
- 
-.neonTextD {
-    
-    font-size: 15px;
-
-}
+    .backgroundVideo {
+        min-height: 50vh; // Minimum yükseklik, yazı kısmını kaplaması için
+        height: auto; // Otomatik yükseklik
+    }
+    .names {
+        text-align: center; // Metni ortalamak için
+        width: 100%; // Tam genişlik
+    }
+    .neonTextD {
+        margin-bottom:5px;
+        font-size: 38px !important;
+        text-align: center;
+    }
 }
 .neonTextD:hover {
     /* Neon effect on hover */
@@ -117,4 +126,21 @@
     margin-left: 10px;
     font-size: xx-large; /* Makes sure the slash is the same size as the text */
     color:#fff;
+}
+// .backgroundVideo {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     z-index: -1;
+//     margin-top:-5%;
+// }
+
+.names {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center; // Metni ortalama
 }

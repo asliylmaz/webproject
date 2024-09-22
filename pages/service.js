@@ -143,7 +143,7 @@ function Service() {
                         muted
                         playsInline
                     >
-                        <source src="/img/bg6.mp4" type="video/mp4" />
+                        <source src="/img/banners1.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -179,7 +179,7 @@ function Service() {
                         muted
                         playsInline
                     >
-                        <source src="/img/bg6.mp4" type="video/mp4" />
+                        <source src="/img/banners2.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>

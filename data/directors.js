@@ -50,6 +50,10 @@ const directors = [
         link: "/director-details"
     },
     {
+        name: "Sinan Uçkan​", 
+        vimeo:null
+    },
+    {
         name: "Çağlar Malli",
         vimeo:"https://vimeo.com/caglarmalli",
         url:"caglarmalli",
