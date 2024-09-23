@@ -1,22 +1,67 @@
-import  {useCallback, useEffect, useRef, useState} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Toggle from './toggle';
 import Link from "next/link";
-import {dsnCN} from "../../hooks/helper";
-import {LinkProps} from "next/dist/client/link";
+import { dsnCN } from "../../hooks/helper";
+import { LinkProps } from "next/dist/client/link";
 import Dropdown from './dropdown';
-import {gsap} from "gsap";
-import DsnLink, {LinkDsnProps} from "../../hooks/DsnLink";
+import { gsap } from "gsap";
+import DsnLink, { LinkDsnProps } from "../../hooks/DsnLink";
 import React from 'react';
+import Image from 'next/image';
+import brandLight from '../logo/logo4.png';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
-function Navbar({children, textOpen, textMenu, textClose, hamburger}) {
+gsap.registerPlugin(ScrollTrigger);
+function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
     const nav = useRef(null);
     const [typeNave, setTypeNave] = useState("");
     const [reserved, setReserved] = useState(false);
-
-
     const removeOpenMenu = useCallback(() => {
         nav.current.querySelectorAll('ul').forEach(item => item.classList.remove('open'));
     }, []);
+    const logoRef = useRef(null);
+    useEffect(() => {
+    const logoElement = logoRef.current;
+
+    if (logoElement) {
+        const shrinkTrigger = ScrollTrigger.create({
+            trigger: logoElement,
+            start: "top 140px",
+            end: "bottom top",
+            scrub: true,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                const scale = gsap.utils.interpolate(1, 0.00001, progress);
+                gsap.set(logoElement, {
+                    scale: scale,
+                    transformOrigin: "top left"
+                });
+            }
+        });
+
+        const growTrigger = ScrollTrigger.create({
+            trigger: logoElement,
+            start: "top top", // Gözükme anı
+            onEnter: () => {
+                gsap.to(logoElement, { scale: 1, duration: 0.5 });
+            },
+            onLeaveBack: () => {
+                gsap.to(logoElement, { scale: 0.00001, duration: 0.5 });
+            }
+        });
+
+        return () => {
+            shrinkTrigger.kill();
+            growTrigger.kill();
+        };
+    }
+}, []);
+
+    
+
+
+
+
 
 
 
@@ -37,9 +82,6 @@ function Navbar({children, textOpen, textMenu, textClose, hamburger}) {
         } else
             setTypeNave("dsn-hamburger");
     };
-
-
-
     // only runs after first render
     useEffect(() => {
 
@@ -54,7 +96,7 @@ function Navbar({children, textOpen, textMenu, textClose, hamburger}) {
         cutterElement();
 
 
-            gsap.to(nav.current, {opacity:1 , delay : 1});
+        gsap.to(nav.current, { opacity: 1, delay: 1 });
 
 
 
@@ -69,10 +111,9 @@ function Navbar({children, textOpen, textMenu, textClose, hamburger}) {
 
     return (
 
-        <header id="site_menu_header" className={dsnCN('site-header dsn-container ', typeNave)} ref={nav} style={{opacity:0}}>
+        <header id="site_menu_header" className={dsnCN('site-header dsn-container ', typeNave)} ref={nav} style={{ opacity: 0, zIndex: 10 }}>
 
             {children}
-
             {typeNave && <Toggle
                 textOpen={textOpen}
                 textMenu={textMenu}
@@ -82,6 +123,15 @@ function Navbar({children, textOpen, textMenu, textClose, hamburger}) {
                 setReserved={setReserved}
                 removeOpenMenu={removeOpenMenu}
             />}
+
+            <div
+                ref={logoRef}
+                style={{ width: "800px", height: "auto", marginTop: "0%", marginLeft: "-2%", transition: "transform 0.3s ease" }}
+            >
+                <Image className="logo-light" src={brandLight} alt="Logo" width={800} />
+            </div>
+
+
         </header>
 
     );
@@ -107,7 +157,7 @@ const handleClickCloseMenu = (e) => {
     if (navToggle) navToggle.click();
 }
 
-export const Brand = ({children , href ,transitionPage=false, ...restProps}:LinkDsnProps) => {
+export const Brand = ({ children, href, transitionPage = false, ...restProps }: LinkDsnProps) => {
     return (<div className="main-logo" onClick={handleClickCloseMenu}>
         <DsnLink href={href} transitionPage={transitionPage} {...restProps} >{children}</DsnLink>
     </div>)
@@ -116,7 +166,7 @@ export const Brand = ({children , href ,transitionPage=false, ...restProps}:Link
 Navbar.Brand = Brand;
 
 
-export const Collapse = ({children, cover}) => {
+export const Collapse = ({ children, cover }) => {
     return (
         <nav className="main-navigation">
             {cover && (<div className="menu-cover-title header-container dsn-container">{cover}</div>)}
@@ -127,21 +177,21 @@ export const Collapse = ({children, cover}) => {
 Navbar.Collapse = Collapse
 
 
-export const Nav = ({children, className, ...restProps}) => {
+export const Nav = ({ children, className, ...restProps }) => {
     return (
         <ul id="dsn-primary-list" className={dsnCN('primary-nav h2', className)} {...restProps} >{children} </ul>
     );
 };
 
 // @ts-ignore
-export const ItemLink = ({children, ...restProps}: LinkProps) => {
+export const ItemLink = ({ children, ...restProps }: LinkProps) => {
 
     return (
         <li className="nav-item" onClick={handleClickCloseMenu}>
             <Link  {...restProps}>
-            <span className="overflow">
-                {children}
-            </span>
+                <span className="overflow">
+                    {children}
+                </span>
             </Link>
         </li>
     );

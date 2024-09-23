@@ -332,10 +332,6 @@
   font-weight: 100;
   margin-bottom: -5%;
   letter-spacing: -1px;
-  text-shadow: 
-    0 0 15px rgba(255, 255, 255, 0.6),   /* Soft, misty glow effect */
-    0 0 30px rgba(255, 255, 255, 0.4),   /* Larger mist effect */
-    0 0 50px rgba(255, 255, 255, 0.3);   /* Extended mist effect */
 }
 
 // Content
@@ -398,6 +394,18 @@
   /* Misty background effect */
   text-shadow: 
     0 0 15px rgba(255, 255, 255, 0.6),   /* Soft, misty glow effect */
-    0 0 30px rgba(255, 255, 255, 0.4),   /* Larger mist effect */
-    0 0 50px rgba(255, 255, 255, 0.3);   /* Extended mist effect */
+    0 0 30px rgba(255, 255, 255, 0.4);   /* Larger mist effect */
+}
+.logo {
+  width: 200px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  transition: width 0.3s ease;
+}
+.logoYazi{
+  font-size: 800px;
+}
+.mty-10{
+  margin-top:5%;
 }
