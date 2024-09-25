@@ -26,6 +26,12 @@ const directors = [
         link: "/director-details"
     },
     {
+        name: "Luca Pigs", 
+        vimeo:"https://vimeo.com/lucapigs",
+        url:"lucapigs",
+        link: "/director-details"
+    },
+    {
         name: "Kübra Ayaz", 
         vimeo:"https://vimeo.com/kubraayaz/",
         url:"kubraayaz",
@@ -38,12 +44,6 @@ const directors = [
         link: "/director-details"
     },
     {
-        name: "Luca Pigs", 
-        vimeo:"https://vimeo.com/lucapigs",
-        url:"lucapigs",
-        link: "/director-details"
-    },
-    {
         name: "Şenol Korkmaz", 
         vimeo:"https://vimeo.com/senolkorkmaz",
         url:"senolkorkmaz",
@@ -51,7 +51,9 @@ const directors = [
     },
     {
         name: "Sinan Uçkan​", 
-        vimeo:null
+        vimeo:"https://vimeo.com/tigacreative",
+        url:"sinanuckan",
+        link: "/director-details"
     },
     {
         name: "Çağlar Malli",

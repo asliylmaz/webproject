@@ -9,6 +9,7 @@ import Head from "next/head";
 import styles from '../styles/gallery.module.scss';
 import Player from '@vimeo/player';
 import { gsap } from 'gsap';
+import { useTranslation } from 'react-i18next';
 import directors from '../data/directors'; // Yönetmen verilerini import ediyoruz
 import DirectorHeader
     from "../components/header/DirectorHeader";
@@ -166,9 +167,10 @@ function DirectorDetails({ director }) {
             document.body.classList.remove('blurred-background'); // Bulanıklığı kaldır
         });
     };
+    const { t, i18n } = useTranslation();
 
     return (
-        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
+        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: t('contactU') } }}>
             <Head>
                 <title>3Bölü2 | {director.name}</title>
             </Head>
@@ -210,7 +212,7 @@ function DirectorDetails({ director }) {
                     videos.map((video, index) => (
                         <div
                             key={index}
-                            className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
+                            className={styles['gallery-item']}
                             onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
                         >
                             <img
@@ -228,7 +230,7 @@ function DirectorDetails({ director }) {
                                         if (target) {
                                           target.style.transform = 'scale(1.1)';
                                         }
-                                      }, 100); // 1 saniye bekleme süresi
+                                      }, 500); // 1 saniye bekleme süresi
                                     }
                                   }}
                                   onMouseLeave={(e) => {

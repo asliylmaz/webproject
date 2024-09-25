@@ -1,0 +1,63 @@
+ .languageSwitcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.languageSwitcher button {
+  background-color: #555;
+  border: none;
+  opacity: 0.5;
+  color: white;
+  font-size: 1rem;
+  margin: 0 2px; /* Butonlar arasındaki mesafeyi azalttık */
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.languageSwitcher button:hover {
+  background-color: #555;
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .languageSwitcher {
+    display: flex;
+    flex-direction: column; /* Butonları alt alta dizer */
+    top: 10px; /* Mobilde daha iyi bir hizalama için ayarlandı */
+    right: 10px;
+  }
+
+  .languageSwitcher button {
+    margin: 5px 0; /* Butonlar arasındaki mesafeyi dikeyde ayarladık */
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .languageSwitcher {
+    display: flex;
+    flex-direction: column; /* Butonları alt alta dizer */
+    top: 10px; /* Mobilde daha iyi bir hizalama için ayarlandı */
+    right: 10px;
+  }
+
+  .languageSwitcher button {
+    margin: 5px 0; /* Butonlar arasındaki mesafeyi dikeyde ayarladık */
+  }
+
+}
+
+/* iPad Air ve iPad 10.2-inch (landscape ve portrait modları için) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .languageSwitcher {
+    display: flex;
+    flex-direction: column; /* Butonları alt alta dizer */
+    top: 10px; /* Mobilde daha iyi bir hizalama için ayarlandı */
+    right: 10px;
+  }
+
+  .languageSwitcher button {
+    margin: 5px 0; /* Butonlar arasındaki mesafeyi dikeyde ayarladık */
+  }
+
+}

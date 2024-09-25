@@ -12,12 +12,15 @@ import Footer from "../components/footer/Footer";
 import Head from "next/head";
 import Copyright from "../components/footer/Copyright"
 //import Error404 from "./error404";
+import { useTranslation } from 'react-i18next';
 
 function About() {
     TitleSection.defaultProps = {
         classDesc: "line-shape line-shape-before",
         classDesInner: "line-bg-right",
     };
+    const { t, i18n } = useTranslation();
+
     // const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
 
     // if (!isEnabled) {
@@ -26,7 +29,7 @@ function About() {
     return (
         <Layout>
             <Head>
-                <title>Contact Us | 3Bölü2</title>
+                <title>{t('menuContent.contact')} | 3Bölü2</title>
             </Head>
             {/*========== Header Normal ========== 
             <HeaderNormal className="text-center">
@@ -49,7 +52,7 @@ function About() {
             <div className="section-margin container">
                 <DsnGrid col={2} colTablet={1}>
                     {/*<ContactForm />*/}
-                    <InfoBox className="align-self-center" />
+                    <InfoBox className="align-self-center mty-10" />
                     <InfoBoxTwo className="align-self-center" />
                 </DsnGrid>
             </div>

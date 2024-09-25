@@ -314,9 +314,20 @@
   }
   .font-size-left{
     font-size: 4ch !important;
+    margin-left: 0 !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .font-size-left{
+    margin-left: 0 !important;
   }
 }
 
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .font-size-left{
+    margin-left: 0 !important;
+  }
+}
 
 .about-title-i.show {
   opacity: 1; /* Sınıf eklendiğinde görünür */
@@ -327,9 +338,10 @@
   color: #fff;
   text-align: left;
   font-family: 'Arial', sans-serif;
-  margin-left: 7%;
+  margin-left: 4%;
   margin-top: 10%;
   font-weight: 100;
+  text-align: center; /* Yatayda ortalama */
   margin-bottom: -5%;
   letter-spacing: -1px;
 }
@@ -408,4 +420,7 @@
 }
 .mty-10{
   margin-top:5%;
+}
+.mty-3{
+  margin-top:3%;
 }

@@ -1,37 +1,44 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import dsnSplitting from "../../../hooks/spltting";
-import {dsnCN} from "../../../hooks/helper";
+import { dsnCN } from "../../../hooks/helper";
 import SvgAnimate from "../../../animation/SvgAnimate";
-
+import { useTranslation } from 'react-i18next';
 
 function Toggle({
-                    textOpen,
-                    textMenu,
-                    textClose,
-                    targetNav,
-                    reserved,
-                    setReserved,
-                    removeOpenMenu,
-                    className,
-                    ...restProps
-                }) {
-
+    textOpen,
+    textMenu,
+    textClose,
+    targetNav,
+    reserved,
+    setReserved,
+    removeOpenMenu,
+    className,
+    ...restProps
+}) {
+    const { t } = useTranslation();
     const splitMenu = useRef();
     const splitOpen = useRef();
     const splitClose = useRef();
     const navbarToggle = useRef();
     const svg = useRef();
     const backgroundMain = useRef();
+    const [isOpen, setIsOpen] = useState(false);
 
     const TransEnd = () => {
-        !reserved && targetNav.current.querySelector('.primary-nav')?.classList.add('open');
-    }
-    const onCompleteAnimate = (e) => {
+        if (!reserved) {
+            targetNav.current.querySelector('.primary-nav')?.classList.add('open');
+        }
+    };
+
+    const onCompleteAnimate = () => {
         targetNav.current?.classList.toggle('dsn-open');
         navbarToggle.current?.classList.toggle('open');
-        document.body.classList.toggle('over-hidden')
-    }
+        document.body.classList.toggle('over-hidden');
+    };
 
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
 
     const toggleClick = (e) => {
 
@@ -57,36 +64,44 @@ function Toggle({
 
 
     useEffect(() => {
-        dsnSplitting.Char(splitMenu.current);
-        dsnSplitting.Char(splitOpen.current);
-        dsnSplitting.Char(splitClose.current);
+        if (splitMenu.current) {
+            dsnSplitting.Char(splitMenu.current);
+        }
+        if (splitOpen.current) {
+            dsnSplitting.Char(splitOpen.current);
+        }
+        if (splitClose.current) {
+            dsnSplitting.Char(splitClose.current);
+        }
     }, []);
 
     return (
         <>
-            <div id="navbar_toggle" className={dsnCN('navbar-toggle', className)} {...restProps} onClick={toggleClick} ref={navbarToggle}>
+            <div
+                id="navbar_toggle"
+                className={dsnCN('navbar-toggle', className)}
+                {...restProps}
+                onClick={toggleClick}
+                ref={navbarToggle}
+                aria-expanded={isOpen}
+            >
                 <div className="toggle-icon">
-                    <div className="toggle-line"/>
-                    <div className="toggle-line"/>
-                    <div className="toggle-line"/>
+                    <div className="toggle-line" />
+                    <div className="toggle-line" />
+                    <div className="toggle-line" />
                 </div>
                 <div className="toggle-text">
-                    <div className="text-menu" ref={splitMenu}>{textMenu}</div>
-                    <div className="text-open" ref={splitOpen}>{textOpen}</div>
-                    <div className="text-close" ref={splitClose}>{textClose}</div>
+                    <span className={`text-open ${!isOpen ? 'active' : ''}`}>{t('toggle.open')}</span>
+                    <span className={`text-close ${isOpen ? 'active' : ''}`}>{t('toggle.close')}</span>
                 </div>
-
             </div>
-            <div className="bg-load background-main" ref={backgroundMain}/>
-
+            <div className="bg-load background-main" ref={backgroundMain} />
             <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"
-                 className="bg-load dsn-svg-transition">
-                <path vectorEffect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z" ref={svg}/>
+                className="bg-load dsn-svg-transition">
+                <path vectorEffect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z" ref={svg} />
             </svg>
         </>
-
     );
 }
-
 
 export default React.memo(Toggle);

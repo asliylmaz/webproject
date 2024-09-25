@@ -11,9 +11,9 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { ServiceGrid } from "../components/services/Service";
 import { IdeaIcon } from "../components/svg";
 import ButtonProject from "../components/button/ButtonProject";
-import { getServiceData } from "../data/service";
-import { getServiceData2 } from "../data/service";
-import { getServiceData3 } from "../data/service";
+// import { getServiceData } from "../data/service";
+// import { getServiceData2 } from "../data/service";
+// import { getServiceData3 } from "../data/service";
 import Team from "../components/Team/Team";
 import React, { useEffect, useRef } from 'react';
 import { getTeamData } from "../data/team";
@@ -26,12 +26,49 @@ import ParallaxImage from "../components/Image/ParallaxImage";
 import ImageSection from "../components/Image/ImageSection";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
+
 //import Error404 from "./error404";
 gsap.registerPlugin(ScrollTrigger);
 function Service() {
-    const services = getServiceData();
-    const services2 = getServiceData2();
-    const services3 = getServiceData3();
+    const { t, i18n } = useTranslation();
+    
+    const services1 = [
+      {
+        id: 1,
+        title: t('services1.1.title'),
+        description: t('services1.1.description')
+      },
+      {
+        id: 2,
+        title: t('services1.2.title'),
+        description: t('services1.2.description')
+      },
+      {
+        id: 3,
+        title: t('services1.3.title'),
+        description: t('services1.3.description')
+      },
+      {
+        id: 4,
+        title: t('services1.4.title'),
+        description: t('services1.4.description')
+      },
+      {
+        id: 5,
+        title: t('services1.5.title'),
+        description: t('services1.5.description')
+      },
+      {
+        id: 6,
+        title: t('services1.6.title'),
+        description: t('services1.6.description')
+      },
+    ];
+    //const services = getServiceData();
+    
+    //const services2 = getServiceData2();
+    //const services3 = getServiceData3();
     const servicedata = {
         titleCover: `3BÖLÜ2`,
     };
@@ -113,14 +150,14 @@ function Service() {
     });
 }, []);
     return (
-        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
+        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: t('contactU') } }}>
             <Head>
-                <title>Service  | 3Bölü2</title>
+                <title>{t('menuContent.service')}  | 3Bölü2</title>
             </Head>
             {/*========== Header Normal ========== */}
-            <HeaderNormal backgroundColor="background-section" className="text-center">
+            <HeaderNormal backgroundColor="background-section" className="text-center mty-3">
                 <p className="subtitle p-relative line-shape">
-                    <span className="pl-10 pr-10 background-main">OUR SERVICES</span>
+                    <span className="pl-10 pr-10 background-main">{t('ourservices')}</span>
                 </p>
                 {/* <h1 className="title">
                     We are delivering beautiful <br/> digital products for you.
@@ -151,16 +188,16 @@ function Service() {
 
 
             {/*========== About Section  ==========*/}
-            <DsnGrid className="container section-margin" customGrid={{ desktop: '70% 30%' }} rowGapTablet={50} data-dsn-title="What We Do" ref={whatWeDoRef1}>
+            <DsnGrid className="container section-margin" customGrid={{ desktop: '70% 30%' }} rowGapTablet={50} data-dsn-title={t('whatwedo')} ref={whatWeDoRef1}>
                 <div>
                     <TitleCover>{servicedata.titleCover}</TitleCover>
-                    <TitleSection defaultSpace={false} description="What We Do" />
-                    {services.map((service, index) => (
-                        <div key={index} className="service-item">
+                    <TitleSection defaultSpace={false} description={t('whatwedo')} />
+                    {services1?.map((item) => (
+                        <div key={item.id} className="service-item">
                             <br></br>
                             <br></br>
-                            <h1 className="services neon-text">{service.title}</h1>
-                            <p className="services sub-neon-text">{service.description}</p>
+                            <h1 className="services neon-text">{item.title}</h1>
+                            <p className="services sub-neon-text">{item.description}</p>
                         </div>
                     ))}
                     <br></br>
@@ -186,36 +223,36 @@ function Service() {
             </div>
 
             {/*========== About Section 2 ==========*/}
-            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="Where We Do"  ref={whatWeDoRef2}>
+            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title={t('wherewedo')}  ref={whatWeDoRef2}>
                 <div className="services-container">
                     <TitleCover>{servicedata.titleCover}</TitleCover>
-                    <TitleSection defaultSpace={false} description="Where We Do" />
+                    <TitleSection defaultSpace={false} description={t('wherewedo')} />
                     <br></br>
                     <br></br>
-                    {services2.map((service, index) => (
-                        <div key={index} className="service-item">
-                            <h1 className="services neon-text">{service.title}</h1>
-                            <p className="services sub-neon-text">{service.description}</p>
+                    
+                        <div  className="service-item">
+                            <h1 className="services neon-text">{t('services2.title')}</h1>
+                            <p className="services sub-neon-text">{t('services2.description')}</p>
                             <br></br>
                             <br></br>
                         </div>
-                    ))}
+                    
                 </div>
             </DsnGrid>
-            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title="How We Do"  ref={whatWeDoRef3}>
+            <DsnGrid className="container section-margin" customGrid={{ desktop: "70% 30%" }} rowGapTablet={50} data-dsn-title={t('howwedo')}  ref={whatWeDoRef3}>
                 <div className="services-container">
                     <TitleCover>{servicedata.titleCover}</TitleCover>
-                    <TitleSection defaultSpace={false} description="How We Do" />
+                    <TitleSection defaultSpace={false} description={t('howwedo')} />
                     <br></br>
                     <br></br>
-                    {services3.map((service, index) => (
-                        <div key={index} className="service-item">
-                            <h1 className="services neon-text">{service.title}</h1>
-                            <p className="services sub-neon-text">{service.description}</p>
+                    
+                        <div  className="service-item">
+                            <h1 className="services neon-text">{t('services3.title')}</h1>
+                            <p className="services sub-neon-text">{t('services3.description')}</p>
                             <br></br>
                             <br></br>
                         </div>
-                    ))}
+                    
                 </div>
             </DsnGrid>
             {/*========== End About Section 2 ==========*/}

@@ -9,6 +9,7 @@ const MainBrand = styled.div`
     // width : ${props => props.width};
     width : 200px;
     max-width: 200px;
+    margin-left: 90%;
     height: ${props => props.height};
    }
        .v-light & , & {

@@ -10,6 +10,7 @@ import React from 'react';
 import Image from 'next/image';
 import brandLight from '../logo/logo4.png';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
@@ -20,6 +21,7 @@ function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
         nav.current.querySelectorAll('ul').forEach(item => item.classList.remove('open'));
     }, []);
     const logoRef = useRef(null);
+    const { t } = useTranslation();
     useEffect(() => {
     const logoElement = logoRef.current;
 
@@ -115,21 +117,21 @@ function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
 
             {children}
             {typeNave && <Toggle
-                textOpen={textOpen}
-                textMenu={textMenu}
-                textClose={textClose}
+                textOpen={t('toggle.open')}
+                textMenu={t('toggle.menu')}
+                textClose={t('toggle.close')}
                 targetNav={nav}
                 reserved={reserved}
                 setReserved={setReserved}
                 removeOpenMenu={removeOpenMenu}
             />}
 
-            <div
+            {/* <div
                 ref={logoRef}
                 style={{ width: "800px", height: "auto", marginTop: "0%", marginLeft: "-2%", transition: "transform 0.3s ease" }}
             >
                 <Image className="logo-light" src={brandLight} alt="Logo" width={800} />
-            </div>
+            </div> */}
 
 
         </header>
@@ -137,11 +139,11 @@ function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
     );
 }
 
-Navbar.defaultProps = {
-    textOpen: 'Open',
-    textMenu: 'Menu',
-    textClose: 'Close',
-};
+// Navbar.defaultProps = {
+//     textOpen: 'Open',
+//     textMenu: 'Menu',
+//     textClose: 'Close',
+// };
 
 
 const handleClickCloseMenu = (e) => {

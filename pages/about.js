@@ -28,39 +28,33 @@ import ModalContact from "../components/model-right/ModalContact";
 import Head from "next/head";
 import Footer from "../components/footer/Footer";
 import ImageWithTitles from "../components/Image/ImageWithTitles";
+import { useTranslation } from 'react-i18next';
+
 //import Error404 from "./error404";
 const HeroContent = {
-    //title: "Hello we, are <br/> Dsn Grid",
-    subtitle: `We’re a creative agency with an expertise in producing captivating films and commercials.`,
-    description: `3Bölü2 is a film and commercial production company that prioritizes creativity and originality, delivering extraordinary projects. From TV commercials and digital ads to short films, animation projects, brand promotions, music videos, and documentaries, we aim to create moments that make the audience think, feel, and admire.  <span class="mb-10 d-block" ></span>
-    Utilizing the best technology at every stage, from visual effects to sound design, we strive to bring our projects into the future.`,
-    // authorTitle: "SALVADOR DALI",
-    //authorJob: "Digital Artisit",
-    experienceNumber: "5",
-    experienceDescription: `YEARS OF \n EXPERIENCE`,
-    heroImage: '/img/about.jpg',
-    awards: [
-        { number: 22, description: `DIRECTORS` },
-        { number: 19, description: `SUTISFIED <br/> CUSTOMERS` },
-    ]
-};
+     heroImage: '/img/about.jpg',
+}
 function About({ className, ...restProps }) {
     TitleSection.defaultProps = {
         classDesc: "line-shape line-shape-before",
         classDesInner: "line-bg-right",
     };
-
+    const { t, i18n } = useTranslation();
+    const awards = [
+        { number: 23, description: t('hero.awards.directors') },
+        { number: 19, description: t('hero.awards.satisfiedCustomers') },
+    ];
     // const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
 
     // if (!isEnabled) {
-    //     return <Error404 />;
+    //     return <Error404 />; 
     //   }
 
 
     return (
-        <Layout >
+        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: t('contactU') } }}>
             <Head>
-                <title>About Us | 3Bölü2</title>
+                <title>{t('menuContent.about')} | 3Bölü2</title>
             </Head>
 
             {/* <div className="image-container-a">
@@ -111,23 +105,19 @@ function About({ className, ...restProps }) {
 
                         <FadeUpTrigger>
                             {(ref) => <>
-                                <h6 className="title-block border-bottom pb-30 mb-30" ref={ref}>{HeroContent.subtitle}</h6>
-                                <p className="mb-30" ref={ref} style={{ maxWidth: 570 }} dangerouslySetInnerHTML={{ __html: HeroContent.description }} />
+                                <h6 className="title-block border-bottom pb-30 mb-30" ref={ref}>{t('hero.subtitle')}</h6>
+                                <p className="mb-30" ref={ref} style={{ maxWidth: 570 }} dangerouslySetInnerHTML={{ __html: t('hero.description') }} />
                                 {/* <h5 className="sm-title-block line-shape line-shape-after mb-10" ref={ref}>{HeroContent.authorTitle}</h5> */}
                                 {/* <span className="sub-heading line-bg-left" ref={ref}>{HeroContent.authorJob}</span> */}
                                 <DsnGrid className="box-awards pt-30" col={2} colTablet={2} colGap={15} rowGap={15}>
-                                    {HeroContent.awards.map(
-                                        (item, index) =>
-                                            <div className="box-awards_item has-border " key={index}
-                                                ref={ref}>
-                                                <div className={`box-awards_inner background-section`}>
-                                                    <span className="has-animate-number title">{item.number}</span>
-                                                    <h5 className="sm-title-block"
-                                                        dangerouslySetInnerHTML={{ __html: item.description }} />
-                                                </div>
-
+                                    {awards.map((item, index) => (
+                                        <div className="box-awards_item has-border" key={index} ref={ref}>
+                                            <div className="box-awards_inner background-section">
+                                                <span className="has-animate-number title">{item.number}</span>
+                                                <h5 className="sm-title-block" dangerouslySetInnerHTML={{ __html: item.description }} />
                                             </div>
-                                    )}
+                                        </div>
+                                    ))}
 
 
                                 </DsnGrid>
@@ -155,9 +145,9 @@ function About({ className, ...restProps }) {
                                 <h5 className="number p-20">
                                     <span className="has-animate-number title"
                                         style={{ fontSize: "110px", lineHeight: "120px" }}>
-                                        {HeroContent.experienceNumber}
+                                        {t('hero.experienceNumber')}
                                     </span>
-                                    {HeroContent.experienceDescription && <span className="sm-title-block d-block" dangerouslySetInnerHTML={{ __html: HeroContent.experienceDescription }} />}
+                                    {t('hero.experienceDescription') && <span className="sm-title-block d-block" dangerouslySetInnerHTML={{ __html: t('hero.experienceDescription') }} />}
 
                                 </h5>
                             </div>

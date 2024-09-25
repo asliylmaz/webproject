@@ -12,6 +12,8 @@ import filters from '../data/filters';
 import Link from 'next/link';
 import Head from "next/head";
 import HeaderFull from "../components/header/HeaderFull";
+import { useTranslation } from 'react-i18next';
+import GalleryOne from '../components/gallery/GalleryOne';
 
 const images = [
     '/img/underco.jpg',
@@ -41,12 +43,22 @@ const images = [
     // Buraya daha fazla fotoğraf URL'si ekleyebilirsiniz
 ];
 
+// const videos = [
+//     {
+//       src: '/img/banners1.mp4', // Vimeo or YouTube video URL
+//     },
+//     {
+//       src: '/img/banners2.mp4', // Local video file path
+//     },
+//   ];
 const headerContent = {
     
     video: "/img/bg7.mp4",
 };
 
 function Corporate() {
+    const { t, i18n } = useTranslation();
+
     TitleSection.defaultProps = {
         classDesc: "line-shape line-shape-before",
         classDesInner: "line-bg-right",
@@ -55,7 +67,7 @@ function Corporate() {
 
         <Layout>
             <Head>
-                <title>Works | 3Bölü2</title>
+                <title>{t('menuContent.works')} | 3Bölü2</title>
             </Head>
 
             {/* <div className={styles.container}>
@@ -75,7 +87,8 @@ function Corporate() {
             >
 
             </HeaderFull>
-            <Gallery className="mt-15" images={images} />
+            {/* <GalleryOne className="mt-15" videos={videos} /> */}
+            <Gallery  images={images} />
 
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section" />

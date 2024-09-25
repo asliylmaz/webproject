@@ -14,35 +14,17 @@ import HeaderFull from "../components/header/HeaderFull";
 import Button from "../components/button/Button";
 import {getServiceData} from "../data/service";
 import ServiceSwiper from "../components/services/ServiceSwiper";
+import { useTranslation } from 'react-i18next';
+import GalleryOne from '../components/gallery/GalleryOne';
 
-
-const images = [
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    '/img/unconstruction.png',
-    // Buraya daha fazla fotoğraf URL'si ekleyebilirsiniz
-];
+const videos = [
+    {
+      src: '/img/banners1.mp4', // Vimeo or YouTube video URL
+    },
+    {
+      src: '/img/banners2.mp4', // Local video file path
+    },
+  ];
 
 const dataSlider = [{
     id: 1,
@@ -96,10 +78,12 @@ function Corporate() {
         classDesc: "line-shape line-shape-before",
         classDesInner: "line-bg-right",
     };
+    const { t, i18n } = useTranslation();
+
     return (
 
         <Layout>
-            {/* <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}></Layout> */}
+            {/* <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: t('contactU') } }}></Layout> */}
             <Head>
                 <title>3Bölü2</title>
             </Head>
@@ -111,7 +95,7 @@ function Corporate() {
                 overlay={6}
             >
                 <p className="mt-30 pb-30 border-bottom max-w570">
-                Guided by our core values, we strive to provide you with the best service. For more details, visit our About page.
+                {t('headerContentSubtitle')}
                 </p>
 
                 <div className="d-flex align-items-center mt-30">
@@ -121,7 +105,7 @@ function Corporate() {
                         borderStyle={"border-color-theme-color"}
                         borderRadius
                     >
-                        About Us
+                        {t('aboutus')}
                     </Button>
                     
                 </div>
@@ -138,7 +122,8 @@ function Corporate() {
                     </span>
                 ))}
             </div> */}
-            <h1 className="font-size-left">Featured Works</h1>
+            <h1 className="font-size-left">{t('feature')}</h1>
+            <GalleryOne videos={videos} />
             <Gallery />
 
             {/*========== Next Page ==========*/}
