@@ -24,70 +24,17 @@
 
 }
 
-@keyframes moveLeft {
-  0%{
-    opacity: 0;
-    transform: translatex(-100px);
-  }
-  80%{
-    transform: translatex(10px);
-  }
-  100%{
-    opacity:1;
-    transform: translatex(0);
-  }
-}
-
-@keyframes moveRight {
-  0%{
-    opacity: 0;
-    transform: translatex(100px);
-  }
-   80%{
-    transform: translatex(-10px);
-  }
-  100%{
-    opacity:1;
-    transform: translatex(0);
-  }
-}
-
-
 .site-header {
-  // position: fixed;
-  // top: -26px;
-  // width: 50%;
-  // //padding-top: 22px;
-  // padding-bottom: 22px;
-  // transition-property: background-color, padding-top, padding-bottom, transform;
-  // transition-duration: 0.5s;
-  // z-index: 97;
-
-
-  // position: fixed;
-  // top: -19px;
-  // width: 100%; /* Ensure full width */
-  // padding-bottom: 22px;
-  // transition: 0.5s;
-  // z-index: 1;
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,0.9780287114845938) 5%, rgba(0,0,0,0.9416141456582633) 15%, rgba(0,0,0,0.8463760504201681) 25%, rgba(0,0,0,0.7875525210084033) 35%, rgba(0,0,0,0.5942752100840336) 52%, rgba(0,0,0,0.23012955182072825) 73%, rgba(0,0,0,0) 100%);
   position: fixed;
-  top: -4%;
+  top: 0;
   width: 100%;
-  //padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 5px;
   transition-property: background-color, padding-top, padding-bottom, transform;
   transition-duration: 0.5s;
   z-index: 97;
-  height:100px;
-  //pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: normal;
-  
+
   > .p-relative.dsn-container {
     padding: 0;
     display: flex;
@@ -115,27 +62,11 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: normal;
+  justify-content: space-between;
 
   .main-logo {
-    margin-left: 0; 
     position: relative;
     z-index: 1;
-    text-align: left; /* Logo on the left by default */
-  }
-  @media only screen and (max-width: 768px) {
-    .main-logo {
-      margin-left: -26%; /* Reset margin on mobile */
-      text-align: center; /* Center logo on mobile */
-      flex: 1; /* Make logo take available space */
-      margin-top: 5% !important;
-    }
-
-    #navbar_toggle {
-      position: absolute;
-      right: 10px; /* Menu button to the right */
-      //top: 2px; /* Adjust top spacing */
-    }
   }
 
   ul.primary-nav {
@@ -143,8 +74,7 @@
     padding-left: 0;
     margin-bottom: 0;
     flex-wrap: wrap;
-    padding-bottom: 0;
-    margin-top: 6%;
+
 
     ul {
       position: absolute;
@@ -218,14 +148,11 @@
     &:not(.dsn-hamburger){
       padding-right: calc(#{$body-style-space} + 22px);
     }
-    .site-header{
-      width: 100% !important;
-    }
+
 
     .main-logo {
       width: $body-style-space;
       text-align: center;
-      left:0.5%;
 
       .main-brand {
         max-width: calc(#{$body-style-space} - 20px);

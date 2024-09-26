@@ -118,7 +118,6 @@ function MyApp({ Component, pageProps }) {
                 <PersistGate loading={null} persistor={persistor}>
                 <I18nextProvider i18n={i18n}>
                     <div id="__dsn_content" className={colorPage}>
-                        <LanguageSwitcher />
                         <EremiaMenu hamburger />
                         <Component {...pageProps} />
                         <OptionTheme lineTheme={[creativeLine, setCreativeLine]} pageColor={[colorPage, setColorPage]} />

@@ -67,7 +67,10 @@ export const Dsn = forwardRef((props: DsnGridProps, ref) => {
                 '--dsn-col-gap-mobile': gapPx(colGapMobile),
                 '--dsn-row-gap': gapPx(rowGap),
                 '--dsn-row-gap-tablet': gapPx(rowGapTablet),
-                '--dsn-row-gap-mobile': gapPx(rowGapMobile)
+                '--dsn-row-gap-mobile': gapPx(rowGapMobile),
+
+
+
 
             }}
             className={dsnCN('dsn-grid-layout', customGrid && "dsn-grid-custom", className)}
