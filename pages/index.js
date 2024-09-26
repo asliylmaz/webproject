@@ -16,8 +16,6 @@ import {getServiceData} from "../data/service";
 import ServiceSwiper from "../components/services/ServiceSwiper";
 import { useTranslation } from 'react-i18next';
 import GalleryOne from '../components/gallery/GalleryOne';
-import GalleryHome from '../components/gallery/GalleryHome';
-
 
 const videos = [
     {
@@ -28,52 +26,9 @@ const videos = [
     },
   ];
 
-const dataSlider = [{
-    id: 1,
-    title: `Craft Elegant <br /> Solutions`,
-    href: {
-        href: "#0",
-        target: "_blank",
-        rel: "nofollow"
-    },
-    buttonText: "LEARN MORE",
-    subtitle: `We're a design studio that believe in the ideas`,
-    src: '/img/agency.jpg',
-    overlay: 6,
-
-},
-{
-    id: 2,
-    title: `Crafting Digital <br/> Experiences`,
-
-    href: {
-        href: "#0",
-        target: "_blank",
-        rel: "nofollow"
-    },
-    buttonText: "LEARN MORE",
-    src: '/img/header.jpg',
-    subtitle: `we combine design, thinking and technical craft`,
-    overlay: 6,
-
-},
-{
-    id: 3,
-    title: `Creative <br/> Solutions`,
-    href: {
-        href: "#0",
-        target: "_blank",
-        rel: "nofollow"
-    },
-    buttonText: "LEARN MORE",
-    src: '/img/corporate.jpg',
-    subtitle: `We're a design studio that believe in the ideas`,
-    overlay: 6
-},
-]
 const headerContent = {
     title: `Every Story is a Masterpiece!`,
-    video: "/img/bannerHome.mp4",
+    video: "/img/deneme.mp4",
 };
 function Corporate() {
     TitleSection.defaultProps = {
@@ -91,7 +46,7 @@ function Corporate() {
             </Head>
 
             <HeaderFull
-                className="dsn-container mty-10"
+                className="dsn-container"
                 fullWidth
                 heroContent={headerContent}
                 overlay={6}
@@ -126,7 +81,7 @@ function Corporate() {
             </div> */}
             <h1 className="font-size-left">{t('feature')}</h1>
             <GalleryOne videos={videos} />
-            <GalleryHome />
+            <Gallery />
 
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section" />

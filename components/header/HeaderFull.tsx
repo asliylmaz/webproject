@@ -112,14 +112,14 @@ function HeaderFull({
                     top: 0;
                     left: 0;
                     width: 100%;
-                    height: 100%;
+                    height: 100vh;
                     overflow: hidden;
                     z-index: -1;
                 }
 
                 .bg-video {
                     position: absolute;
-                    top: 50%;
+                    top: 375px;
                     left: 50%;
                     width: 100%;
                     height: 100%;

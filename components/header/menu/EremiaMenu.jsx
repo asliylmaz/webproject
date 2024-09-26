@@ -34,7 +34,7 @@ const EremiaMenu = ({ hamburger }) => {
     return (
         <Navbar hamburger={hamburger}>
             <Navbar.Brand href={"/"} >
-                  <Logo width="500px" height="auto" href="/" />  
+                  <Logo width="100px" height="auto" href="/" />  
             </Navbar.Brand>
 
             <Navbar.Collapse cover="Menu">
