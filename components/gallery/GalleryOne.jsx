@@ -20,8 +20,6 @@ const GalleryOne = () => {
       coverImg: '/img/gs1.png', // Kapak resmi
     },
   ];
-<<<<<<< HEAD
-=======
   useEffect(() => {
     // Vimeo API'den klasör içerisindeki videoları alıyoruz
     axios({
@@ -43,7 +41,6 @@ const GalleryOne = () => {
         console.error("An error occurred in the API call:", error);
       });
   }, [folderId]); // folderId'yi bağımlılığa ekliyoruz
->>>>>>> bigVideos
 
   useEffect(() => {
     if (window.innerWidth < 768) return;
@@ -117,37 +114,6 @@ const GalleryOne = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div ref={galleryRef} className={styles['gallery-containerOne']}>
-      {videoData.map((data, index) => (
-        <div key={index} className={styles['full-width']}>
-          <img
-            src={data.coverImg}
-            alt={`Thumbnail for video ${index + 1}`}
-            className={styles['video-thumbnailOne']}
-            onClick={() => handleImageClick(data.videoSrc)}
-            style={{
-              transition: 'transform 0.3s ease-in-out',
-            }}
-            onMouseEnter={(e) => {
-              const target = e.currentTarget;
-              if (target) {
-                target.hoverTimeout = setTimeout(() => {
-                  target.style.transform = 'scale(1.1)'; // Üzerine gelince büyüme
-                }, 500); // 500ms sonra büyütme
-              }
-            }}
-            onMouseLeave={(e) => {
-              const target = e.currentTarget;
-              if (target) {
-                clearTimeout(target.hoverTimeout);
-                target.style.transform = 'scale(1)'; // Fare uzaklaşınca eski boyutuna dön
-              }
-            }}
-          />
-        </div>
-      ))}
-=======
     <div ref={galleryRef} className={styles['gallery-container']}>
       {videos.length > 0 ? (
         videos.map((video, index) => (
@@ -188,7 +154,6 @@ const GalleryOne = () => {
       ) : (
         <p></p>
       )}
->>>>>>> bigVideos
     </div>
   );
 };
