@@ -1,139 +1,102 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Layout from "../layout/Layout";
+import TitleSection from "../components/heading/TitleSection";
+import DsnGrid from "../layout/DsnGrid";
+import NextPage from "../components/next/NextPage";
+import Footer from "../components/footer/Footer";
+import List from "../components/list/List";
+import GalleryHome from '../components/gallery/GalleryHome';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import filters from '../data/filters';
+import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
+import HeaderFull from "../components/header/HeaderFull";
+import Button from "../components/button/Button";
+import {getServiceData} from "../data/service";
+import ServiceSwiper from "../components/services/ServiceSwiper";
+import { useTranslation } from 'react-i18next';
+import GalleryOne from '../components/gallery/GalleryOne';
 
-function Home() {
-    // Countdown logic
-    const [timeLeft, setTimeLeft] = useState({});
+const videos = [
+    {
+      src: '/img/banners1.mp4', // Vimeo or YouTube video URL
+    },
+    {
+      src: '/img/banners2.mp4', // Local video file path
+    },
+  ];
 
-    useEffect(() => {
-        const calculateTimeLeft = () => {
-            const targetDate = new Date('2024-09-28T00:00:00');
-            const now = new Date();
-            const difference = targetDate - now;
-
-            let timeLeft = {};
-
-            if (difference > 0) {
-                timeLeft = {
-                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                    minutes: Math.floor((difference / 1000 / 60) % 60),
-                    seconds: Math.floor((difference / 1000) % 60),
-                };
-            }
-
-            return timeLeft;
-        };
-
-        setTimeLeft(calculateTimeLeft());
-
-        const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
-        }, 1000);
-
-        return () => clearInterval(timer);
-    }, []);
+const headerContent = {
+    title: `Every Story is a Masterpiece!`,
+    video: "/img/deneme.mp4",
+};
+function Corporate() {
+    TitleSection.defaultProps = {
+        classDesc: "line-shape line-shape-before",
+        classDesInner: "line-bg-right",
+    };
+    const { t, i18n } = useTranslation();
 
     return (
-        <div
-            className="align-items-center justify-content-center text-center"
-            style={{
-                position: 'relative',
-                width: '100vw',
-                height: '100vh',
-                overflow: 'hidden',
-                backgroundColor: '#fff',
-            }}
-        >
+
+        <Layout>
+            {/* <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: t('contactU') } }}></Layout> */}
             <Head>
-                <title>3bolu2 | Coming Soon</title>
+                <title>3Bölü2</title>
             </Head>
 
-            {/* Logo */}
-            <img
-                src="/img/ucboluiki.png"
-                alt="Logo"
-                style={{
-                    position: 'absolute',
-                    top: '15%', // Move the logo towards the top
-                    left: '50%', // Center horizontally
-                    width: '200px', // Set the width of the logo
-                    zIndex: '1000',
-                    transform: 'translate(-50%, -50%)', // Center the logo
-                }}
-            />
-
-            {/* Coming Soon Text */}
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '40%', // Adjust position under the logo
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    zIndex: '1000',
-                }}
+            <HeaderFull
+                className="dsn-container"
+                fullWidth
+                heroContent={headerContent}
+                overlay={6}
             >
-               <div class="row hero-banner">
-                  <h1 class="hero-banner__title hero-banner__stroked-title">Under Construction</h1>
-                  <p class="hero-banner__subtitle">Coming Soon</p>
+                <p className="mt-30 pb-30 border-bottom max-w570">
+                {t('headerContentSubtitle')}
+                </p>
+
+                <div className="d-flex align-items-center mt-30">
+                    <Button
+                        href={"/about"}
+                        className="mr-15 line-head"
+                        borderStyle={"border-color-theme-color"}
+                        borderRadius
+                    >
+                        {t('aboutus')}
+                    </Button>
+                    
                 </div>
-            </div>
+            </HeaderFull>
 
-            {/* Video Background */}
-            <div
-                className="video-container"
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100vw',
-                    height: '100vh',
-                    overflow: 'hidden',
-                }}
-            >
-                <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        minWidth: '100%',
-                        minHeight: '100%',
-                        width: 'auto',
-                        height: 'auto',
-                        zIndex: '0', // Behind content
-                        transform: 'translate(-50%, -50%)',
-                        objectFit: 'cover', // Ensure the video covers the whole screen
-                        objectPosition: 'center', // Focus the center of the video
-                    }}
-                >
-                    <source src="/img/bg2.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
 
-            {/* Countdown Timer at the Bottom */}
-            <div 
-                style={{
-                    position: 'absolute',
-                    bottom: '5%', // Center near the bottom
-                    left: '50%',
-                    transform: 'translate(-50%, 0)',
-                    color: '#fff',
-                    fontSize: '1.4rem',
-                    zIndex: '1000',
-                    textAlign: 'center',
-                }}
-            >
-                <div style={{ fontFamily: "'Courier New', monospace" }}>
-                    {timeLeft.days || 0}d {timeLeft.hours || 0}h {timeLeft.minutes || 0}m {timeLeft.seconds || 0}s
-                </div>
-            </div>
-        </div>
+
+           
+            {/* <div className={styles.containerD}>
+                {filters.map((filter, index) => (
+                    <span key={index}>
+                        <p  className={styles.neonTextD}>
+                            {filter.name}
+                        </p>
+                    </span>
+                ))}
+            </div> */}
+            <h1 className="font-size-left">{t('feature')}</h1>
+            <GalleryOne videos={videos} />
+            <GalleryHome />
+
+            {/*========== Next Page ==========*/}
+            <NextPage className="section-padding border-top background-section" />
+            {/*========== End Next Page ==========*/}
+
+            {/*========== Footer ==========*/}
+            <Footer className="background-section" />
+            {/*========== End Footer ==========*/}
+
+        </Layout>
+
     );
 }
 
-export default Home;
+export default Corporate;
+
+

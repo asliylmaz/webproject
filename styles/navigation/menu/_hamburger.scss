@@ -138,6 +138,7 @@ ul {
 
 
 &.dsn-open {
+  z-index: 1000;
   .menu-cover-title {
     transition-delay: 1s;
     opacity: 0.03;

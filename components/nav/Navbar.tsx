@@ -1,11 +1,16 @@
-import  {useCallback, useEffect, useRef, useState} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Toggle from './toggle';
 import Link from "next/link";
-import {dsnCN} from "../../hooks/helper";
-import {LinkProps} from "next/dist/client/link";
+import { dsnCN } from "../../hooks/helper";
+import { LinkProps } from "next/dist/client/link";
 import Dropdown from './dropdown';
-import {gsap} from "gsap";
-import DsnLink, {LinkDsnProps} from "../../hooks/DsnLink";
+import { gsap } from "gsap";
+import DsnLink, { LinkDsnProps } from "../../hooks/DsnLink";
+import React from 'react';
+import Image from 'next/image';
+import brandLight from '../logo/logo4.png';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 function Navbar({children, textOpen, textMenu, textClose, hamburger}) {
     const nav = useRef(null);
@@ -131,6 +136,7 @@ Navbar.Collapse = Collapse
 export const Nav = ({children, className, ...restProps}) => {
     return (
         <ul id="dsn-primary-list" className={dsnCN('primary-nav h2', className)} {...restProps} >{children} </ul>
+        
     );
 };
 

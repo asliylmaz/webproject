@@ -7,7 +7,7 @@
 
   .toggle-icon {
     --width-icon: 25px;
-    margin-right: 10px;
+    margin-right: -10px;
 
     .toggle-line {
       position: relative;
@@ -15,7 +15,6 @@
       background-color: $heading-color;
       width: 25px;
       transition: 0.5s;
-
 
       &:not(:first-child) {
         margin-top: 5px;
@@ -43,11 +42,34 @@
 
   }
 
+  /* Web'de hover durumunda mobil görünüm için */
+  &:hover .toggle-icon .toggle-line {
+    background-color: $heading-color; /* Hover'da çizgi rengi */
+    opacity: 1; /* Çizgilerin görünürlüğü */
+  }
+
+  &.open .toggle-icon .toggle-line:nth-of-type(1) {
+    transform: translateY(7px) rotate(45deg); /* Çarpıya dönüşen üst çizgi */
+  }
+
+  &.open .toggle-icon .toggle-line:nth-of-type(2) {
+    opacity: 0; /* Orta çizgi kaybolur */
+    transition: opacity 0.3s ease; /* Daha hızlı kaybolma */
+  }
+
+  &.open .toggle-icon .toggle-line:nth-of-type(3) {
+    transform: translateY(-7px) rotate(-45deg); /* Çarpıya dönüşen alt çizgi */
+  }
+
   .toggle-text {
     position: relative;
     --animate-trans: translateY(5px) rotateX(75deg);
     min-width: 43px;
     color: $heading-color;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease; /* Geçişi düzenle */
 
     .text-open, .text-close {
       position: absolute;
@@ -58,54 +80,28 @@
         opacity: 0;
         visibility: hidden;
         transform: var(--animate-trans);
-
+        transition: opacity 0.5s, transform 0.5s ease; /* Metin için geçişler */
       }
     }
 
-    .text-open, .text-close, .text-menu {
-      overflow: hidden;
-      will-change: transform;
-
-      .char {
-        will-change: transform;
-        transition-property: opacity, visibility, transform;
-        transition-duration: 0.5s;
-        transition-timing-function: $easeInOutBack;
-        @include transition-delay;
-      }
+    /* Hamburger menü (açık değilken) */
+    &:not(.open) .text-open .char {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
     }
-  }
 
-  &:hover {
-    .toggle-line {
-      --trans-icon: scale(0.2, 1.7);
-
-      &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3) {
-        transform: var(--trans-icon);
-        border-radius: 3px;
-      }
-
-      &:nth-of-type(1) {
-        transform: var(--trans-icon) translateY(4px);
-      }
-
-      &:nth-of-type(3) {
-        transform: var(--trans-icon) translateY(-4px);
-      }
+    /* Çarpı (açıkken) */
+    &.open .text-close .char {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
     }
 
     .text-menu .char {
       opacity: 0;
       visibility: hidden;
       transform: var(--animate-trans);
-    }
-
-    &:not(.open) .text-open, &.open .text-close {
-      .char {
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-      }
     }
   }
 }

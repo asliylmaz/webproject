@@ -1,16 +1,16 @@
-import {dsnCN} from "../../hooks/helper";
+import { dsnCN } from "../../hooks/helper";
+import styles from '../../styles/gallery.module.scss';
+import { useTranslation } from 'react-i18next';
 
-function Copyright({className, ...restProps}) {
+function Copyright({ className, ...restProps }) {
+    const { t, i18n } = useTranslation();
     return (
-        <h5 className={dsnCN(className)} {...restProps}>
-            {new Date().getFullYear()} © Made with <span className="love">♥</span>by
-            <a className="link-hover" data-hover-text="Design Grid." target="_blank"
-               rel="nofollow"
-               href="https://themeforest.net/user/design_grid/portfolio/">Design
-                Grid.</a>
+        <h5 className={dsnCN(className, styles['copyright-text'])} {...restProps}>
+            ©{new Date().getFullYear()} 3BÖLÜ2
+            <br />
+            <a>{t('allrightreserved')}</a>
         </h5>
     );
 }
-
 
 export default Copyright;

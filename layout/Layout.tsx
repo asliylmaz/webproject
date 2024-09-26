@@ -4,11 +4,13 @@ import dataAttr from "../hooks/dataAttr";
 import SocialOne from "../components/social/SocialOne";
 import MainScrollBar from "./MainScrollBar";
 import ModalRight from "../components/model-right/ModalRight.jsx";
+import PageLogo from "../components/header/pageLogo/pageLogo";
 
 
 import {useSelector} from "react-redux";
 import {RootState} from "../features/store";
 import {ScrollbarOptions} from "smooth-scrollbar/interfaces";
+import React from 'react';
 
 
 interface LayoutProps {
@@ -67,16 +69,18 @@ function Layout({className, children, tag: Tag = "div", activeScrollbar, options
 
     return (
         <Tag id="main_layout"
-             className={dsnCN( 'background-main', className)} {...restProps}>
+            className={dsnCN('background-main', className)} {...restProps}>
             <div className={dsnCN("main-content", activeScrollbar && "dsn-main-scrollbar")}>
                 {activeScrollbar ? <MainScrollBar options={optionsScrollbar}><div id="main-content" className="p-relative">{children}</div></MainScrollBar> : <div id="main-content" className="p-relative">{children}</div>}
             </div>
 
-            <div className="line-border-style w-100 h-100"/>
+
             {/*<SocialOne/>*/}
-            <div className="dsn-paginate-right-page" ref={paginateRight}/>
+            <div className="dsn-paginate-right-page" ref={paginateRight} />
             {modelRight && <ModalRight {...modelRight.propsModal}>{modelRight.children}</ModalRight>}
         </Tag>
+        
+
     );
 }
 

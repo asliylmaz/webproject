@@ -11,22 +11,25 @@ import NextPage2 from "../components/next/NextPage2";
 import Footer from "../components/footer/Footer";
 import Head from "next/head";
 import Copyright from "../components/footer/Copyright"
-import Error404 from "./error404";
+//import Error404 from "./error404";
+import { useTranslation } from 'react-i18next';
 
 function About() {
     TitleSection.defaultProps = {
         classDesc: "line-shape line-shape-before",
         classDesInner: "line-bg-right",
     };
-    const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
+    const { t, i18n } = useTranslation();
 
-    if (!isEnabled) {
-        return <Error404 />;
-      }
+    // const isEnabled = false; // Sayfa görünürlüğünü kontrol eden değişken
+
+    // if (!isEnabled) {
+    //     return <Error404 />;
+    //   }
     return (
         <Layout>
             <Head>
-                <title>Contact Us | Creative Portfolio Multi-Purpose</title>
+                <title>{t('menuContent.contact')} | 3Bölü2</title>
             </Head>
             {/*========== Header Normal ========== 
             <HeaderNormal className="text-center">
@@ -49,18 +52,18 @@ function About() {
             <div className="section-margin container">
                 <DsnGrid col={2} colTablet={1}>
                     {/*<ContactForm />*/}
-                    <InfoBox className="align-self-center" />
+                    <InfoBox className="align-self-center mty-10" />
                     <InfoBoxTwo className="align-self-center" />
                 </DsnGrid>
             </div>
 
             {/*Start Map*/}
-            <Map
+            {/* <Map
                 mapKey="AIzaSyDMyAS2jdzj-vdgBIFaIStYOWJtSlghndg"
                 zoom={10}
                 height="80vh"
                 defaultCenter={{ lat: 30.0489206, lng: 31.258553 }}
-            />
+            /> */}
             {/*========== Start Next Page Section ==========
             <NextPage2 className={`background-section section-padding`} />*/}
             {/*========== End Next Page Section ==========*/}

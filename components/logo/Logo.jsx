@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import brandLight from './logo.png';
+import brandLight from '../../public/img/3bolu2logo.png';
 import brandDark from './logo-dark.png';
 import Image from "next/image";
 

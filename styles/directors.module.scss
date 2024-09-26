@@ -1,0 +1,239 @@
+/* styles/Directors.module.css */
+// .container {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     padding: 20px;
+//     background-color: #000;
+//     // display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     align-items: center;
+//     text-align: center;
+// }
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Yönetmen isimleri arasında boşluk bırakır */
+    padding: 10%;
+    //margin-top: -5%;
+    // padding-right: 0px;
+    // padding-left: 0px;
+    //background-color: #000;
+}
+
+/* Neon effect only on hover */
+.neonText {
+    font-family: 'Arial', sans-serif;
+    font-size: 60px;
+    color: #bbb;
+    text-align: left;
+    margin-left: -10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    /* Add smooth transition */
+}
+.containerD {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 25px; /* Yönetmen isimleri arasında boşluk bırakır */
+    padding: 10%;
+    //background-color: #000;
+}
+.neonTextD {
+    font-family: 'Arial', sans-serif;
+    font-size: 60px;
+    color: #bbb;
+    text-align: left;
+    margin-left: 9px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    /* Add smooth transition */
+}
+.filter {
+    font-family: 'Arial', sans-serif;
+    font-size: 15px;
+    color: #bbb;
+    text-align: left;
+    margin-left: -10px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    /* Add smooth transition */
+}
+@media only screen and (max-width: 768px) {
+    .neonText{  
+    font-size: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #bbb;
+    text-align: left;
+    margin-left: -10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    }
+    .slash{
+       display: none;
+    }
+    .container {
+        margin-top: 25% !important;
+        height: auto; // Otomatik yükseklik
+        padding: 5%;
+    }
+    .backgroundVideo {
+        min-height: 50vh; // Minimum yükseklik, yazı kısmını kaplaması için
+        height: auto; // Otomatik yükseklik
+    }
+    .names {
+        text-align: center; // Metni ortalamak için
+        width: 100%; // Tam genişlik
+    }
+    .neonTextD {
+        margin-bottom:5px;
+        font-size: 38px !important;
+        text-align: center;
+    }
+}
+.neonTextD:hover {
+    /* Neon effect on hover */
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(255, 255, 255, 0.3);
+}
+.filter:hover {
+    /* Neon effect on hover */
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(255, 255, 255, 0.3);
+}
+.neonText:hover {
+    /* Neon effect on hover */
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(255, 255, 255, 0.3);
+}
+.slash {
+    margin-left: 10px;
+    font-size: xx-large; /* Makes sure the slash is the same size as the text */
+    color:#fff;
+}
+// .backgroundVideo {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     z-index: -1;
+//     margin-top:-5%;
+// }
+
+.names {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center; // Metni ortalama
+}
+
+/*directors page title*/
+.director-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Video üzerinde yer alması için */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Ortalamak için */
+    width: 100%;
+    z-index: 1; /* Video'nun üstünde olmasını sağlamak için */
+  }
+  .director-name {
+    position: relative;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: calc(20px + 5vw);
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      text-shadow: 0 0 0.15em #a7a7a7;
+      user-select: none;
+      white-space: nowrap;
+      filter: blur(0.007em);
+      animation: shake 2.5s linear forwards;
+  }
+  .director-name span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    -webkit-clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+            clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+  }
+  .director-name::before,
+  .director-name::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .director-name::before {
+    animation: crack1 1.5s linear forwards;
+    -webkit-clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+  }
+  .director-name::after {
+    animation: crack2 2.5s linear forwards;
+    -webkit-clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+    clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+  }
+  
+  @keyframes shake {
+    5%, 15%, 25%, 35%, 55%, 65%, 75%, 95% {
+        filter: blur(0.018em);
+        transform: translateY(0.018em) rotate(0deg);
+    }
+    10%, 30%, 40%, 50%, 70%, 80%, 90% {
+        filter: blur(0.01em);
+        transform: translateY(-0.018em) rotate(0deg);
+    }
+    20%, 60% {
+        filter: blur(0.03em);
+        transform: translate(-0.018em, 0.018em) rotate(0deg);
+    }
+    45%, 85% {
+        filter: blur(0.03em);
+        transform: translate(0.018em, -0.018em) rotate(0deg);
+    }
+    100% {
+        filter: blur(0.007em);
+        transform: translate(0) rotate(-0.5deg);
+    }
+  }
+  
+  @keyframes crack1 {
+    0%, 95% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(-51%, -48%);
+    }
+  }
+  
+  @keyframes crack2 {
+    0%, 95% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(-49%, -53%);
+    }
+  }

@@ -1,0 +1,41 @@
+.languageSwitcher {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 1000;
+  display: flex; /* Butonların yan yana durmasını sağlar */
+  flex-wrap: nowrap; /* Butonların alt alta geçmesini engeller */
+}
+
+.languageSwitcher button {
+  background-color: #181818;
+  border: none;
+  opacity: 0.8;
+  color: white;
+  font-size: 1.2rem;
+  margin: 0 5px; /* Butonlar arasındaki mesafeyi ayarladık */
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.languageSwitcher button:hover {
+  background-color: #555;
+}
+
+/* Küçük ekranlar için düzenlemeler */
+@media (max-width: 768px) {
+  .languageSwitcher button {
+    padding: 8px 12px; /* Küçük ekranlarda butonların boyutunu küçülttük */
+    font-size: 0.9rem; /* Yazı boyutunu küçülttük */
+    margin: 0 3px; /* Butonlar arasındaki mesafeyi daralttık */
+  }
+}
+
+@media (max-width: 480px) {
+  .languageSwitcher button {
+    padding: 6px 10px; /* Daha küçük ekranlar için buton boyutlarını daha da küçülttük */
+    font-size: 0.8rem; /* Yazı boyutunu daha da küçülttük */
+    margin: 0 2px; /* Butonlar arasındaki mesafeyi daha da daralttık */
+  }
+}
