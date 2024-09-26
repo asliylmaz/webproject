@@ -4,12 +4,19 @@ import Navbar, { Nav } from "../../nav/Navbar";
 import MenuContent from "./MenuContent";
 import Logo from "../../logo/Logo";
 import PageLogo from "../pageLogo/pageLogo";
+import style from "../../../styles/LanguageSwitcher.module.scss";
+import { useRouter } from 'next/router';
 
 
 
 const EremiaMenu = ({ hamburger }) => {
-    const { t } = useTranslation(); // Use the translation hook
-    const menuContent = [
+    const router = useRouter();
+    const { t,i18n } = useTranslation(); // useTranslation hook'u ile dil kontrolü
+
+    const changeLanguage = (lng) => {
+        router.push(router.pathname, router.asPath, { locale: lng });
+        i18n.changeLanguage(lng); // i18n üzerinden dil değişimi
+    };    const menuContent = [
         { name: t('menuContent.home'), href: "/" },
         { name: t('menuContent.service'), href: "/service" },
         { name: t('menuContent.works'), href: "/works" },
@@ -42,6 +49,15 @@ const EremiaMenu = ({ hamburger }) => {
                     {menuContent.map(item => getSubMenu(item))}
                 </Nav>
                 <MenuContent className="section-margin"/>
+                {/* Butonlar en alta ekleniyor */}
+                <div className={style.languageSwitcher}>
+            <button onClick={() => changeLanguage('en')} disabled={i18n.language === 'en'}>
+                EN
+            </button>
+            <button onClick={() => changeLanguage('tr')} disabled={i18n.language === 'tr'}>
+                TR
+            </button>
+        </div>
             </Navbar.Collapse>
         </Navbar>
     );
