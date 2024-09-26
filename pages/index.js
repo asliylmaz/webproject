@@ -1,14 +1,14 @@
 import React from "react";
 import Layout from "../layout/Layout";
 import TitleSection from "../components/heading/TitleSection";
-import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
+import DsnGrid from "../layout/DsnGrid";
 import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
-import ModalContact from "../components/model-right/ModalContact";
-import Gallery from '../components/gallery/Gallery';
-import styles from '../styles/directors.module.scss';
+import List from "../components/list/List";
+import GalleryHome from '../components/gallery/GalleryHome';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import filters from '../data/filters';
-import Link from 'next/link';
+import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import HeaderFull from "../components/header/HeaderFull";
 import Button from "../components/button/Button";
@@ -68,6 +68,7 @@ function Corporate() {
                     
                 </div>
             </HeaderFull>
+
 
 
            

@@ -73,7 +73,13 @@ function HeaderFull({
     const animateText = useRef();
     const q = gsap.utils.selector(header);
     const { category, title, src, video, subtitle } = heroContent;
-
+    // Function to scroll to bottom
+    const scrollToBottom = () => {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth',
+        });
+    };
     useEffect(() => {
         gsap.fromTo(q('.post-info span'), { y: -15, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.1 });
         gsap.fromTo(q('.text-head , .dsn-description'), { y: 15, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.1 });
@@ -156,7 +162,9 @@ function HeaderFull({
                         {children && <div className="dsn-description mt-30">{children}</div>}
                     </div>
                 </div>
+            
             )}
+        
         </header>
     );
 }

@@ -119,6 +119,7 @@ function MyApp({ Component, pageProps }) {
                 <I18nextProvider i18n={i18n}>
                     <div id="__dsn_content" className={colorPage}>
                         <EremiaMenu hamburger />
+                        <LanguageSwitcher />
                         <Component {...pageProps} />
                         <OptionTheme lineTheme={[creativeLine, setCreativeLine]} pageColor={[colorPage, setColorPage]} />
                         <RightScrollTop options={{ duration: 1.5, ease: "power4.inOut" }} />
