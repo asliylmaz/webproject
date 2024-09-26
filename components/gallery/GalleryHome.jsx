@@ -9,19 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 const GalleryOne = () => {
   const galleryRef = useRef(null);
   const [videos, setVideos] = React.useState([]);
- const folderId="22254145"; // Klasör ID'si
-  const videoData = [
-    {
-      videoSrc: '/img/banners1.mp4',
-      coverImg: '/img/fb1.png', // Kapak resmi
-    },
-    {
-      videoSrc: '/img/banners2.mp4',
-      coverImg: '/img/gs1.png', // Kapak resmi
-    },
-  ];
-<<<<<<< HEAD
-=======
+ const folderId="22254297"; // Klasör ID'si
+ 
   useEffect(() => {
     // Vimeo API'den klasör içerisindeki videoları alıyoruz
     axios({
@@ -43,23 +32,23 @@ const GalleryOne = () => {
         console.error("An error occurred in the API call:", error);
       });
   }, [folderId]); // folderId'yi bağımlılığa ekliyoruz
->>>>>>> bigVideos
 
   useEffect(() => {
     if (window.innerWidth < 768) return;
-
-    const items = galleryRef.current.querySelectorAll(`.${styles['full-width']}`);
+  
+    const items = galleryRef.current.querySelectorAll(`.${styles['gallery-item']}`);
     items.forEach((item, index) => {
+      // Daha uzun bir mesafe için directionX değerini artırıyoruz
       const directionX = index % 2 === 0 ? -300 : 300; // Çift index'ler soldan, tek index'ler sağdan gelecek
-
+  
       gsap.fromTo(
         item,
-        { opacity: 0, x: directionX }, // x ekseninde daha uzun mesafe
+        { opacity: 0, x: directionX }, // Daha uzun mesafede x ekseninde hareket
         {
           opacity: 1,
           x: 0,
-          duration: 0.5, // Daha hızlı geçiş
-          ease: 'power3.out',
+          duration: 0.5, // Daha hızlı geçiş için süreyi kısalttık
+          ease: 'power3.out', // Daha hızlı bir easing kullanıyoruz
           scrollTrigger: {
             trigger: item,
             start: 'top bottom',
@@ -68,11 +57,14 @@ const GalleryOne = () => {
         }
       );
     });
-  }, [videoData]);
+  }, [videos]);
+  
 
   const handleImageClick = (videoUrl) => {
+    // Arka planı bulanıklaştırmak için body'ye blur class'ı ekle
     document.body.classList.add('blurred-background');
 
+    // Resme tıklanınca video tam ekran oynat
     const iframeContainer = document.createElement('div');
     iframeContainer.style.position = 'fixed';
     iframeContainer.style.top = '0';
@@ -83,7 +75,7 @@ const GalleryOne = () => {
     iframeContainer.style.display = 'flex';
     iframeContainer.style.justifyContent = 'center';
     iframeContainer.style.alignItems = 'center';
-    iframeContainer.style.background = 'rgba(0, 0, 0, 0.9)';
+    iframeContainer.style.background = 'rgba(0, 0, 0, 0.9)'; // Arka planı hafif karartmak için
 
     const iframe = document.createElement('iframe');
     iframe.src = `${videoUrl}?autoplay=1&fullscreen=1`;
@@ -93,73 +85,46 @@ const GalleryOne = () => {
     iframe.allow = 'autoplay; fullscreen';
     iframe.allowFullscreen = true;
 
+    // Kapatma butonu oluştur
     const closeButton = document.createElement('img');
-    closeButton.src = '/img/close.png';
+    closeButton.src = '/img/close.png'; // close.png dosyasının yolunu buraya ekleyin
     closeButton.alt = 'Close';
     closeButton.style.position = 'absolute';
-    closeButton.style.top = '15px';
-    closeButton.style.right = '20px';
+    closeButton.style.top = '15px';  // Üstten 10px boşluk bırak
+    closeButton.style.right = '20px'; // Soldan 10px boşluk bırak
     closeButton.style.width = '40px';
     closeButton.style.height = '40px';
+    closeButton.style.zIndex = '10000';
     closeButton.style.cursor = 'pointer';
 
+    // iframe ve butonu div içine ekle
     iframeContainer.appendChild(iframe);
     iframeContainer.appendChild(closeButton);
     document.body.appendChild(iframeContainer);
 
+    // Kapatma butonuna tıklanınca iframe ve butonu kaldır
     closeButton.addEventListener('click', () => {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       }
       document.body.removeChild(iframeContainer);
-      document.body.classList.remove('blurred-background');
+      document.body.classList.remove('blurred-background'); // Bulanıklığı kaldır
     });
   };
 
   return (
-<<<<<<< HEAD
-    <div ref={galleryRef} className={styles['gallery-containerOne']}>
-      {videoData.map((data, index) => (
-        <div key={index} className={styles['full-width']}>
-          <img
-            src={data.coverImg}
-            alt={`Thumbnail for video ${index + 1}`}
-            className={styles['video-thumbnailOne']}
-            onClick={() => handleImageClick(data.videoSrc)}
-            style={{
-              transition: 'transform 0.3s ease-in-out',
-            }}
-            onMouseEnter={(e) => {
-              const target = e.currentTarget;
-              if (target) {
-                target.hoverTimeout = setTimeout(() => {
-                  target.style.transform = 'scale(1.1)'; // Üzerine gelince büyüme
-                }, 500); // 500ms sonra büyütme
-              }
-            }}
-            onMouseLeave={(e) => {
-              const target = e.currentTarget;
-              if (target) {
-                clearTimeout(target.hoverTimeout);
-                target.style.transform = 'scale(1)'; // Fare uzaklaşınca eski boyutuna dön
-              }
-            }}
-          />
-        </div>
-      ))}
-=======
     <div ref={galleryRef} className={styles['gallery-container']}>
       {videos.length > 0 ? (
         videos.map((video, index) => (
           <div
             key={index}
-            className={styles['full-width']}
+            className={styles['gallery-item']}
             onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
           >
             <img
               src={video.pictures.sizes[3].link} // Orta boyutlu bir thumbnail seçiyoruz
               alt={`Video thumbnail ${index + 1}`}
-              className={styles['video-thumbnailOne']}
+              className={styles['video-thumbnail']}
               style={{
                 transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
               }}              
@@ -188,7 +153,6 @@ const GalleryOne = () => {
       ) : (
         <p></p>
       )}
->>>>>>> bigVideos
     </div>
   );
 };
