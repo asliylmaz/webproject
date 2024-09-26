@@ -135,7 +135,7 @@ const Gallery = () => {
                     if (target) {
                       target.style.transform = 'scale(1.1)';
                     }
-                  }, 500); // 1 saniye bekleme süresi
+                  }, 800); // 1 saniye bekleme süresi
                 }
               }}
               onMouseLeave={(e) => {

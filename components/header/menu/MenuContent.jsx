@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 function MenuContent({className}) {
     const socialData = [
-        {link: "#0", name: "Dribbble."},
-        {link: "#0", name: "Behance."},
-        {link: "#0", name: "Linkedin."},
-        {link: "#0", name: "Twitter."}
+        {link: "https://www.instagram.com/3_bolu_2?igsh=dDJybDI0c2VoZnc2", name: "Instagram"},
+        // {link: "#0", name: "Behance."},
+        // {link: "#0", name: "Linkedin."},
+        // {link: "#0", name: "Twitter."}
     ];
     const { t, i18n } = useTranslation();
 

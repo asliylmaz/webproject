@@ -1,0 +1,38 @@
+// components/LoadingSpinner.module.scss
+.loadingSpinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; // Yükleme sırasında tam ekran kaplaması
+    margin-bottom: 10%;
+    width:180vh;
+}
+
+.spinner {
+    border: 8px solid #fff; /* Light gray */
+    border-top: 8px solid #e7e5e5; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .loadingSpinner {
+        width:80vh;
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px)  {
+    .loadingSpinner {
+        width:70vh;
+    }
+  }
+  @media (max-width: 768px) {
+    .loadingSpinner {
+        width:45vh;
+    }
+  }

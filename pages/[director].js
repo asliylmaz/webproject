@@ -10,6 +10,7 @@ import styles from '../styles/gallery.module.scss';
 import Player from '@vimeo/player';
 import { gsap } from 'gsap';
 import { useTranslation } from 'react-i18next';
+import LoadingSpinner from "../components/loading/LoadingSpinner";
 import directors from '../data/directors'; // Yönetmen verilerini import ediyoruz
 import DirectorHeader
     from "../components/header/DirectorHeader";
@@ -42,6 +43,7 @@ function getUserIdFromVimeoURL(vimeoURL) {
 }
 
 function DirectorDetails({ director }) {
+    const [loading, setLoading] = useState(true); // Loading durumu
     const [videos, setVideos] = useState([]); // Videoları tutacak state
     const [selectedVideo, setSelectedVideo] = useState(null); // Seçilen video
     const [showModal, setShowModal] = useState(false); // Modal'ı kontrol etmek için state
@@ -58,20 +60,23 @@ function DirectorDetails({ director }) {
                             Authorization: `Bearer 5078123016df2258c9b1ad437081e971`,
                         },
                     })
-                        .then((response) => {
-                            if (response.data && response.data.data) {
-                                setVideos(response.data.data); // Videoları state'e kaydediyoruz
-                            } else {
-                                console.error("Beklenen formatta video listesi bulunamadı.");
-                            }
-                        })
-                        .catch((error) => {
-                            console.error("Videolar alınırken bir hata oluştu:", error);
-                        });
+                    .then((response) => {
+                        if (response.data && response.data.data) {
+                            setVideos(response.data.data);
+                            setLoading(false); // Videolar yüklendiğinde loading'i kapat
+                        } else {
+                            console.error("Beklenen formatta video listesi bulunamadı.");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Videolar alınırken bir hata oluştu:", error);
+                        setLoading(false); // Hata durumunda da loading'i kapat
+                    });
                 }
             });
         } else {
             console.error("Vimeo linki bulunamadı.");
+            setLoading(false); // Vimeo linki yoksa loading'i kapat
         }
     }, [director]);
 
@@ -207,8 +212,12 @@ function DirectorDetails({ director }) {
                 )}
             </div> */}
             {/* Video galerisi */}
-            <div ref={directorsRef} className={styles['gallery-container']}>
-                {videos.length > 0 && (
+{/* Video galerisi */}
+<div ref={directorsRef} className={styles['gallery-containerD']}>
+    {loading ? ( // Eğer loading durumu true ise
+        <LoadingSpinner /> // Yükleme animasyonunu göster
+    ) : (
+                videos.length > 0 && (
                     videos.map((video, index) => (
                         <div
                             key={index}
@@ -224,18 +233,16 @@ function DirectorDetails({ director }) {
                                   }}              
                                   onMouseEnter={(e) => {
                                     const target = e.currentTarget;
-                                    // target'ın varlığını kontrol et
                                     if (target) {
                                       target.hoverTimeout = setTimeout(() => {
                                         if (target) {
                                           target.style.transform = 'scale(1.1)';
                                         }
-                                      }, 500); // 1 saniye bekleme süresi
+                                      }, 500);
                                     }
                                   }}
                                   onMouseLeave={(e) => {
                                     const target = e.currentTarget;
-                                    // target'ın varlığını kontrol et
                                     if (target) {
                                       clearTimeout(target.hoverTimeout);
                                       target.style.transform = 'scale(1.0)'; // Eski boyuta dön
@@ -244,6 +251,7 @@ function DirectorDetails({ director }) {
                             />
                         </div>
                     ))
+                )
                 )}
             </div>
 

@@ -114,7 +114,7 @@ const GalleryOne = () => {
   };
 
   return (
-    <div ref={galleryRef} className={styles['gallery-container']}>
+    <div ref={galleryRef} className={styles['gallery-containerOne']}>
       {videos.length > 0 ? (
         videos.map((video, index) => (
           <div
@@ -137,7 +137,7 @@ const GalleryOne = () => {
                     if (target) {
                       target.style.transform = 'scale(1.1)';
                     }
-                  }, 500); // 1 saniye bekleme süresi
+                  }, 800); // 1 saniye bekleme süresi
                 }
               }}
               onMouseLeave={(e) => {
