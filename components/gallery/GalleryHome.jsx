@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const GalleryOne = () => {
   const galleryRef = useRef(null);
   const [videos, setVideos] = React.useState([]);
+  //favaroiler hariç
  const folderId="22254297"; // Klasör ID'si
  
   useEffect(() => {

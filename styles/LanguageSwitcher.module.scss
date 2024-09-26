@@ -1,63 +1,41 @@
+.languageSwitcher {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 1000;
+  display: flex; /* Butonların yan yana durmasını sağlar */
+  flex-wrap: nowrap; /* Butonların alt alta geçmesini engeller */
+}
 
 .languageSwitcher button {
-  background-color: #5555557c;
+  background-color: #181818;
   border: none;
-  opacity: 0.5;
+  opacity: 0.8;
   color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  margin: 0 2px; /* Butonlar arasındaki mesafeyi azalttık */
+  font-size: 1.2rem;
+  margin: 0 5px; /* Butonlar arasındaki mesafeyi ayarladık */
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
-  text-decoration: none;
 }
 
 .languageSwitcher button:hover {
   background-color: #555;
-  text-decoration: underline;
 }
-@media (max-width: 540px) {
-  .languageSwitcher {
-    margin-right: 10%;
-    display: flex;
-    flex-direction: column; /* Butonları alt alta dizer */
-    justify-content: center; /* Dikeyde ortalamak için */
-    align-items: center; /* Yatayda ortalamak için */
-    bottom: 10px; /* Sayfanın en altına hizalamak için */
-    top: auto; /* Üstten konumu kaldır */
-    right: 0;
-    left: 0; /* Yatay ortalamak için */
-  }
 
+/* Küçük ekranlar için düzenlemeler */
+@media (max-width: 768px) {
   .languageSwitcher button {
-    margin: 5px 0; /* Butonlar arasındaki mesafeyi dikeyde ayarladık */
+    padding: 8px 12px; /* Küçük ekranlarda butonların boyutunu küçülttük */
+    font-size: 0.9rem; /* Yazı boyutunu küçülttük */
+    margin: 0 3px; /* Butonlar arasındaki mesafeyi daralttık */
   }
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1366px) {
-  .languageSwitcher {
-    display: flex;
-    flex-direction: column; /* Butonları alt alta dizer */
-    top: 10px; /* iPad ve tabletler için üst konumlandırma */
-    right: 10px;
-  }
-
+@media (max-width: 480px) {
   .languageSwitcher button {
-    margin: 5px 0; /* Butonlar arasındaki mesafeyi dikeyde ayarladık */
-  }
-}
-
-/* iPad Air ve iPad 10.2-inch (landscape ve portrait modları için) */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .languageSwitcher {
-    display: flex;
-    flex-direction: column; /* Butonları alt alta dizer */
-    top: 10px; /* Mobilde daha iyi bir hizalama için ayarlandı */
-    right: 10px;
-  }
-
-  .languageSwitcher button {
-    margin: 5px 0; /* Butonlar arasındaki mesafeyi dikeyde ayarladık */
+    padding: 6px 10px; /* Daha küçük ekranlar için buton boyutlarını daha da küçülttük */
+    font-size: 0.8rem; /* Yazı boyutunu daha da küçülttük */
+    margin: 0 2px; /* Butonlar arasındaki mesafeyi daha da daralttık */
   }
 }
