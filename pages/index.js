@@ -127,17 +127,6 @@ function Corporate() {
                 </div>
             </HeaderFull>
 
-
-           
-            {/* <div className={styles.containerD}>
-                {filters.map((filter, index) => (
-                    <span key={index}>
-                        <p  className={styles.neonTextD}>
-                            {filter.name}
-                        </p>
-                    </span>
-                ))}
-            </div> */}
             <h1 className="font-size-left">Featured Works</h1>
             <Gallery />
 

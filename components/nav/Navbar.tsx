@@ -21,42 +21,42 @@ function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
     }, []);
     const logoRef = useRef(null);
     useEffect(() => {
-    const logoElement = logoRef.current;
-
-    if (logoElement) {
-        const shrinkTrigger = ScrollTrigger.create({
-            trigger: logoElement,
-            start: "top 140px",
-            end: "bottom top",
-            scrub: true,
-            onUpdate: (self) => {
-                const progress = self.progress;
-                const scale = gsap.utils.interpolate(1, 0.00001, progress);
-                gsap.set(logoElement, {
-                    scale: scale,
-                    transformOrigin: "top left"
-                });
-            }
-        });
-
-        const growTrigger = ScrollTrigger.create({
-            trigger: logoElement,
-            start: "top top", // Gözükme anı
-            onEnter: () => {
-                gsap.to(logoElement, { scale: 1, duration: 0.5 });
-            },
-            onLeaveBack: () => {
-                gsap.to(logoElement, { scale: 0.00001, duration: 0.5 });
-            }
-        });
-
-        return () => {
-            shrinkTrigger.kill();
-            growTrigger.kill();
-        };
-    }
-}, []);
-
+        const logoElement = logoRef.current;
+    
+        if (logoElement) {
+            const shrinkTrigger = ScrollTrigger.create({
+                trigger: logoElement,
+                start: "top 140px",
+                end: "bottom top",
+                scrub: true,
+                onUpdate: (self) => {
+                    const progress = self.progress;
+                    const scale = gsap.utils.interpolate(1, 0.1, progress); // 0.1 yerine 0.5, yarı boyuta küçülecek
+                    gsap.set(logoElement, {
+                        scale: scale,
+                        transformOrigin: "top left"
+                    });
+                }
+            });
+    
+            const growTrigger = ScrollTrigger.create({
+                trigger: logoElement,
+                start: "top top", // Gözükme anı
+                onEnter: () => {
+                    gsap.to(logoElement, { scale: 1, duration: 0.1 });
+                },
+                onLeaveBack: () => {
+                    gsap.to(logoElement, { scale: 0.1, duration: 0.1 }); // 0.1 yerine 0.5
+                }
+            });
+    
+            return () => {
+                shrinkTrigger.kill();
+                growTrigger.kill();
+            };
+        }
+    }, []);
+    
     
 
 
@@ -126,9 +126,14 @@ function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
 
             <div
                 ref={logoRef}
-                style={{ width: "800px", height: "auto", marginTop: "0%", marginLeft: "-2%", transition: "transform 0.3s ease" }}
+                style={{ width: "700px", height: "auto", marginTop: "0%", marginLeft: "-2%", transition: "transform 0.3s ease" }}
             >
-                <Image className="logo-light" src={brandLight} alt="Logo" width={800} />
+                  <div className="text-box">
+    <h1>
+      <span className="text-primary"> <Image className="logo-light" src={brandLight} alt="Logo" width={800} /></span>
+    </h1>
+  </div>
+               
             </div>
 
 
