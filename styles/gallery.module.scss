@@ -7,8 +7,6 @@
   height: auto;
   margin-left: 106px;
   margin-right: 20px;
-  //margin-top: 5%;
-  z-index:20;
 }
 .gallery-containerD{
   display: grid ;
@@ -40,13 +38,16 @@
   position: relative;
   width: 100%;
   height: 43vh; /* Sabit bir yükseklik belirledik */
+  aspect-ratio: 16/9; /* Videoların oranını sabitle */
   display: flex;
   justify-content: center; /* İframe'leri ortalamak için */
   align-items: center;     /* İframe'leri ortalamak için */
   cursor: pointer; /* Fare işaretçisi el işaretine dönüşsün */
 }
 .video-thumbnail {
-  height: 54vh;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 
@@ -81,7 +82,6 @@
     margin-right: 10px;
     gap: 5px; /* Galeri öğeleri arasında boşluk */
     padding: 0;
-    //margin-top: 1.6%;
   }
   .gallery-containerD {
     grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
@@ -96,7 +96,8 @@
     height: 20vh !important; /* Mobilde daha düşük yükseklik */
   }
   .video-thumbnail {
-    height: 25vh;
+    height: 25vh !important;
+    width: unset !important;
   }
   .full-width {
     height: 20vh !important; 
@@ -228,6 +229,7 @@
   }
   .video-thumbnail {
     height: 25vh;
+    width: unset !important;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1366px) {
@@ -259,6 +261,7 @@
   }
   .video-thumbnail {
     height: 25vh;
+    width: unset !important;
   }
   .full-width {
     height: 20vh !important;
@@ -279,9 +282,11 @@
   cursor: pointer; /* Fare işaretçisi el işaretine dönüşsün */
   grid-column: span 2;
   height: 68vh ;
- 
+  aspect-ratio: 16/9; /* Oranı korumak için ekledik */
 }
-.video-thumbnailOne{
-  height: 77vh ;
-  width: 193vh ;
+
+.video-thumbnailOne {
+  height: auto;
+  width: 100%;
+  object-fit: cover; /* Videoyu orantılı bir şekilde sığdırır */
 }
