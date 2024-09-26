@@ -36,17 +36,17 @@ function InfoBox({ className }) {
                 <li>
                     <h5 className="title-block mb-15">{t('followus')}</h5>
                     <div className="social-item over-hidden">
-                        <a className="link-hover" data-hover-text="Instagram" href="#"
+                        <a className="link-hover" data-hover-text="Instagram" href="https://www.instagram.com/3_bolu_2?igsh=dDJybDI0c2VoZnc2"
                             target="_blank" rel="nofollow">Instagram</a>
                     </div>
-                    <div className="social-item over-hidden">
+                    {/* <div className="social-item over-hidden">
                         <a className="link-hover" data-hover-text="Facebook" href="#"
                             target="_blank" rel="nofollow">Facebook</a>
                     </div>
                     <div className="social-item over-hidden">
                         <a className="link-hover" data-hover-text="X" href="#"
                             target="_blank" rel="nofollow">X</a>
-                    </div>
+                    </div> */}
                 </li>
             </ul>
         </div>

@@ -16,9 +16,9 @@ function TeamItem({className , data}) {
                             <h4 className="sm-title-block mb-5">{data.name}</h4>
                             <h5 className="theme-color">{data.position}</h5>
 
-                            <ul className="box-social mt-20">
+                            {/* <ul className="box-social mt-20">
                                 {data.social && data.social.map(($item , $index) => <li key={$index} data-dsn="parallax"><a href={$item.url}>{$item.title}</a></li>)}
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>

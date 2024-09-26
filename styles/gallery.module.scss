@@ -10,6 +10,17 @@
   //margin-top: 5%;
   z-index:20;
 }
+.gallery-containerD{
+  display: grid ;
+  grid-template-columns: repeat(2, 1fr); /* Her satırda iki video */
+  gap: 10px; /* Galeri öğeleri arasında boşluk */
+  overflow: visible;
+  height: auto;
+  margin-left: 106px;
+  margin-right: 20px;
+  margin-top: 5%;
+  z-index:20;
+}
 .gallery-containerOne {
   display: grid ;
   grid-template-columns: repeat(1, 1fr); /* Her satırda iki video */
@@ -72,6 +83,14 @@
     padding: 0;
     //margin-top: 1.6%;
   }
+  .gallery-containerD {
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+    //margin-top: 1.6%;
+  }
 
   .gallery-item {
     height: 20vh !important; /* Mobilde daha düşük yükseklik */
@@ -84,7 +103,7 @@
     
   }
   .video-thumbnailOne{
-    height: 22.5vh !important; 
+    height: 25vh !important; 
     width: unset !important;
   }
 }
@@ -181,6 +200,13 @@
     gap: 5px; /* Galeri öğeleri arasında boşluk */
     padding: 0;
   }
+  .gallery-containerD {
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    margin-left: 0px;
+    margin-right: 0px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+  }
   .gallery-containerOne {
     margin-left: 0px;
     margin-right: 0px;
@@ -194,7 +220,7 @@
     
   }
   .video-thumbnailOne{
-    height: 22vh !important; 
+    height: 25vh !important; 
     width: unset !important;
   }
   .gallery-item {
@@ -206,6 +232,13 @@
 }
 @media only screen and (min-width: 1024px) and (max-width: 1366px) {
   .gallery-container {
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    margin-left: 0px;
+    margin-right: 0px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+  }
+  .gallery-containerD {
     grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
     margin-left: 0px;
     margin-right: 0px;
@@ -232,7 +265,7 @@
     
   }
   .video-thumbnailOne {
-    height: 22.25vh !important;
+    height: 25vh !important;
     width: unset !important;
   }
 }
@@ -245,10 +278,10 @@
   align-items: center;     /* İframe'leri ortalamak için */
   cursor: pointer; /* Fare işaretçisi el işaretine dönüşsün */
   grid-column: span 2;
-  height: 80vh ;
+  height: 68vh ;
  
 }
 .video-thumbnailOne{
-  height: 80vh ;
+  height: 77vh ;
   width: 193vh ;
 }

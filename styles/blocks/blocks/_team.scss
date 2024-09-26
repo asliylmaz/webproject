@@ -18,7 +18,8 @@
           flex: 0 0 100%;
           height: auto;
           margin-bottom: 20px;
-          > img{
+
+          >img {
             position: relative !important;
           }
         }
@@ -36,6 +37,10 @@
       position: relative;
       margin-left: 50px;
       padding: 15px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 1px solid $border-color;
 
       @include media_768 {
@@ -51,7 +56,18 @@
       }
 
       .item-content {
-        margin-left: -60px;
+        display: flex;
+        justify-content: center;
+        /* Yatayda ortalama */
+        align-items: center;
+        /* Dikeyde ortalama */
+        flex-direction: column;
+        /* İçerikleri dikey sıraya koymak için */
+        height: 100%;
+        /* İçeriğin tam yüksekliği kullanmasını sağlamak için */
+        text-align: center;
+        /* İsim ve pozisyon metinlerini ortalamak için */
+        //margin-left: -60px;
 
         @include media_768 {
           margin-left: 0;
@@ -68,7 +84,8 @@
           flex: 0 0 100%;
           height: auto;
           margin-bottom: 20px;
-          img{
+
+          img {
             width: auto;
           }
         }

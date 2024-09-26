@@ -91,7 +91,7 @@ function Corporate() {
             </Head>
 
             <HeaderFull
-                className="dsn-container mty-10"
+                className="dsn-container"
                 fullWidth
                 heroContent={headerContent}
                 overlay={6}
