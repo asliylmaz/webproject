@@ -73,7 +73,7 @@ const dataSlider = [{
 ]
 const headerContent = {
     title: `Every Story is a Masterpiece!`,
-    video: "/img/bg.mp4",
+    video: "/img/bannerHome.mp4",
 };
 function Corporate() {
     TitleSection.defaultProps = {
