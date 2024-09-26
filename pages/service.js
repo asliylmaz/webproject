@@ -155,7 +155,7 @@ function Service() {
                 <title>{t('menuContent.service')}  | 3Bölü2</title>
             </Head>
             {/*========== Header Normal ========== */}
-            <HeaderNormal backgroundColor="background-section" className="text-center mty-3">
+            <HeaderNormal backgroundColor="background-section" className="text-center">
                 <p className="subtitle p-relative line-shape">
                     <span className="pl-10 pr-10 background-main">{t('ourservices')}</span>
                 </p>

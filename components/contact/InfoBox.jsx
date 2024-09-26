@@ -10,7 +10,7 @@ function InfoBox({ className }) {
         <div className={dsnCN('box-info-contact', className)}>
             <ul>
                 <li>
-                    <h1 className="neon-textC">{t('getintouch')} </h1>
+                    <h1 className="neon-text">{t('getintouch')} </h1>
                 </li>
                 <li>
                     <h5 className="title-block mt-15 mb-10">{t('contact')}</h5>

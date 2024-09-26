@@ -16,6 +16,7 @@ import {getServiceData} from "../data/service";
 import ServiceSwiper from "../components/services/ServiceSwiper";
 import { useTranslation } from 'react-i18next';
 import GalleryOne from '../components/gallery/GalleryOne';
+import GalleryHome from '../components/gallery/GalleryHome';
 
 const videos = [
     {
@@ -81,7 +82,7 @@ function Corporate() {
             </div> */}
             <h1 className="font-size-left">{t('feature')}</h1>
             <GalleryOne videos={videos} />
-            <Gallery />
+            <GalleryHome />
 
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section" />
