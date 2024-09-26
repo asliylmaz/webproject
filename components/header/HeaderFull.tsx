@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { dsnCN } from "../../hooks/helper";
 import MetaPost from "../meta/MetaPost";
 import { justifyContent } from "../../hooks/EremiaType";
+import { useTranslation } from 'react-i18next';
 
 interface BgImageProps {
     src: string;
@@ -97,6 +98,7 @@ function HeaderFull({
             animate.kill();
         }
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
+    const { t, i18n } = useTranslation();
 
     return (
         <header
@@ -148,7 +150,7 @@ function HeaderFull({
                         {category && <MetaPost category={category} separate={separate} />}
                         {title && (
                             <div className="text-head">
-                                <h1 className="title" dangerouslySetInnerHTML={{ __html: title }} />
+                                <h1 className="title" dangerouslySetInnerHTML={{ __html: t('headerContentTitle') }} />
                             </div>
                         )}
                         {children && <div className="dsn-description mt-30">{children}</div>}

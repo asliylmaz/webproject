@@ -2,14 +2,16 @@ import {dsnCN} from "../../hooks/helper";
 import DsnGrid from "../../layout/DsnGrid";
 import ContactForm from "../contact/ContactForm";
 import InfoBox from "../contact/InfoBox";
+import InfoBoxTwo from "../contact/InfoBoxTwo";
 import React from "react";
 
 function ModalContact({className = "", ...restProps}) {
     return (
         <div className={dsnCN("section-padding", className)} {...restProps}>
             <DsnGrid col={2} colTablet={1}>
-                <ContactForm/>
+                {/* <ContactForm/> */}
                 <InfoBox className="align-self-center"/>
+                <InfoBoxTwo className="align-self-center" />
             </DsnGrid>
         </div>
     );

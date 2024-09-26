@@ -1,14 +1,16 @@
 import {dsnCN} from "../../hooks/helper";
 import Button from "../button/Button";
 import BgDot from "../header/BgDot";
+import { useTranslation } from 'react-i18next';
 
-const NextContent = {
-    title: "Would you like more information \nor do you have a question?",
+// const NextContent = {
+//     title: "Would you like more information \nor do you have a question?",
     
-    buttonText: "Contact Us"
-};
+//     buttonText: "Contact Us"
+// };
 
 function NextPage({className, ...restProps}) {
+    const { t, i18n } = useTranslation();
     return (
         <section className={dsnCN("next-page p-relative d-flex align-items-center", className)}
                  {...restProps}
@@ -20,7 +22,7 @@ function NextPage({className, ...restProps}) {
                     <div className="d-flex flex-column">
                        
                         <h2 className="section-title max-w750 mt-15">
-                            {NextContent.title}
+                        {t('nextContent.title')}
                         </h2>
                     </div>
 
@@ -30,9 +32,9 @@ function NextPage({className, ...restProps}) {
                             className="mr-15 line-head"
                             borderStyle={"border-color-heading-color"}
                             borderRadius
-                            transitionPage={{title: NextContent.buttonText}}
+                            transitionPage={t('nextContent.title')}
                         >
-                            {NextContent.buttonText}
+                            {t('nextContent.buttonText')}
                         </Button>
                     </div>
                 </div>

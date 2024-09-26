@@ -10,6 +10,7 @@ import React from 'react';
 import Image from 'next/image';
 import brandLight from '../logo/logo4.png';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
@@ -20,43 +21,44 @@ function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
         nav.current.querySelectorAll('ul').forEach(item => item.classList.remove('open'));
     }, []);
     const logoRef = useRef(null);
+    const { t } = useTranslation();
     useEffect(() => {
-        const logoElement = logoRef.current;
-    
-        if (logoElement) {
-            const shrinkTrigger = ScrollTrigger.create({
-                trigger: logoElement,
-                start: "top 140px",
-                end: "bottom top",
-                scrub: true,
-                onUpdate: (self) => {
-                    const progress = self.progress;
-                    const scale = gsap.utils.interpolate(1, 0.1, progress); // 0.1 yerine 0.5, yarı boyuta küçülecek
-                    gsap.set(logoElement, {
-                        scale: scale,
-                        transformOrigin: "top left"
-                    });
-                }
-            });
-    
-            const growTrigger = ScrollTrigger.create({
-                trigger: logoElement,
-                start: "top top", // Gözükme anı
-                onEnter: () => {
-                    gsap.to(logoElement, { scale: 1, duration: 0.1 });
-                },
-                onLeaveBack: () => {
-                    gsap.to(logoElement, { scale: 0.1, duration: 0.1 }); // 0.1 yerine 0.5
-                }
-            });
-    
-            return () => {
-                shrinkTrigger.kill();
-                growTrigger.kill();
-            };
-        }
-    }, []);
-    
+    const logoElement = logoRef.current;
+
+    if (logoElement) {
+        const shrinkTrigger = ScrollTrigger.create({
+            trigger: logoElement,
+            start: "top 140px",
+            end: "bottom top",
+            scrub: true,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                const scale = gsap.utils.interpolate(1, 0.00001, progress);
+                gsap.set(logoElement, {
+                    scale: scale,
+                    transformOrigin: "top left"
+                });
+            }
+        });
+
+        const growTrigger = ScrollTrigger.create({
+            trigger: logoElement,
+            start: "top top", // Gözükme anı
+            onEnter: () => {
+                gsap.to(logoElement, { scale: 1, duration: 0.5 });
+            },
+            onLeaveBack: () => {
+                gsap.to(logoElement, { scale: 0.00001, duration: 0.5 });
+            }
+        });
+
+        return () => {
+            shrinkTrigger.kill();
+            growTrigger.kill();
+        };
+    }
+}, []);
+
     
 
 
@@ -115,26 +117,21 @@ function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
 
             {children}
             {typeNave && <Toggle
-                textOpen={textOpen}
-                textMenu={textMenu}
-                textClose={textClose}
+                textOpen={t('toggle.open')}
+                textMenu={t('toggle.menu')}
+                textClose={t('toggle.close')}
                 targetNav={nav}
                 reserved={reserved}
                 setReserved={setReserved}
                 removeOpenMenu={removeOpenMenu}
             />}
 
-            <div
+            {/* <div
                 ref={logoRef}
-                style={{ width: "700px", height: "auto", marginTop: "0%", marginLeft: "-2%", transition: "transform 0.3s ease" }}
+                style={{ width: "800px", height: "auto", marginTop: "0%", marginLeft: "-2%", transition: "transform 0.3s ease" }}
             >
-                  <div className="text-box">
-    <h1>
-      <span className="text-primary"> <Image className="logo-light" src={brandLight} alt="Logo" width={800} /></span>
-    </h1>
-  </div>
-               
-            </div>
+                <Image className="logo-light" src={brandLight} alt="Logo" width={800} />
+            </div> */}
 
 
         </header>
@@ -142,11 +139,11 @@ function Navbar({ children, textOpen, textMenu, textClose, hamburger }) {
     );
 }
 
-Navbar.defaultProps = {
-    textOpen: 'Open',
-    textMenu: 'Menu',
-    textClose: 'Close',
-};
+// Navbar.defaultProps = {
+//     textOpen: 'Open',
+//     textMenu: 'Menu',
+//     textClose: 'Close',
+// };
 
 
 const handleClickCloseMenu = (e) => {

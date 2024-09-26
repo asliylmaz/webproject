@@ -117,7 +117,7 @@ const Gallery = () => {
         videos.map((video, index) => (
           <div
             key={index}
-            className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
+            className={styles['gallery-item']}
             onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
           >
             <img

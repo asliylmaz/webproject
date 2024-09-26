@@ -136,7 +136,7 @@ function Corporate() {
         //     {/*========== End Footer ==========*/}
         // </div>
 
-        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: "Contact" } }}>
+        <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: t('contactU') } }}>
             <Head>
                 <title>3Bölü2</title>
             </Head>

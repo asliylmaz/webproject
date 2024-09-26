@@ -8,6 +8,7 @@ import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
 import Layout from "../layout/Layout";
 import Head from "next/head";
+import { useTranslation } from 'react-i18next';
 
 const Directors = () => {
     const router = useRouter();
@@ -67,11 +68,12 @@ const Directors = () => {
             window.removeEventListener('resize', hideLastSlashInRow);
         };
     }, []);
+    const { t, i18n } = useTranslation();
 
     return (
         <Layout>
             <Head>
-                <title>Directors | 3Bölü2</title>
+                <title>{t('menuContent.directors')} | 3Bölü2</title>
             </Head>
 
             <div className={styles.container}>

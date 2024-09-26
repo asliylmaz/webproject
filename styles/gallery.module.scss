@@ -7,6 +7,18 @@
   height: auto;
   margin-left: 106px;
   margin-right: 20px;
+  //margin-top: 5%;
+  z-index:20;
+}
+.gallery-containerOne {
+  display: grid ;
+  grid-template-columns: repeat(1, 1fr); /* Her satırda iki video */
+  gap: 10px; /* Galeri öğeleri arasında boşluk */
+  overflow: visible;
+  height: auto;
+  margin-left: 106px;
+  margin-right: 20px;
+  margin-bottom:10px;
   margin-top: 5%;
   z-index:20;
 }
@@ -42,12 +54,23 @@
 
 /* Mobilde tüm videolar alt alta */
 @media (max-width: 768px) {
+  .gallery-containerOne {
+    grid-template-columns: repeat(1, 1fr); /* Her satırda iki video */
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5%;
+    gap: 5px; 
+    padding: 0; 
+    margin-bottom: 5px;
+    //margin-bottom:-1%;
+  }
   .gallery-container {
     grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
     margin-left: 10px;
     margin-right: 10px;
     gap: 5px; /* Galeri öğeleri arasında boşluk */
     padding: 0;
+    //margin-top: 1.6%;
   }
 
   .gallery-item {
@@ -55,6 +78,14 @@
   }
   .video-thumbnail {
     height: 25vh;
+  }
+  .full-width {
+    height: 20vh !important; 
+    
+  }
+  .video-thumbnailOne{
+    height: 22.5vh !important; 
+    width: unset !important;
   }
 }
 
@@ -140,4 +171,84 @@
 .copyright-text {
   font-size: 12px; /* Metin boyutunu ihtiyacınıza göre ayarlayın */
   margin-left: 2%;
+}
+/* iPad Air (820px genişlik) için özel medya sorgusu */
+@media only screen and (min-width: 768px) and (max-width: 1024px)  {
+  .gallery-container {
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    margin-left: 0px;
+    margin-right: 0px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+  }
+  .gallery-containerOne {
+    margin-left: 0px;
+    margin-right: 0px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+    margin-bottom: 5px;
+    margin-top:5%;
+  }
+  .full-width {
+    height: 20vh !important;
+    
+  }
+  .video-thumbnailOne{
+    height: 22vh !important; 
+    width: unset !important;
+  }
+  .gallery-item {
+    height: 20vh !important; /* Mobilde daha düşük yükseklik */
+  }
+  .video-thumbnail {
+    height: 25vh;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .gallery-container {
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    margin-left: 0px;
+    margin-right: 0px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+  }
+  .gallery-containerOne {
+    margin-left: 0px;
+    margin-right: 0px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+    margin-bottom: 5px;
+    margin-top:5%;
+
+  }
+  .gallery-item {
+    height: 20vh !important; /* Mobilde daha düşük yükseklik */
+  }
+  .video-thumbnail {
+    height: 25vh;
+  }
+  .full-width {
+    height: 20vh !important;
+    
+  }
+  .video-thumbnailOne {
+    height: 22.25vh !important;
+    width: unset !important;
+  }
+}
+.full-width {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* İframe'leri ortalamak için */
+  align-items: center;     /* İframe'leri ortalamak için */
+  cursor: pointer; /* Fare işaretçisi el işaretine dönüşsün */
+  grid-column: span 2;
+  height: 80vh ;
+ 
+}
+.video-thumbnailOne{
+  height: 80vh ;
+  width: 193vh ;
 }

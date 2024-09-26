@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
-
-const titles = [
-  "Creativity Meets Craft",
-  "Unconventional Storytelling",
-  "Films, Ads and Beyond",
-  "Pushing Creative Boundaries",
-  "Technology-Driven Innovation",
-  "Captivating and Inspiring Work",
-  "Bold Ideas, Brought to Life"
-];
+import { useTranslation } from 'react-i18next';
 
 const ImageWithTitles: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const titles = t('titles', { returnObjects: true }); // Diziyi çeviriden al
+
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -29,7 +23,7 @@ const ImageWithTitles: React.FC = () => {
 
   return (
     <div>
-      <h1 className="about-title-a">About Us</h1>
+      <h1 className="about-title-a">{t('aboutus')}</h1>
       <h1 className={`about-title-i ${isVisible ? 'show' : ''}`}>
         {titles[currentTitleIndex]}
       </h1>
