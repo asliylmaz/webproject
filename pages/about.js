@@ -1,29 +1,15 @@
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import HeaderNormal from "../components/header/HeaderNormal";
 import TitleSection from "../components/heading/TitleSection";
 import ParallaxImage from "../components/Image/ParallaxImage";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import List from "../components/list/List";
 import DsnGrid from "../layout/DsnGrid";
 import Layout from "../layout/Layout";
-import BoxGallery, {
-    BoxGalleryItem,
-} from "../components/box-gallery/BoxGallery";
 import { dsnCN } from "../hooks/helper";
-import MoveTrigger from "../animation/MoveTrigger";
 import FadeUpTrigger from "../animation/FadeUpTrigger";
 import Team from "../components/Team/Team";
-import Testimonial from "../components/testimonial/Testimonial";
-import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
 import NextPage from "../components/next/NextPage";
-import BrandClient from "../components/brand-client/BrandClient";
-import Awards from "../components/awards/Awards";
 import { getTeamData } from "../data/team";
-import Service from "../components/services/Service";
-import { getServiceData } from "../data/service";
-import Image from "next/image";
 import ModalContact from "../components/model-right/ModalContact";
 import Head from "next/head";
 import Footer from "../components/footer/Footer";

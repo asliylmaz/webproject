@@ -1,14 +1,9 @@
 import React from "react";
-import HeaderNormal from "../components/header/HeaderNormal";
 import TitleSection from "../components/heading/TitleSection";
 import Layout from "../layout/Layout";
 import InfoBoxTwo from "../components/contact/InfoBoxTwo";
-import Map from "../components/Map/Map";
 import DsnGrid from "../layout/DsnGrid";
 import InfoBox from "../components/contact/InfoBox";
-import ContactForm from "../components/contact/ContactForm";
-import NextPage2 from "../components/next/NextPage2";
-import Footer from "../components/footer/Footer";
 import Head from "next/head";
 import Copyright from "../components/footer/Copyright"
 //import Error404 from "./error404";
@@ -74,7 +69,7 @@ function About() {
             <br></br>
             <br></br>
             {/* <ScrollToTop /> */}
-            <div className="column-right">
+            <div className="contact-footer">
                 <Copyright />
             </div>
         </Layout>

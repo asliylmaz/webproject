@@ -99,6 +99,37 @@
       }
     }
   }
+  .contact-footer {
+    text-align: right;
+    position: fixed;  /* Sayfanın belirli bir konumuna sabitlenmesi için */
+    left: 0;          /* Sol tarafa hizalanması için */
+    bottom: 0;        /* Alt tarafa hizalanması için */
+    @include media_768 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h5 {
+      color: $body-color;
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 400;
+      overflow: hidden;
+
+
+      .love {
+        color: #fd4145;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .link-hover {
+        text-transform: initial;
+      }
+    }
+  }
 
   .scroll-top {
     position: relative;

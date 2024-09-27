@@ -1,19 +1,12 @@
 import React from "react";
 import Layout from "../layout/Layout";
 import TitleSection from "../components/heading/TitleSection";
-import Facts from "../components/facts/Facts";
 import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
-import ModalContact from "../components/model-right/ModalContact";
 import Gallery from '../components/gallery/Gallery';
-import ImageSection from "../components/Image/ImageSection";
-import styles from '../styles/directors.module.scss';
-import filters from '../data/filters';
-import Link from 'next/link';
 import Head from "next/head";
 import HeaderFull from "../components/header/HeaderFull";
 import { useTranslation } from 'react-i18next';
-import GalleryOne from '../components/gallery/GalleryOne';
 
 const images = [
     '/img/underco.jpg',

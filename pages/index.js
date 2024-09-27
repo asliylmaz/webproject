@@ -1,19 +1,12 @@
 import React from "react";
 import Layout from "../layout/Layout";
 import TitleSection from "../components/heading/TitleSection";
-import DsnGrid from "../layout/DsnGrid";
 import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
-import List from "../components/list/List";
 import GalleryHome from '../components/gallery/GalleryHome';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import filters from '../data/filters';
-import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import HeaderFull from "../components/header/HeaderFull";
 import Button from "../components/button/Button";
-import {getServiceData} from "../data/service";
-import ServiceSwiper from "../components/services/ServiceSwiper";
 import { useTranslation } from 'react-i18next';
 import GalleryOne from '../components/gallery/GalleryOne';
 

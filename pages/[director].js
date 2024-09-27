@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { useRouter } from 'next/router';
 import Layout from "../layout/Layout";
 import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";

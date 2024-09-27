@@ -18,13 +18,11 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'; // Redux Persist için gerekli
 import { store, persistor } from "../features/store"; // persistor'ı import ediyoruz
 import EremiaMenu from "../components/header/menu/EremiaMenu";
-import PageLogo from "../components/header/pageLogo/pageLogo";
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../language/i18n'; // Adjust the path based on your project structure
 import OptionTheme from "../components/option-theme/OptionTheme";
 import RightScrollTop from "../components/option-theme/RightScrollTop";
 import { checkMobile, parallaxIt } from "../hooks/helper";
-import LoadingPage from "../layout/LoadingPage";
 import { tdEnd } from "../hooks/transition/transitionDefalut";
 import CustomCursor from "../layout/CustomCursor";
 
