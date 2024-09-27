@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import brandLight from '../../public/img/3bolu2logo.png';
-import brandDark from './logo-dark.png';
 import Image from "next/image";
 
 const MainBrand = styled.div`
@@ -37,7 +36,6 @@ const Logo = ({width, height, alt}) => {
     return (
         <MainBrand className="main-brand" width={width} height={height}>
             <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={320} height={84}/>
-            <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84}/>
         </MainBrand>
     );
 }
