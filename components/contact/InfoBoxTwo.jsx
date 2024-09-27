@@ -20,8 +20,8 @@ function InfoBoxTwo({ className }) {
                     <br></br>
                     <p className="text-p ">Süleyman Derebaşı​</p>
                     <p className="links over-hidden text-p">
-                        <a className="link-hover" href="mailto:süleyman@3bölü2.com"
-                            data-hover-text="süleyman@3bölü2.com">süleyman@3bölü2.com</a>
+                        <a className="link-hover" href="mailto:suleyman@3bölü2.com"
+                            data-hover-text="suleyman@3bölü2.com">suleyman@3bölü2.com</a>
                     </p>
                 </li>
 

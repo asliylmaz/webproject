@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/gallery.module.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -8,54 +8,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 const GalleryOne = () => {
   const galleryRef = useRef(null);
-  const [videos, setVideos] = React.useState([]);
- const folderId="22254145"; // Klasör ID'si
-  const videoData = [
-    {
-      videoSrc: '/img/banners1.mp4',
-      coverImg: '/img/fb1.png', // Kapak resmi
-    },
-    {
-      videoSrc: '/img/banners2.mp4',
-      coverImg: '/img/gs1.png', // Kapak resmi
-    },
-  ];
+  const [videos, setVideos] = useState([]);
+
   useEffect(() => {
-    // Vimeo API'den klasör içerisindeki videoları alıyoruz
-    axios({
-      method: 'get',
-      url: `https://api.vimeo.com/me/projects/${folderId}/videos`,  // folderId ile çağrıyı özelleştiriyoruz
-      headers: {
-        Authorization: 'Bearer 5078123016df2258c9b1ad437081e971', // Access token'ı buraya ekleyin
-      },
-    })
+    // Fetch videos from API
+    axios.get('/api/portfolio/bigvideos')
       .then((response) => {
-        // API'den gelen videoları setVideos ile state'e kaydediyoruz
-        if (response.data && response.data.data && Array.isArray(response.data.data)) {
-          setVideos(response.data.data); // Dizi olarak video verilerini ayarla
+        if (response.data?.data && Array.isArray(response.data.data)) {
+          setVideos(response.data.data); // Save videos to state
         } else {
-          console.error("Video list not found in expected format.");
+          console.error('Video list not found in expected format.');
         }
       })
       .catch((error) => {
-        console.error("An error occurred in the API call:", error);
+        console.error('Error occurred in the API call:', error);
       });
-  }, [folderId]); // folderId'yi bağımlılığa ekliyoruz
+  }, []);
 
   useEffect(() => {
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 768) return; // Skip animations on mobile
 
     const items = galleryRef.current.querySelectorAll(`.${styles['full-width']}`);
     items.forEach((item, index) => {
-      const directionX = index % 2 === 0 ? -300 : 300; // Çift index'ler soldan, tek index'ler sağdan gelecek
+      const directionX = index % 2 === 0 ? -300 : 300; // Slide direction
 
       gsap.fromTo(
         item,
-        { opacity: 0, x: directionX }, // x ekseninde daha uzun mesafe
+        { opacity: 0, x: directionX },
         {
           opacity: 1,
           x: 0,
-          duration: 0.5, // Daha hızlı geçiş
+          duration: 0.5,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: item,
@@ -65,11 +48,13 @@ const GalleryOne = () => {
         }
       );
     });
-  }, [videoData]);
+  }, [videos]);
 
   const handleImageClick = (videoUrl) => {
+    // Apply blurred background on video click
     document.body.classList.add('blurred-background');
 
+    // Create and style iframe container
     const iframeContainer = document.createElement('div');
     iframeContainer.style.position = 'fixed';
     iframeContainer.style.top = '0';
@@ -82,6 +67,7 @@ const GalleryOne = () => {
     iframeContainer.style.alignItems = 'center';
     iframeContainer.style.background = 'rgba(0, 0, 0, 0.9)';
 
+    // Create and style iframe element
     const iframe = document.createElement('iframe');
     iframe.src = `${videoUrl}?autoplay=1&fullscreen=1`;
     iframe.style.width = '80vw';
@@ -90,6 +76,7 @@ const GalleryOne = () => {
     iframe.allow = 'autoplay; fullscreen';
     iframe.allowFullscreen = true;
 
+    // Create and style close button
     const closeButton = document.createElement('img');
     closeButton.src = '/img/close.png';
     closeButton.alt = 'Close';
@@ -100,10 +87,12 @@ const GalleryOne = () => {
     closeButton.style.height = '40px';
     closeButton.style.cursor = 'pointer';
 
+    // Append elements to container
     iframeContainer.appendChild(iframe);
     iframeContainer.appendChild(closeButton);
     document.body.appendChild(iframeContainer);
 
+    // Close video and remove iframe
     closeButton.addEventListener('click', () => {
       if (document.fullscreenElement) {
         document.exitFullscreen();
@@ -123,36 +112,28 @@ const GalleryOne = () => {
             onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
           >
             <img
-              src={video.pictures.sizes[3].link} // Orta boyutlu bir thumbnail seçiyoruz
+              src={video.pictures.sizes[3].link} // Medium-sized thumbnail
               alt={`Video thumbnail ${index + 1}`}
               className={styles['video-thumbnailOne']}
               style={{
-                transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
-              }}              
+                transition: 'transform 0.3s ease-in-out', // Smooth hover effect
+              }}
               onMouseEnter={(e) => {
                 const target = e.currentTarget;
-                // target'ın varlığını kontrol et
-                if (target) {
-                  target.hoverTimeout = setTimeout(() => {
-                    if (target) {
-                      target.style.transform = 'scale(1.1)';
-                    }
-                  }, 800); // 1 saniye bekleme süresi
-                }
+                target.hoverTimeout = setTimeout(() => {
+                  target.style.transform = 'scale(1.1)';
+                }, 800); // Delay hover animation
               }}
               onMouseLeave={(e) => {
                 const target = e.currentTarget;
-                // target'ın varlığını kontrol et
-                if (target) {
-                  clearTimeout(target.hoverTimeout);
-                  target.style.transform = 'scale(1)'; // Eski boyuta dön
-                }
+                clearTimeout(target.hoverTimeout);
+                target.style.transform = 'scale(1)'; // Reset to original size
               }}
             />
           </div>
         ))
       ) : (
-        <p></p>
+        <p>No videos available</p>
       )}
     </div>
   );

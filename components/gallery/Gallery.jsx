@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/gallery.module.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -8,46 +8,38 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
   const galleryRef = useRef(null);
-  const [videos, setVideos] = React.useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    // Vimeo API'den videoları alıyoruz
-    axios({
-      method: 'get',
-      url: 'https://api.vimeo.com/me/videos',
-      headers: {
-        Authorization: 'Bearer 5078123016df2258c9b1ad437081e971', // Access token'ı buraya ekleyin
-      },
-    })
+    // Fetching videos from the server-side API
+    axios.get('api/portfolio/allvideos')
       .then((response) => {
-        // API'den gelen videoları setVideos ile state'e kaydediyoruz
         if (response.data && response.data.data && Array.isArray(response.data.data)) {
-          setVideos(response.data.data); // Dizi olarak video verilerini ayarla
+          setVideos(response.data.data); // Store videos in state
         } else {
-          console.error("Video list not found in expected format.");
+          console.error('Video list not found in expected format.');
         }
       })
       .catch((error) => {
-        console.error("An error occurred in the API call:", error);
+        console.error('An error occurred in the API call:', error);
       });
   }, []);
 
   useEffect(() => {
     if (window.innerWidth < 768) return;
-  
+
     const items = galleryRef.current.querySelectorAll(`.${styles['gallery-item']}`);
     items.forEach((item, index) => {
-      // Daha uzun bir mesafe için directionX değerini artırıyoruz
-      const directionX = index % 2 === 0 ? -300 : 300; // Çift index'ler soldan, tek index'ler sağdan gelecek
-  
+      const directionX = index % 2 === 0 ? -300 : 300; // Animation direction
+      
       gsap.fromTo(
         item,
-        { opacity: 0, x: directionX }, // Daha uzun mesafede x ekseninde hareket
+        { opacity: 0, x: directionX },
         {
           opacity: 1,
           x: 0,
-          duration: 0.5, // Daha hızlı geçiş için süreyi kısalttık
-          ease: 'power3.out', // Daha hızlı bir easing kullanıyoruz
+          duration: 0.5,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: item,
             start: 'top bottom',
@@ -57,13 +49,10 @@ const Gallery = () => {
       );
     });
   }, [videos]);
-  
 
   const handleImageClick = (videoUrl) => {
-    // Arka planı bulanıklaştırmak için body'ye blur class'ı ekle
     document.body.classList.add('blurred-background');
 
-    // Resme tıklanınca video tam ekran oynat
     const iframeContainer = document.createElement('div');
     iframeContainer.style.position = 'fixed';
     iframeContainer.style.top = '0';
@@ -74,7 +63,7 @@ const Gallery = () => {
     iframeContainer.style.display = 'flex';
     iframeContainer.style.justifyContent = 'center';
     iframeContainer.style.alignItems = 'center';
-    iframeContainer.style.background = 'rgba(0, 0, 0, 0.9)'; // Arka planı hafif karartmak için
+    iframeContainer.style.background = 'rgba(0, 0, 0, 0.9)';
 
     const iframe = document.createElement('iframe');
     iframe.src = `${videoUrl}?autoplay=1&fullscreen=1`;
@@ -84,30 +73,27 @@ const Gallery = () => {
     iframe.allow = 'autoplay; fullscreen';
     iframe.allowFullscreen = true;
 
-    // Kapatma butonu oluştur
     const closeButton = document.createElement('img');
-    closeButton.src = '/img/close.png'; // close.png dosyasının yolunu buraya ekleyin
+    closeButton.src = '/img/close.png';
     closeButton.alt = 'Close';
     closeButton.style.position = 'absolute';
-    closeButton.style.top = '15px';  // Üstten 10px boşluk bırak
-    closeButton.style.right = '20px'; // Soldan 10px boşluk bırak
+    closeButton.style.top = '15px';
+    closeButton.style.right = '20px';
     closeButton.style.width = '40px';
     closeButton.style.height = '40px';
     closeButton.style.zIndex = '10000';
     closeButton.style.cursor = 'pointer';
 
-    // iframe ve butonu div içine ekle
     iframeContainer.appendChild(iframe);
     iframeContainer.appendChild(closeButton);
     document.body.appendChild(iframeContainer);
 
-    // Kapatma butonuna tıklanınca iframe ve butonu kaldır
     closeButton.addEventListener('click', () => {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       }
       document.body.removeChild(iframeContainer);
-      document.body.classList.remove('blurred-background'); // Bulanıklığı kaldır
+      document.body.classList.remove('blurred-background');
     });
   };
 
@@ -121,39 +107,29 @@ const Gallery = () => {
             onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
           >
             <img
-              src={video.pictures.sizes[3].link} // Orta boyutlu bir thumbnail seçiyoruz
+              src={video.pictures.sizes[3].link}
               alt={`Video thumbnail ${index + 1}`}
               className={styles['video-thumbnail']}
-              style={{
-                transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
-              }}              
+              style={{ transition: 'transform 0.3s ease-in-out' }}
               onMouseEnter={(e) => {
                 const target = e.currentTarget;
-                // target'ın varlığını kontrol et
-                if (target) {
-                  target.hoverTimeout = setTimeout(() => {
-                    if (target) {
-                      target.style.transform = 'scale(1.1)';
-                    }
-                  }, 800); // 1 saniye bekleme süresi
-                }
+                target.hoverTimeout = setTimeout(() => {
+                  target.style.transform = 'scale(1.1)';
+                }, 800);
               }}
               onMouseLeave={(e) => {
                 const target = e.currentTarget;
-                // target'ın varlığını kontrol et
-                if (target) {
-                  clearTimeout(target.hoverTimeout);
-                  target.style.transform = 'scale(1)'; // Eski boyuta dön
-                }
+                clearTimeout(target.hoverTimeout);
+                target.style.transform = 'scale(1)';
               }}
             />
           </div>
         ))
       ) : (
-        <p></p>
+        <p>Loading videos...</p>
       )}
     </div>
   );
-  
 };
+
 export default Gallery;
