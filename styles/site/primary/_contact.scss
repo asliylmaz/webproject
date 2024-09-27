@@ -176,7 +176,7 @@ label {
   z-index: 99;
   @include body-line {
     right: calc(#{$body-style-space} / 2 - 4px);
-    top: 70px;
+    top: 105px;
   }
 
   mix-blend-mode: exclusion;

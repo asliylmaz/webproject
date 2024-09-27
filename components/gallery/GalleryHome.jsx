@@ -6,33 +6,25 @@ import axios from 'axios';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const GalleryOne = () => {
+const GalleryHome = () => {
   const galleryRef = useRef(null);
   const [videos, setVideos] = React.useState([]);
   //favaroiler hariç
- const folderId="22254297"; // Klasör ID'si
  
-  useEffect(() => {
-    // Vimeo API'den klasör içerisindeki videoları alıyoruz
-    axios({
-      method: 'get',
-      url: `https://api.vimeo.com/me/projects/${folderId}/videos`,  // folderId ile çağrıyı özelleştiriyoruz
-      headers: {
-        Authorization: 'Bearer 5078123016df2258c9b1ad437081e971', // Access token'ı buraya ekleyin
-      },
+ useEffect(() => {
+  // Sunucu tarafındaki API route üzerinden videoları çekiyoruz
+  axios.get('api/portfolio/exceptbig')
+    .then((response) => {
+      if (response.data && response.data.data && Array.isArray(response.data.data)) {
+        setVideos(response.data.data); // Videoları state'e kaydediyoruz
+      } else {
+        console.error('Video list not found in expected format.');
+      }
     })
-      .then((response) => {
-        // API'den gelen videoları setVideos ile state'e kaydediyoruz
-        if (response.data && response.data.data && Array.isArray(response.data.data)) {
-          setVideos(response.data.data); // Dizi olarak video verilerini ayarla
-        } else {
-          console.error("Video list not found in expected format.");
-        }
-      })
-      .catch((error) => {
-        console.error("An error occurred in the API call:", error);
-      });
-  }, [folderId]); // folderId'yi bağımlılığa ekliyoruz
+    .catch((error) => {
+      console.error('An error occurred in the API call:', error);
+    });
+}, []);
 
   useEffect(() => {
     if (window.innerWidth < 768) return;
@@ -158,4 +150,4 @@ const GalleryOne = () => {
   );
 };
 
-export default GalleryOne;
+export default GalleryHome;
