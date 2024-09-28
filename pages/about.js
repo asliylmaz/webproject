@@ -143,13 +143,13 @@ function About({ className, ...restProps }) {
             </section>
 
             {/*========== team Section ========== */}
-            <section className="container section-margin " data-dsn-title="Team">
-                {/* <TitleSection description={"Our Team"}>
+            {/*<section className="container section-margin " data-dsn-title="Team">
+                 <TitleSection description={"Our Team"}>
                     The Best Team Ever!
-                </TitleSection> */}
+                </TitleSection> 
 
                 <Team data={getTeamData().slice(0, 2)} col={2} colTablet={2} />
-            </section>
+            </section>*/}
             {/*========== End team Section ========== */}
 
             {/*========== Next Page ==========*/}
