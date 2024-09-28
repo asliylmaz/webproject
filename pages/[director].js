@@ -11,35 +11,10 @@ import { gsap } from 'gsap';
 import { useTranslation } from 'react-i18next';
 import LoadingSpinner from "../components/loading/LoadingSpinner";
 import directors from '../data/directors'; // Yönetmen verilerini import ediyoruz
-import DirectorHeader
-    from "../components/header/DirectorHeader";
+import DirectorHeader from "../components/header/DirectorHeader";
 const headerContent = {
     video: "/img/directorbg.mp4",
 };
-// Vimeo kullanıcı ID'sini çekmek için fonksiyon
-function getUserIdFromVimeoURL(vimeoURL) {
-    const username = vimeoURL.split("vimeo.com/")[1];
-    return axios({
-        method: 'get',
-        url: `https://api.vimeo.com/users/${username}`,
-        headers: {
-            Authorization: `Bearer 5078123016df2258c9b1ad437081e971`,
-        },
-    })
-        .then((response) => {
-            if (response.data && response.data.uri) {
-                const userId = response.data.uri.split("/users/")[1];
-                return userId;
-            } else {
-                console.error("Kullanıcı bilgileri alınamadı.");
-                return null;
-            }
-        })
-        .catch((error) => {
-            console.error("API çağrısında hata oluştu:", error);
-            return null;
-        });
-}
 
 function DirectorDetails({ director }) {
     const [loading, setLoading] = useState(true); // Loading durumu
@@ -48,37 +23,30 @@ function DirectorDetails({ director }) {
     const [showModal, setShowModal] = useState(false); // Modal'ı kontrol etmek için state
     const modalRef = useRef(null); // Modal referansı
     const directorsRef = useRef(null);
+
     useEffect(() => {
         if (director && director.vimeo) {
-            getUserIdFromVimeoURL(director.vimeo).then(userId => {
-                if (userId) {
-                    axios({
-                        method: 'get',
-                        url: `https://api.vimeo.com/users/${userId}/videos`,
-                        headers: {
-                            Authorization: `Bearer 5078123016df2258c9b1ad437081e971`,
-                        },
-                    })
-                    .then((response) => {
-                        if (response.data && response.data.data) {
-                            setVideos(response.data.data);
-                            setLoading(false); // Videolar yüklendiğinde loading'i kapat
-                        } else {
-                            console.error("Beklenen formatta video listesi bulunamadı.");
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Videolar alınırken bir hata oluştu:", error);
-                        setLoading(false); // Hata durumunda da loading'i kapat
-                    });
-                }
+          // Sunucu tarafındaki API'yi çağırıp videoları alıyoruz
+          axios.get(`/api/portfolio/directorvideos?vimeoURL=${director.vimeo}`)
+            .then((response) => {
+              if (response.data && response.data.data && Array.isArray(response.data.data)) {
+                setVideos(response.data.data); // Videoları state'e kaydet
+              } else {
+                console.error('Beklenen formatta video listesi bulunamadı.');
+              }
+            })
+            .catch((error) => {
+              console.error('API çağrısında bir hata oluştu:', error);
+            })
+            .finally(() => {
+              setLoading(false); // Yüklenme durumu kapat
             });
         } else {
-            console.error("Vimeo linki bulunamadı.");
-            setLoading(false); // Vimeo linki yoksa loading'i kapat
+          console.error('Yönetmenin Vimeo URL\'si bulunamadı.');
+          setLoading(false); // Eğer URL yoksa yüklenme durumu kapat
         }
-    }, [director]);
-
+      }, [director]);
+    
     const closeModal = () => {
         setSelectedVideo(null);
         setShowModal(false);
@@ -185,33 +153,7 @@ function DirectorDetails({ director }) {
             overlay={6}
             director={director}>
             </DirectorHeader>
-            {/* Video galerisi */}
-            {/* <div ref={directorsRef} className={styles['gallery-container']}>
-                {videos.length > 0 ? (
-                    videos.map((video, index) => (
-                        <div
-                            key={index}
-                            className={`${styles['gallery-item']} ${index % 5 === 0 ? styles['full-width'] : ''}`}
-                            onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
-                        >
-                            <img
-                                src={video.pictures.sizes[3].link}
-                                alt={`Video ${index + 1}`}
-                                className={styles['video-thumbnail']}
-                            />
-                        </div>
-                    ))
-                )   : (
-                    <div className={styles['no-videos']}>
-                        <video autoPlay muted loop className={styles['background-video']}>
-                            <source src="/img/LOADING.mp4" type="video/mp4" />
-                            Tarayıcınız video oynatmayı desteklemiyor.
-                        </video>
-                    </div>
-                )}
-            </div> */}
-            {/* Video galerisi */}
-{/* Video galerisi */}
+
 <div ref={directorsRef} className={styles['gallery-containerD']}>
     {loading ? ( // Eğer loading durumu true ise
         <LoadingSpinner /> // Yükleme animasyonunu göster
@@ -248,6 +190,7 @@ function DirectorDetails({ director }) {
                                     }
                                   }}
                             />
+                            
                         </div>
                     ))
                 )
