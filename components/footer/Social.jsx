@@ -2,10 +2,8 @@ import {dsnCN} from "../../hooks/helper";
 
 
 const socialContent = [
-    {name: "Dribbble.", href: "#0"},
-    {name: "Behance.", href: "#0"},
-    {name: "Linkedin.", href: "#0"},
-    {name: "Twitter.", href: "#0"},
+    {name: "Instagram.", href: "https://www.instagram.com/3_bolu_2?igsh=dDJybDI0c2VoZnc2"}
+
 ];
 
 

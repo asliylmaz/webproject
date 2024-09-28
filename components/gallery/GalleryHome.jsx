@@ -141,6 +141,10 @@ const GalleryHome = () => {
                 }
               }}
             />
+             {/* Başlık için div */}
+             <div className={styles['video-title']}>{video.name}</div>
+            {/* Video açıklaması */}
+            <div className={styles['video-description']}>{video.description}</div>
           </div>
         ))
       ) : (

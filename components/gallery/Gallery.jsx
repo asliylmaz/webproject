@@ -123,6 +123,10 @@ const Gallery = () => {
                 target.style.transform = 'scale(1)';
               }}
             />
+             {/* Başlık için div */}
+            <div className={styles['video-title']}>{video.name}</div>
+            {/* Video açıklaması */}
+            <div className={styles['video-description']}>{video.description}</div>
           </div>
         ))
       ) : (
