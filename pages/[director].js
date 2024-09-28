@@ -16,6 +16,14 @@ const headerContent = {
     video: "/img/directorbg.mp4",
 };
 
+// Kapak fotoğraflarını video URL'leriyle eşleştiren bir nesne
+const customThumbnails = {
+    "https://vimeo.com/575363426": "/img/burcu1.png",
+    "https://vimeo.com/575361777": "/img/burcu2.png",
+    "https://vimeo.com/574395611": "/img/burcu3.png",
+    "https://vimeo.com/574394742": "/img/burcu4.png"
+};
+
 function DirectorDetails({ director }) {
     const [loading, setLoading] = useState(true); // Loading durumu
     const [videos, setVideos] = useState([]); // Videoları tutacak state
@@ -51,18 +59,7 @@ function DirectorDetails({ director }) {
         setSelectedVideo(null);
         setShowModal(false);
     };
-    useEffect(() => {
-        if (selectedVideo && modalRef.current) {
-            const iframe = modalRef.current.querySelector('iframe');
-            const player = new Player(iframe);
 
-            // Remove or comment out the fullscreen request to prevent it from opening automatically
-            // player.requestFullscreen().catch(error => {
-            //     console.error("Tam ekran hatası:", error);
-            // });
-        }
-    }, [selectedVideo]);
-    //video geçiş efekti
     useEffect(() => {
         if (window.innerWidth < 768) return;
 
@@ -125,21 +122,20 @@ function DirectorDetails({ director }) {
         closeButton.style.zIndex = '10000';
         closeButton.style.cursor = 'pointer';
 
-        // iframe ve butonu div içine ekle
         iframeContainer.appendChild(iframe);
         iframeContainer.appendChild(closeButton);
         document.body.appendChild(iframeContainer);
 
-        // Kapatma butonuna tıklanınca iframe ve butonu kaldır
         closeButton.addEventListener('click', () => {
             if (document.fullscreenElement) {
                 document.exitFullscreen();
             }
             document.body.removeChild(iframeContainer);
-            document.body.classList.remove('blurred-background'); // Bulanıklığı kaldır
+            document.body.classList.remove('blurred-background');
         });
     };
-    const { t, i18n } = useTranslation();
+
+    const { t } = useTranslation();
 
     return (
         <Layout modelRight={{ children: <ModalContact />, propsModal: { textBtn: t('contactU') } }}>
@@ -147,82 +143,56 @@ function DirectorDetails({ director }) {
                 <title>3Bölü2 | {director.name}</title>
             </Head>
             <DirectorHeader 
-            className="dsn-container" 
-            fullWidth 
-            heroContent={headerContent} 
-            overlay={6}
-            director={director}>
-            </DirectorHeader>
+                className="dsn-container" 
+                fullWidth 
+                heroContent={headerContent} 
+                overlay={6}
+                director={director}
+            />
 
-<div ref={directorsRef} className={styles['gallery-containerD']}>
-    {loading ? ( // Eğer loading durumu true ise
-        <LoadingSpinner /> // Yükleme animasyonunu göster
-    ) : (
-                videos.length > 0 && (
-                    videos.map((video, index) => (
-                        <div
-                            key={index}
-                            className={styles['gallery-item']}
-                            onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
-                        >
-                            <img
-                                src={video.pictures.sizes[3].link}
-                                alt={`Video ${index + 1}`}
-                                className={styles['video-thumbnail']}
-                                style={{
-                                    transition: 'transform 0.3s ease-in-out', // Yumuşak geçiş efekti
-                                  }}              
-                                  onMouseEnter={(e) => {
-                                    const target = e.currentTarget;
-                                    if (target) {
-                                      target.hoverTimeout = setTimeout(() => {
+            <div ref={directorsRef} className={styles['gallery-containerD']}>
+                {loading ? (
+                    <LoadingSpinner />
+                ) : (
+                    videos.length > 0 && (
+                        videos.map((video, index) => (
+                            <div
+                                key={index}
+                                className={styles['gallery-item']}
+                                onClick={() => handleImageClick(video.embed.html.match(/src="([^"]+)"/)[1])}
+                            >
+                                <img
+                                    src={
+                                        customThumbnails[video.link] || video.pictures.sizes[3].link
+                                    } // Özel kapak fotoğrafı veya Vimeo'dan gelen küçük resim
+                                    alt={`Video ${index + 1}`}
+                                    className={styles['video-thumbnail']}
+                                    style={{
+                                        transition: 'transform 0.3s ease-in-out',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        const target = e.currentTarget;
                                         if (target) {
-                                          target.style.transform = 'scale(1.1)';
+                                            target.hoverTimeout = setTimeout(() => {
+                                                if (target) {
+                                                    target.style.transform = 'scale(1.1)';
+                                                }
+                                            }, 500);
                                         }
-                                      }, 500);
-                                    }
-                                  }}
-                                  onMouseLeave={(e) => {
-                                    const target = e.currentTarget;
-                                    if (target) {
-                                      clearTimeout(target.hoverTimeout);
-                                      target.style.transform = 'scale(1.0)'; // Eski boyuta dön
-                                    }
-                                  }}
-                            />
-                            
-                        </div>
-                    ))
-                )
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        const target = e.currentTarget;
+                                        if (target) {
+                                            clearTimeout(target.hoverTimeout);
+                                            target.style.transform = 'scale(1.0)';
+                                        }
+                                    }}
+                                />
+                            </div>
+                        ))
+                    )
                 )}
             </div>
-
-            {/* <HeaderFull
-                className="dsn-container"
-                fullWidth
-                heroContent={headerContent}
-                overlay={6}
-            >
-
-            </HeaderFull> */}
-            {showModal && selectedVideo && (
-                <div className={styles['video-modal']} ref={modalRef} onClick={closeModal}>
-                    <div className={styles['modal-content']} onClick={(e) => e.stopPropagation()}>
-                        {/* Kapatma Butonu */}
-                        <button className={styles['close-button']} onClick={closeModal}>X</button>
-
-                        <iframe
-                            src={`${selectedVideo.embed.html.match(/src="([^"]+)"/)[1]}`}
-                            width="640"
-                            height="360"
-                            frameBorder="0"
-                            allow="autoplay; picture-in-picture"
-                            allowFullScreen
-                            title={`Video ${selectedVideo.name}`}
-                        ></iframe>
-                    </div>
-                </div>
-            )}
 
             <NextPage className="section-padding border-top background-section" />
             <Footer className="background-section" />
@@ -232,22 +202,17 @@ function DirectorDetails({ director }) {
 
 export default DirectorDetails;
 
-
 // getServerSideProps ile URL'yi kontrol edip yönetmen verisini buluyoruz
 export async function getServerSideProps(context) {
     const { director } = context.params;
 
-    // URL'nin "director-details-" ile başladığından emin olun
     if (!director.startsWith("director-details-")) {
         return {
             notFound: true,
         };
     }
 
-    // URL'deki "director-details-" kısmını temizleyip yönetmen adını elde ediyoruz
     const directorUrl = director.replace("director-details-", "");
-
-    // Yönetmen verisini bul
     const directorData = directors.find(d => d.url === directorUrl);
 
     if (!directorData) {
