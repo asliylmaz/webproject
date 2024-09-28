@@ -5,8 +5,34 @@
   gap: 10px; /* Galeri öğeleri arasında boşluk */
   overflow: visible;
   height: auto;
-  margin-left: 106px;
+  margin-left: 8%;
   margin-right: 20px;
+}
+.full-width {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* İframe'leri ortalamak için */
+  align-items: center;     /* İframe'leri ortalamak için */
+  cursor: pointer; /* Fare işaretçisi el işaretine dönüşsün */
+  grid-column: span 2;
+  margin-left: 6%;
+  margin-left: 10%;
+  height: 80vh ;
+  aspect-ratio: 16/9; /* Oranı korumak için ekledik */
+}
+
+.gallery-containerOne {
+  display: grid ;
+  grid-template-columns: repeat(1, 1fr); /* Her satırda iki video */
+  gap: 10px; /* Galeri öğeleri arasında boşluk */
+  overflow: visible;
+  height: auto;
+  margin-left: 6%;
+  margin-bottom:10px;
+  margin-top: 5%;
+  z-index:20;
 }
 .gallery-containerD{
   display: grid ;
@@ -14,20 +40,8 @@
   gap: 10px; /* Galeri öğeleri arasında boşluk */
   overflow: visible;
   height: auto;
-  margin-left: 106px;
+  margin-left: 8%;
   margin-right: 20px;
-  margin-top: 5%;
-  z-index:20;
-}
-.gallery-containerOne {
-  display: grid ;
-  grid-template-columns: repeat(1, 1fr); /* Her satırda iki video */
-  gap: 10px; /* Galeri öğeleri arasında boşluk */
-  overflow: visible;
-  height: auto;
-  margin-left: 106px;
-  margin-right: 20px;
-  margin-bottom:10px;
   margin-top: 5%;
   z-index:20;
 }
@@ -50,46 +64,6 @@
   height: 100%;
   object-fit: cover;
 }
-/* Thumbnail üzerine yazı yerleştiriyoruz */
-.overlay {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Opaklık */
-  transition: opacity 0.3s ease;
-  z-index: 999;
-}
-.video-title {
-  position: absolute;
-  bottom: 20px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.048);
-  color: #fff; /* Beyaz yazı rengi */
-  font-weight: 25px;
-  padding: 5px 10px;
-  font-size: 25px;
-  border-radius: 5px;
-  pointer-events: none; /* Hover olaylarını engellemek için */
-}
-.video-description {
-  position: absolute;
-  bottom: 1px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.048);
-  color: #fff; /* Beyaz yazı rengi */
-  font-weight: 10px;
-  padding: 5px 10px;
-  font-size: 20px;
-  pointer-events: none; /* Hover olaylarını engellemek için */
-}
-
-
 
 /* Iframe'in tam alanı kapsaması için gerekli stil */
 .gallery-item iframe {
@@ -102,52 +76,6 @@
 
 .gallery-item:hover iframe {
   transform: scale(1.1); /* İframe içindeki video üzerine gelince daha fazla büyüsün */
-}
-
-/* Mobilde tüm videolar alt alta */
-@media (max-width: 768px) {
-  .gallery-containerOne {
-    grid-template-columns: repeat(1, 1fr); /* Her satırda iki video */
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 5%;
-    gap: 5px; 
-    padding: 0; 
-    margin-bottom: 5px;
-    //margin-bottom:-1%;
-  }
-  .gallery-container {
-    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
-    margin-left: 10px;
-    margin-right: 10px;
-    gap: 5px; /* Galeri öğeleri arasında boşluk */
-    padding: 0;
-  }
-  .gallery-containerD {
-    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
-    margin-left: 10px;
-    margin-right: 10px;
-    gap: 5px; /* Galeri öğeleri arasında boşluk */
-    padding: 0;
-    //margin-top: 1.6%;
-  }
-
-  .gallery-item {
-    height: 20vh !important; /* Mobilde daha düşük yükseklik */
-  }
-  .video-thumbnail {
-    height: 25vh !important;
-    width: unset !important;
-  }
-  .full-width {
-    height: 20vh !important; 
-    
-  }
-  .video-thumbnailOne{
-    height: 25vh !important; 
-    width: unset !important;
-  }
-  
 }
 
 /* Videoların olmadığı durumda arka plan videosu */
@@ -233,6 +161,79 @@
   font-size: 12px; /* Metin boyutunu ihtiyacınıza göre ayarlayın */
   margin-left: 2%;
 }
+
+.video-title {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.048);
+  color: #fff; /* Beyaz yazı rengi */
+  font-weight: 25px;
+  padding: 5px 10px;
+  font-size: 25px;
+  border-radius: 5px;
+  pointer-events: none; /* Hover olaylarını engellemek için */
+}
+.video-description {
+  position: absolute;
+  bottom: 1px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.048);
+  color: #fff; /* Beyaz yazı rengi */
+  font-weight: 10px;
+  padding: 5px 10px;
+  font-size: 20px;
+  pointer-events: none; /* Hover olaylarını engellemek için */
+}
+/* Mobilde tüm videolar alt alta */
+@media (max-width: 768px) {
+  .gallery-containerOne {
+    grid-template-columns: repeat(1, 1fr); /* Her satırda iki video */
+    margin-left: 0px;
+    margin-right: 10px;
+    margin-top: 5%;
+    gap: 5px; 
+    padding: 0; 
+    margin-bottom: 5px;
+    //margin-bottom:-1%;
+  }
+  .gallery-container {
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+  }
+  .gallery-containerD {
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 5px; /* Galeri öğeleri arasında boşluk */
+    padding: 0;
+    //margin-top: 1.6%;
+  }
+
+  .gallery-item {
+    height: 20vh !important; /* Mobilde daha düşük yükseklik */
+  }
+  .video-thumbnail {
+    height: 25vh !important;
+  }
+  .full-width {
+    height: 20vh !important; 
+    
+  }
+  .video-thumbnailOne{
+    height: 25vh !important; 
+  }
+  .video-title{
+    font-size: 15px;
+  }
+  .video-description{
+    font-size: 10px;
+  }
+  
+}
 /* iPad Air (820px genişlik) için özel medya sorgusu */
 @media only screen and (min-width: 768px) and (max-width: 1024px)  {
   .gallery-container {
@@ -263,20 +264,24 @@
   }
   .video-thumbnailOne{
     height: 25vh !important; 
-    width: unset !important;
   }
   .gallery-item {
     height: 20vh !important; /* Mobilde daha düşük yükseklik */
   }
   .video-thumbnail {
     height: 25vh;
-    width: unset !important;
+  }
+  .video-title{
+    font-size: 15px;
+  }
+  .video-description{
+    font-size: 10px;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1366px) {
   .gallery-container {
-    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
-    margin-left: 0px;
+    grid-template-columns: repeat(2, 1fr) !important; /* Tek sütuna düşür */
+    margin-left: 10%;
     margin-right: 0px;
     gap: 5px; /* Galeri öğeleri arasında boşluk */
     padding: 0;
@@ -289,7 +294,8 @@
     padding: 0;
   }
   .gallery-containerOne {
-    margin-left: 0px;
+    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    margin-left:10%;
     margin-right: 0px;
     gap: 5px; /* Galeri öğeleri arasında boşluk */
     padding: 0;
@@ -302,7 +308,6 @@
   }
   .video-thumbnail {
     height: 25vh;
-    width: unset !important;
   }
   .full-width {
     height: 20vh !important;
@@ -310,20 +315,7 @@
   }
   .video-thumbnailOne {
     height: 25vh !important;
-    width: unset !important;
   }
-}
-.full-width {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center; /* İframe'leri ortalamak için */
-  align-items: center;     /* İframe'leri ortalamak için */
-  cursor: pointer; /* Fare işaretçisi el işaretine dönüşsün */
-  grid-column: span 2;
-  height: 68vh ;
-  aspect-ratio: 16/9; /* Oranı korumak için ekledik */
 }
 
 .video-thumbnailOne {
