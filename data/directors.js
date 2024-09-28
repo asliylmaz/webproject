@@ -123,7 +123,7 @@ const directors = [
     },
     {
         name: "Tan Berk Kurtcebe", 
-        vimeo:"https://vimeo.com/tankuartcebe",
+        vimeo:"https://vimeo.com/tankurtcebe",
         url:"tankuartcebe",
         link: "/director-details"
     },
