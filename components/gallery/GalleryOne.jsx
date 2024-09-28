@@ -130,6 +130,10 @@ const GalleryOne = () => {
                 target.style.transform = 'scale(1)'; // Reset to original size
               }}
             />
+             {/* Başlık için div */}
+             <div className={styles['video-title']}>{video.name}</div>
+            {/* Video açıklaması */}
+            <div className={styles['video-description']}>{video.description}</div>
           </div>
         ))
       ) : (

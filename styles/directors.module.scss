@@ -1,16 +1,3 @@
-/* styles/Directors.module.css */
-// .container {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: flex-start;
-//     padding: 20px;
-//     background-color: #000;
-//     // display: flex;
-//     flex-wrap: wrap;
-//     justify-content: center;
-//     align-items: center;
-//     text-align: center;
-// }
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -22,7 +9,6 @@
     // padding-left: 0px;
     //background-color: #000;
 }
-
 /* Neon effect only on hover */
 .neonText {
     font-family: 'Arial', sans-serif;
@@ -65,9 +51,46 @@
     transition: text-shadow 0.3s ease, color 0.3s ease;
     /* Add smooth transition */
 }
-@media only screen and (max-width: 768px) {
+.neonTextD:hover {
+    /* Neon effect on hover */
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(255, 255, 255, 0.3);
+    cursor:pointer;
+}
+.filter:hover {
+    /* Neon effect on hover */
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(255, 255, 255, 0.3);
+}
+.neonText:hover {
+    /* Neon effect on hover */
+    color:#fff;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 50px rgba(255, 255, 255, 0.3);
+}
+.slash {
+    margin-left: 10px;
+    font-size: xx-large; /* Makes sure the slash is the same size as the text */
+    color:#fff;
+    display: inline-block;
+}
+.names {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center; // Metni ortalama
+}
+@media only screen and (max-width: 540px) {
     .neonText{  
-    font-size: 20px;
+    font-size: 15px;
     font-family: 'Arial', sans-serif;
     color: #bbb;
     text-align: left;
@@ -98,53 +121,8 @@
         text-align: center;
     }
 }
-.neonTextD:hover {
-    /* Neon effect on hover */
-    color:#fff;
-    text-shadow:
-        0 0 15px rgba(255, 255, 255, 0.6),
-        0 0 30px rgba(255, 255, 255, 0.4),
-        0 0 50px rgba(255, 255, 255, 0.3);
-    cursor:pointer;
-}
-.filter:hover {
-    /* Neon effect on hover */
-    color:#fff;
-    text-shadow:
-        0 0 15px rgba(255, 255, 255, 0.6),
-        0 0 30px rgba(255, 255, 255, 0.4),
-        0 0 50px rgba(255, 255, 255, 0.3);
-}
-.neonText:hover {
-    /* Neon effect on hover */
-    color:#fff;
-    text-shadow:
-        0 0 15px rgba(255, 255, 255, 0.6),
-        0 0 30px rgba(255, 255, 255, 0.4),
-        0 0 50px rgba(255, 255, 255, 0.3);
-}
-.slash {
-    margin-left: 10px;
-    font-size: xx-large; /* Makes sure the slash is the same size as the text */
-    color:#fff;
-}
-// .backgroundVideo {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//     z-index: -1;
-//     margin-top:-5%;
-// }
 
-.names {
-    position: relative;
-    z-index: 1;
-    color: white;
-    text-align: center; // Metni ortalama
-}
+
 
 /*directors page title*/
 .director-name-container {
