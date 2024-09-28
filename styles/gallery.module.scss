@@ -17,8 +17,8 @@
   align-items: center;     /* İframe'leri ortalamak için */
   cursor: pointer; /* Fare işaretçisi el işaretine dönüşsün */
   grid-column: span 2;
-  margin-left: 6%;
-  margin-left: 10%;
+  //margin-left: 6%;
+  //margin-left: 10%;
   height: 80vh ;
   aspect-ratio: 16/9; /* Oranı korumak için ekledik */
 }
@@ -29,7 +29,8 @@
   gap: 10px; /* Galeri öğeleri arasında boşluk */
   overflow: visible;
   height: auto;
-  margin-left: 6%;
+  margin-left: 8%;
+  margin-right: 20px;
   margin-bottom:10px;
   margin-top: 5%;
   z-index:20;
@@ -189,7 +190,7 @@
 @media (max-width: 768px) {
   .gallery-containerOne {
     grid-template-columns: repeat(1, 1fr); /* Her satırda iki video */
-    margin-left: 0px;
+    margin-left: 10px;
     margin-right: 10px;
     margin-top: 5%;
     gap: 5px; 
