@@ -37,7 +37,7 @@
 }
 .gallery-containerD{
   display: grid ;
-  grid-template-columns: repeat(2, 1fr); /* Her satırda iki video */
+  grid-template-columns: repeat(4, 1fr); /* Her satırda iki video */
   gap: 10px; /* Galeri öğeleri arasında boşluk */
   overflow: visible;
   height: auto;
@@ -289,7 +289,7 @@
     padding: 0;
   }
   .gallery-containerD {
-    grid-template-columns: repeat(1, 1fr) !important; /* Tek sütuna düşür */
+    grid-template-columns: repeat(2, 1fr) !important; /* Tek sütuna düşür */
     margin-left: 0px;
     margin-right: 0px;
     gap: 5px; /* Galeri öğeleri arasında boşluk */
