@@ -95,18 +95,6 @@ function About({ className, ...restProps }) {
                                 <p className="mb-30" ref={ref} style={{ maxWidth: 570 }} dangerouslySetInnerHTML={{ __html: t('hero.description') }} />
                                 {/* <h5 className="sm-title-block line-shape line-shape-after mb-10" ref={ref}>{HeroContent.authorTitle}</h5> */}
                                 {/* <span className="sub-heading line-bg-left" ref={ref}>{HeroContent.authorJob}</span> */}
-                                <DsnGrid className="box-awards pt-30" col={2} colTablet={2} colGap={15} rowGap={15}>
-                                    {awards.map((item, index) => (
-                                        <div className="box-awards_item has-border" key={index} ref={ref}>
-                                            <div className="box-awards_inner background-section">
-                                                <span className="has-animate-number title">{item.number}</span>
-                                                <h5 className="sm-title-block" dangerouslySetInnerHTML={{ __html: item.description }} />
-                                            </div>
-                                        </div>
-                                    ))}
-
-
-                                </DsnGrid>
                             </>}
                         </FadeUpTrigger>
 
@@ -126,17 +114,7 @@ function About({ className, ...restProps }) {
                             </div>
 
 
-                            <div
-                                className="box-awards-item p-absolute big-number v-dark-head left-0 bottom-0 ml-40 mb-40 z-index-1 border-style">
-                                <h5 className="number p-20">
-                                    <span className="has-animate-number title"
-                                        style={{ fontSize: "110px", lineHeight: "120px" }}>
-                                        {t('hero.experienceNumber')}
-                                    </span>
-                                    {t('hero.experienceDescription') && <span className="sm-title-block d-block" dangerouslySetInnerHTML={{ __html: t('hero.experienceDescription') }} />}
-
-                                </h5>
-                            </div>
+                            
                         </div>
                     </div>
                 </DsnGrid>

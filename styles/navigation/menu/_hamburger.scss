@@ -65,7 +65,7 @@ ul.primary-nav {
     @include media_991(min) {
       li a span:before {
         counter-increment: var(--dsn-li-name);
-        content: counters(var(--dsn-li-name), ".", decimal-leading-zero) ". ";
+        content: none;
         font-family: $border-color;
         pointer-events: none;
         font-size: 14px;
