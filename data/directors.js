@@ -104,12 +104,6 @@ const directors = [
         link: "/director-details"
     },
     {
-        name: "Caner Çetiner", 
-        vimeo:"https://vimeo.com/canercetiner",
-        url:"canercetiner",
-        link: "/director-details"
-    },
-    {
         name: "İlkay Uygur", 
         vimeo:"https://vimeo.com/illkay",
         url:"illkay",
@@ -125,12 +119,6 @@ const directors = [
         name: "Tan Berk Kurtcebe", 
         vimeo:"https://vimeo.com/tankurtcebe",
         url:"tankuartcebe",
-        link: "/director-details"
-    },
-    {
-        name: "Burak Kolcu", 
-        vimeo:"https://vimeo.com/burakkolcu",
-        url:"burakkolcu",
         link: "/director-details"
     },
     {
