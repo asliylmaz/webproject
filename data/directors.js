@@ -67,6 +67,7 @@ const directors = [
         url:"burcumatur",
         link: "/director-details"
     },
+    
     {
         name: "Mehmet Çelebi", 
         vimeo:"https://vimeo.com/mehmetcelebi",
