@@ -62,17 +62,12 @@ const directors = [
         link: "/director-details"
     },
     {
-        name: "Dağhan Celayir", 
-        vimeo:"https://vimeo.com/user8452284",
-        url:"daghancelayir",
-        link: "/director-details"
-    },
-    {
         name: "Burcu Matur", 
         vimeo:"https://vimeo.com/burcumatur",
         url:"burcumatur",
         link: "/director-details"
     },
+    
     {
         name: "Mehmet Çelebi", 
         vimeo:"https://vimeo.com/mehmetcelebi",
